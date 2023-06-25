@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/widgets/article_item.dart';
+
+class ArticlesScreen extends StatelessWidget {
+  const ArticlesScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  ListView.builder(
+        padding: EdgeInsets.symmetric(horizontal: 15,),
+        itemCount: 10,
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context,index) => ArticleItem()
+    );
+  }
+}

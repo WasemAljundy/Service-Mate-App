@@ -12,7 +12,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
   @override
   void initState() {
     super.initState();
-    String route = SharedPrefController().getAnyData(PrefsKey.onBoarding.name)?'/login_screen' : '/on_boarding_screen';
+    String route = SharedPrefController().onBoarding?'/login_screen' : '/on_boarding_screen';
     Future.delayed(
       const  Duration(seconds: 3),
       () {
@@ -26,7 +26,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset('assets/images/logo.png', fit: BoxFit.cover,height: 250,width: 250,),
+        child: Image.asset('assets/images/blue_logo.png', fit: BoxFit.cover,height: 250,width: 250,),
       ),
     );
   }
