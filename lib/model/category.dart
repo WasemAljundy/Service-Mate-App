@@ -4,7 +4,9 @@ class Category{
   late String description;
   late String image;
 
-  Category();
+
+  Category({required this.name,required this.description, required this.image});
+
   Category.fromJson(Map<String , dynamic> json){
     id = json['id'];
     name = json['name'];
