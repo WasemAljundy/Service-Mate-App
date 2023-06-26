@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 import '../components/my_button.dart';
-import '../components/my_textfield.dart';
 import 'login_screen.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -97,17 +97,17 @@ class SignupScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 30),
 
-                                MyTextField(
+                                AppTextFiled(
                                   controller: usernameController,
-                                  hintText: 'Email',
-                                  obscureText: false,
+                                  hint: 'Email',
+                                  obSecureText: false,
                                 ),
 
                                 const SizedBox(height: 10),
-                                MyPasswordTextField(
+                                AppTextFiled(
                                   controller: passwordController,
-                                  hintText: 'Password',
-                                  obscureText: true,
+                                   hint: 'Password',
+                                  obSecureText: true,
                                 ),
                                 const SizedBox(height: 30),
 

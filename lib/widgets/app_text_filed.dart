@@ -41,6 +41,7 @@ class AppTextFiled extends StatelessWidget {
           maxHeight:errorText != null ?90 : 60,
 
         ),
+
         errorBorder: _border(radius: 20, color: Colors.red, width: 2),
         hintText: hint,
         suffixIcon: IconButton(onPressed: function, icon: Icon(suffixIcon)),
@@ -48,8 +49,6 @@ class AppTextFiled extends StatelessWidget {
         focusedBorder: _border(radius: 15, color: Colors.blue,width: 2),
         hintStyle: TextStyle(color: Colors.grey[400]),
         border: _border(radius: 15, color: Colors.grey,width: 1),
-
-
       ),
     );
   }
@@ -59,7 +58,6 @@ class AppTextFiled extends StatelessWidget {
         borderSide: BorderSide(
           color: color,
           width: width,
-
         )
     );
   }

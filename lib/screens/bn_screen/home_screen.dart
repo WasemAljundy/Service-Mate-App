@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/category.dart';
 import 'package:gp_106_flutter_project/widgets/article_item.dart';
 import 'package:gp_106_flutter_project/widgets/category_item.dart';
@@ -34,7 +33,7 @@ class HomeScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Expanded(child: Image.asset('assets/images/grey_logo.png',fit: BoxFit.cover,width: 250,height: 250,)),
+              Expanded(child: Image.asset('images/grey_logo.png',fit: BoxFit.cover,width: 250,height: 250,)),
               // Text('BEST ONLINE',style: TextStyle(fontSize: 35,color: Colors.white,fontWeight: FontWeight.bold),),
               // Text('RESERVATIONS',style: TextStyle(fontSize: 35,color: Colors.yellow,fontWeight: FontWeight.bold),),
 
@@ -83,13 +82,13 @@ class HomeScreen extends StatelessWidget {
         ),
         const SizedBox(height: 10,),
         ListView.builder(
-          padding: EdgeInsets.symmetric(horizontal: 15,),
+          padding: const EdgeInsets.symmetric(horizontal: 15,),
             itemCount: 10,
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
-            itemBuilder: (context,index) => ArticleItem()
-          )
+            itemBuilder: (context,index) => const ArticleItem()
+          ),
 
 
       ],
