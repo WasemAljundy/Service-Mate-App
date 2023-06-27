@@ -10,10 +10,10 @@ class UpdateExperiencesScreen extends StatefulWidget {
   const UpdateExperiencesScreen({super.key});
 
   @override
-  State<UpdateExperiencesScreen> createState() => _AddExperiencesScreenState();
+  State<UpdateExperiencesScreen> createState() => _UpdateExperiencesScreenState();
 }
 
-class _AddExperiencesScreenState extends State<UpdateExperiencesScreen> {
+class _UpdateExperiencesScreenState extends State<UpdateExperiencesScreen> {
   late final  TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final TextEditingController _birthDayEditingController;

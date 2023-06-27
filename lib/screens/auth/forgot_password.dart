@@ -1,6 +1,7 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 
@@ -8,10 +9,10 @@ class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
 
   @override
-  State<ForgotPassword> createState() => _LoginScreenState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _LoginScreenState extends State<ForgotPassword> with Helpers {
+class _ForgotPasswordState extends State<ForgotPassword> with Helpers {
 
   late final  TextEditingController _emailController;
   late TapGestureRecognizer tapGestureRecognizer;
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<ForgotPassword> with Helpers {
                   alignment: Alignment.center,
                   child:Image.asset('images/blue_logo.png',width: 200,height: 200,)
               ),
-              const Text('Forgot Password',style: TextStyle(color: Colors.blue,fontSize: 24,fontWeight: FontWeight.w900),),
+              const Text('Forgot Password',style: TextStyle(color: UsedColor.PRIMARY_COLOR,fontSize: 24,fontWeight: FontWeight.w900),),
               const SizedBox(height: 30,),
               Row(
                 children: const [
@@ -63,6 +64,7 @@ class _LoginScreenState extends State<ForgotPassword> with Helpers {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
+                  backgroundColor: UsedColor.PRIMARY_COLOR,
                   minimumSize: const Size(double.infinity,50),
                 ), child: const  Text('Send verification message',style: TextStyle(fontSize: 20),),
               ),
