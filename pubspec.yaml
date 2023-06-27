@@ -38,10 +38,15 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   shared_preferences: ^2.1.2
   hexcolor: ^3.0.1
+  google_fonts: ^4.0.4
+  image_picker: ^0.8.9
+  dotted_border: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -60,15 +65,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/boarding11.png
-    - assets/images/boarding.png
-    - assets/images/blue_logo.png
-    - assets/images/grey_logo.png
-    - assets/images/test.jpg
-
+    - assets/images/
+  # To add assets to your application, add an assets section, like this:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -82,7 +81,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Jannah
+    - family: Janna
       fonts:
         - asset: assets/fonts/jannah.ttf
           weight: 700
