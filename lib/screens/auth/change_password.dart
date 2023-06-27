@@ -5,15 +5,15 @@ import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 
-class ChangePassword extends StatefulWidget {
-  ChangePassword({Key? key}) : super(key: key);
+class ChangePasswordScreen extends StatefulWidget {
+  ChangePasswordScreen({Key? key}) : super(key: key);
 
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
 
 }
 
-class _ChangePasswordState extends State<ChangePassword> with Helpers {
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> with Helpers {
   late final TextEditingController _passwordController;
   late TapGestureRecognizer tapGestureRecognizer;
   String? _passwordErrors;
