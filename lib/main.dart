@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/screens/auth/reset_forgotten_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/forgot_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/login_screen.dart';
 import 'package:gp_106_flutter_project/screens/auth/register_screen.dart';
@@ -33,16 +34,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: ScreenKeys.reservationsScreen,
+      initialRoute: ScreenKeys.resetForgottenPassword,
       theme: ThemeData(
         fontFamily: 'Jannah',
       ),
       routes: {
-        ScreenKeys.launch_screen: (context) =>const LaunchScreen(),
-        ScreenKeys.on_boarding_screen: (context) =>OnBoardingScreen(),
-        ScreenKeys.main_screen: (context) =>const MainScreen(),
-        ScreenKeys.profile_screen : (context) => const ProfileScreen(),
-        ScreenKeys.editProfile_screen : (context) => const EditProfileScreen(),
+        ScreenKeys.launchScreen: (context) =>const LaunchScreen(),
+        ScreenKeys.onBoardingScreen: (context) =>OnBoardingScreen(),
+        ScreenKeys.mainScreen: (context) =>const MainScreen(),
+        ScreenKeys.profileScreen : (context) => const ProfileScreen(),
+        ScreenKeys.editProfileScreen : (context) => const EditProfileScreen(),
         ScreenKeys.loginScreen : (context) =>  const LoginScreen(),
         ScreenKeys.registerScreen : (context) =>  RegisterScreen(),
         ScreenKeys.forgotPassword : (context) =>  const ForgotPassword(),
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         ScreenKeys.addExperenciesScreen : (context) =>  const AddExperiencesScreen(),
         ScreenKeys.updateExperiencesScreen : (context) =>  const UpdateExperiencesScreen(),
         ScreenKeys.reservationsScreen : (context) =>  const ReservationsScreen(),
+        ScreenKeys.resetForgottenPassword : (context) =>  ResetForgottenPassword(),
       },
     );
   }

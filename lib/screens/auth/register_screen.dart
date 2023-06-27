@@ -47,6 +47,14 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: UsedColor.PRIMARY_COLOR,
+            title: Text('Registration',style:
+            TextStyle(color: Colors.white,
+              fontSize: 20,
+            ),
+            ),
+          ),
           backgroundColor: Colors.white,
           body: ListView(
             padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 20),
@@ -81,25 +89,10 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
                     ),
               ),
 
-              const Text('Registration',style:
-              TextStyle(color: UsedColor.PRIMARY_COLOR,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w900),
-              ),
               const SizedBox(height: 30,),
-              Text('  Enter your first name',style: TextStyle(color: Colors.grey),),
+              Text('  Enter your full name',style: TextStyle(color: Colors.grey),),
               const SizedBox(height: 5,),
-              AppTextFiled(controller: _emailController, hint: 'First Name',errorText: _emailErrors, icon: Icons.badge),
-              const SizedBox(height: 10,),
-
-              Text('  Enter your mid name',style: TextStyle(color: Colors.grey),),
-              const SizedBox(height: 5,),
-              AppTextFiled(controller: _emailController, hint: 'Mid Name',errorText: _emailErrors, icon: Icons.badge),
-              const SizedBox(height: 10,),
-
-              Text('  Enter your last name',style: TextStyle(color: Colors.grey),),
-              const SizedBox(height: 5,),
-              AppTextFiled(controller: _emailController, hint: 'Last Name',errorText: _emailErrors,icon: Icons.badge),
+              AppTextFiled(controller: _emailController, hint: 'Full name',errorText: _emailErrors, icon: Icons.badge),
               const SizedBox(height: 10,),
 
               Text('  Enter email Address',style: TextStyle(color: Colors.grey),),
