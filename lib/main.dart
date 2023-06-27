@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/screens/auth/change_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/reset_forgotten_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/forgot_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/login_screen.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: ScreenKeys.resetForgottenPassword,
+      initialRoute: ScreenKeys.changePassword,
       theme: ThemeData(
         fontFamily: 'Jannah',
       ),
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         ScreenKeys.updateExperiencesScreen : (context) =>  const UpdateExperiencesScreen(),
         ScreenKeys.reservationsScreen : (context) =>  const ReservationsScreen(),
         ScreenKeys.resetForgottenPassword : (context) =>  ResetForgottenPassword(),
+        ScreenKeys.changePassword : (context) =>  ChangePasswordScreen(),
       },
     );
   }

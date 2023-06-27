@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/category.dart';
 import 'package:gp_106_flutter_project/widgets/article_item.dart';
 import 'package:gp_106_flutter_project/widgets/category_item.dart';
@@ -9,17 +8,13 @@ class HomeScreen extends StatelessWidget {
    HomeScreen({Key? key}) : super(key: key);
 
   List<Category> lists = [
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
+    Category(id: 1 ,name: 'It Manger', description: 'descriptoin 1',createdAt: '12',updatedAt: "13", image: 'assets/images/test.jpg'),
+    Category(id: 2 ,name: 'It Manger', description: 'descriptoin 1',createdAt: '12',updatedAt: "13", image: 'assets/images/test.jpg'),
+    Category(id: 3 ,name: 'It Manger', description: 'descriptoin 1',createdAt: '12',updatedAt: "13", image: 'assets/images/test.jpg'),
+    Category(id: 4 ,name: 'It Manger', description: 'descriptoin 1',createdAt: '12',updatedAt: "13", image: 'assets/images/test.jpg'),
+    Category(id: 5 ,name: 'It Manger', description: 'descriptoin 1',createdAt: '12',updatedAt: "13", image: 'assets/images/test.jpg'),
+    Category(id: 6 ,name: 'It Manger', description: 'descriptoin 1',createdAt: '12',updatedAt: "13", image: 'assets/images/test.jpg'),
+    Category(id: 7 ,name: 'It Manger', description: 'descriptoin 1',createdAt: '12',updatedAt: "13", image: 'assets/images/test.jpg'),
   ];
 
   @override
