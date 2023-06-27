@@ -1,39 +1,33 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPassword> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with Helpers {
+class _LoginScreenState extends State<ForgotPassword> with Helpers {
 
   late final  TextEditingController _emailController;
-  late final TextEditingController _passwordController;
   late TapGestureRecognizer tapGestureRecognizer;
 
   String? _emailErrors;
-  String? _passwordErrors;
   @override
   void initState() {
     super.initState();
     _emailController = TextEditingController();
-    _passwordController = TextEditingController();
     tapGestureRecognizer = TapGestureRecognizer();
     tapGestureRecognizer.onTap = navigateToRegisterScreen;
   }
 
-  bool _isSecure = false;
   @override
   void dispose() {
     _emailController.dispose();
-    _passwordController.dispose();
     tapGestureRecognizer.dispose();
     super.dispose();
   }
@@ -46,11 +40,11 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
           body: ListView(
             padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 20),
             children:[
-               Align(
-                alignment: Alignment.center,
+              Align(
+                  alignment: Alignment.center,
                   child:Image.asset('images/blue_logo.png',width: 200,height: 200,)
-             ),
-              const Text('Login',style: TextStyle(color: UsedColor.PRIMARY_COLOR,fontSize: 24,fontWeight: FontWeight.w900),),
+              ),
+              const Text('Forgot Password',style: TextStyle(color: Colors.blue,fontSize: 24,fontWeight: FontWeight.w900),),
               const SizedBox(height: 30,),
               Row(
                 children: const [
@@ -60,57 +54,19 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
               const SizedBox(height: 5,),
               AppTextFiled(controller: _emailController, hint: 'Email',errorText: _emailErrors,icon: Icons.email,),
               const SizedBox(height: 10,),
-              Row(
-                children: const [
-                  Text(' Enter password',style: TextStyle(color: Colors.grey),),
-                ],
-              ),
-              const SizedBox(height: 5,),
-              AppTextFiled(
-                function: () {
-                  setState(() {
-                    _isSecure =!_isSecure;
-                  });
-                },
-                  controller: _passwordController, obSecureText: _isSecure,suffixIcon:_isSecure?Icons.visibility_off:Icons.visibility ,hint: 'Password',errorText:_passwordErrors ,icon: Icons.lock),
-              Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: TextButton(
-                    onPressed: (){
 
-                    },
-                    child: Text('Forget password?',style: TextStyle(fontSize: 14, color: UsedColor.PRIMARY_COLOR),),
-
-
-                ),
-              ),
               const SizedBox(height: 40,),
               ElevatedButton(onPressed: (){
                 perFormLogin();
               },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: UsedColor.PRIMARY_COLOR,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
                   minimumSize: const Size(double.infinity,50),
-                ), child: const  Text('Login',style: TextStyle(fontSize: 20),),
+                ), child: const  Text('Send verification message',style: TextStyle(fontSize: 20),),
               ),
               SizedBox(height: 10),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    text: 'Don\'t have an account? ',
-                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),
-                    children: [
-                      TextSpan(
-                          recognizer: tapGestureRecognizer,
-                          text: 'Create Now!',
-                          style: const TextStyle(color: UsedColor.PRIMARY_COLOR,fontWeight: FontWeight.bold,fontSize: 14)
-                      )
-                    ]
-                ),
-              ),
 
             ],
           )
@@ -126,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
   }
 
   bool checkData(){
-    if(_emailController.text.isNotEmpty && _passwordController.text.isNotEmpty){
+    if(_emailController.text.isNotEmpty ){
       checkErrors();
       return true;
     }
@@ -139,7 +95,6 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
 
     setState(() {
       _emailErrors = _emailController.text.isEmpty?'Enter Email Address':null;
-      _passwordErrors = _passwordController.text.isEmpty?'Enter Password':null;
     });
   }
 

@@ -12,9 +12,12 @@ class SharedPrefController{
     preferences = await SharedPreferences.getInstance();
   }
 
-  dynamic getAnyData(String prefsKey){
-    return preferences.get(prefsKey);
-  }
+  // dynamic getAnyData(String prefsKey){
+  //   return preferences.get(prefsKey);
+  // }
+
+  bool get onBoarding => preferences.getBool(PrefsKey.onBoarding.toString())??false;
+
 
 
   // Future<void> save({required Student student}) async {

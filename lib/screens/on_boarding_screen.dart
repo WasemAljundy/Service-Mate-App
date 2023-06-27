@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/boarding_model.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/widgets/on_boarding_widget.dart';
@@ -16,17 +17,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   List<BoardingModel> boarding = [
     BoardingModel(
-      image: 'assets/images/boarding1.jpg',
+      image: 'assets/images/boarding.png',
       title: 'Welcome to our Online Reservation App!',
       body: 'Explore a wide range of options and book your favorite services with ease.',
     ),
     BoardingModel(
-      image: 'assets/images/boarding2.jpg',
+      image: 'assets/images/boarding11.png',
       title: 'Easy Booking Process',
       body: 'Find your desired service quickly and book it in a few simple steps.',
     ),
     BoardingModel(
-      image: 'assets/images/boarding3.jpg',
+      image: 'assets/images/boarding.png',
       title: 'Efficient Management',
       body: 'Streamline your reservation process and efficiently manage your bookings.',
     ),
@@ -49,14 +50,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child:
                 TextButton(onPressed: () {
                   saveAndPush();
-                  }, child: const Text('Start  ',style: TextStyle(fontSize: 20),))),
+                  }, child:  Text('Start  ',style: TextStyle(fontSize: 20,color: primaryColors),))),
             visible: _currentPage < 2,
             child: Align(
                 alignment: AlignmentDirectional.topEnd,
                 child:
                 TextButton(onPressed: () {
                   _pageController.animateToPage(2, duration: const Duration(seconds: 1), curve: Curves.easeIn);
-                }, child: const Text('Skip  ',style: TextStyle(fontSize: 20),)))),
+                }, child:  Text('Skip  ',style: TextStyle(fontSize: 20,color: primaryColors),)))),
       ],),
       body: Column(
         children: [
@@ -84,14 +85,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               children: [
                 SmoothPageIndicator(
                   controller: _pageController,
-                  effect:const  ExpandingDotsEffect(
+                  effect:  ExpandingDotsEffect(
                     dotColor: Colors.grey,
                     dotHeight: 10,
                     expansionFactor: 4,
                     dotWidth: 10,
                     spacing: 5.0,
+                    activeDotColor: primaryColors
                   ),
                   count: boarding.length,
+
                 ),
                 const Spacer(),
                 FloatingActionButton(
@@ -111,6 +114,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: const Icon(
                     Icons.arrow_forward_ios,
                   ),
+                  backgroundColor: primaryColors,
                 )
 
               ],
