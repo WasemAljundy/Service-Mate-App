@@ -64,6 +64,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+<<<<<<< HEAD
+=======
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - images/
+>>>>>>> a3719d8 (new screens)
 
   # To add assets to your application, add an assets section, like this:
 
@@ -81,7 +88,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+<<<<<<< HEAD
     - family: Janna
+=======
+    - family: Jannah
+>>>>>>> a3719d8 (new screens)
       fonts:
         - asset: fonts/jannah.ttf
           weight: 700

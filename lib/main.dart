@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/Login_ui/singup_screen.dart';
 import 'package:gp_106_flutter_project/screens/bills_screen.dart';
 import 'package:gp_106_flutter_project/screens/payment_methods_screen.dart';
-import 'Login_ui/welcome_screen.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/screens/add_attachment_screen.dart';
 import 'package:gp_106_flutter_project/screens/articles_details_screen.dart';

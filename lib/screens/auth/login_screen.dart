@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 
@@ -20,7 +21,6 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
@@ -32,7 +32,6 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _emailController.dispose();
     _passwordController.dispose();
     tapGestureRecognizer.dispose();
@@ -136,6 +135,7 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
                   perFormLogin();
                 },
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: UsedColor.PRIMARY_COLOR,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
