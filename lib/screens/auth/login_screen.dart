@@ -82,30 +82,6 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
                 height: 5,
               ),
               AppTextFiled(
-                controller: _emailController,
-                hint: 'Email',
-                errorText: _emailErrors,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Row(
-                children: [
-                  Icon(
-                    Icons.lock_outline,
-                    color: Colors.grey,
-                    size: 20,
-                  ),
-                  Text(
-                    ' Enter password',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              AppTextFiled(
                   function: () {
                     setState(() {
                       _isSecure = !_isSecure;
