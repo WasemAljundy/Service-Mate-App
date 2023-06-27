@@ -19,6 +19,7 @@ void main()async {
   await SharedPrefController().initShared();
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login_screen',
+      initialRoute: '/main_screen',
       theme: ThemeData(
         fontFamily: 'Janna',
         appBarTheme: AppBarTheme(
@@ -67,4 +68,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
