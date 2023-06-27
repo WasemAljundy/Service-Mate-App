@@ -55,7 +55,15 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         padding:  const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-
+            const Text(
+              'Add Address',
+              style: TextStyle(
+                color: Color(0Xff4B989C) ,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10,),
             SecondaryTextFiled(controller: _addressNameEditingController, hint: 'Address Name',errorText: 'Enter Address Name',type: TextInputType.text,icon: Icons.account_balance_outlined,function: (){
 
             },),

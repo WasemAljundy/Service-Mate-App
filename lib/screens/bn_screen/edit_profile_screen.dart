@@ -148,30 +148,29 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
                       height: 50,
-                      decoration:BoxDecoration(
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: const Color(0Xff4B989C)),
                       ),
-
                       child: DropdownButton(
-
-                        hint: const Text('Gender'),
+                        hint: const Text('gender'),
                         value: _gender,
-                          items: _genderList.map((item) =>
-                              DropdownMenuItem(
-                               value: item,
-                               child: Text(item),
-                              ))
-                              .toList(),
-                          onChanged: (value){
-                            setState(() {
-                              _gender = value;
-                            });
-                          },
-                      isDense: true,
-                      isExpanded: true,
-                      icon: const Icon(Icons.arrow_drop_down_sharp,size: 30,),
+                        items: _genderList.map((item) =>
+                            DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            ))
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            _gender = value!;
+                          });
+                        },
+                        isDense: true,
+                        isExpanded: true,
+                        icon: const Icon(Icons.arrow_drop_down_sharp, size: 30,),
                       ),
+
                     ),
                      const SizedBox(height:20 ,),
                     SizedBox(

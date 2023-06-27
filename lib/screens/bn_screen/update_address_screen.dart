@@ -48,16 +48,23 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor('#4B989C'),
-        title: const Text('Update Address'),
+        title: const Text('Address'),
         centerTitle: true,
       ),
       body: Padding(
         padding:  const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-
+            const Text(
+              'Update Address',
+              style: TextStyle(
+                color: Color(0Xff4B989C) ,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10,),
             SecondaryTextFiled(controller: _addressNameEditingController, hint: 'Address Name',errorText: 'Enter Address Name',type: TextInputType.text,icon: Icons.account_balance_outlined,function: (){
-
             },),
             const  SizedBox(height: 10),
             SecondaryTextFiled(controller: _buildingEditingController, hint: 'building',errorText: 'Enter Building Name',type: TextInputType.text,icon: Icons.location_city_rounded),
@@ -132,13 +139,13 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Enter required data'),
+        content: const Text('Enter required data'),
         backgroundColor: Colors.red,
         showCloseIcon: true,
         closeIconColor: Colors.yellow,
         behavior: SnackBarBehavior.floating,
-        margin: EdgeInsets.all(10),
-        duration: Duration(seconds: 2),
+        margin: const EdgeInsets.all(10),
+        duration: const Duration(seconds: 2),
         dismissDirection: DismissDirection.horizontal,
         onVisible: () => print('Visible'),
         elevation: 4,

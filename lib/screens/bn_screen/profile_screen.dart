@@ -35,128 +35,132 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text('Profile'),
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
 
         children: [
-          const SizedBox(height: 10,),
-          SizedBox(
-            width: 120,
-            height: 120,
-            child: ClipOval(
-              child: Image.asset('images/photo.png' ),
+          Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 10,),
+            SizedBox(
+              width: 120,
+              height: 120,
+              child: ClipOval(
+                child: Image.asset('images/photo.png' ),
+              ),
             ),
-          ),
-          const SizedBox(height: 10,),
-          SizedBox(
-            width: 80,
-            height: 32,
-            child: ElevatedButton(onPressed: (){
-              _getData();
-              // Navigator.pushNamed(context, '/editProfile_screen');
-            },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor:const Color(0Xff4B989C),
-                  elevation: 0
-              ), child: const Text(
-                'Edit',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18
+            const SizedBox(height: 10,),
+            SizedBox(
+              width: 80,
+              height: 32,
+              child: ElevatedButton(onPressed: (){
+                _getData();
+                // Navigator.pushNamed(context, '/editProfile_screen');
+              },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor:const Color(0Xff4B989C),
+                    elevation: 0
+                ), child: const Text(
+                  'Edit',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18
+                  ),
+
                 ),
-
               ),
             ),
-          ),
 
-          ListTile(
-            leading: const Icon(
-                Icons.person_outline,color: Colors.grey,size: 30
-            ),
-            trailing: Text(
-              _fullName!,
-              style: GoogleFonts.acme(
-                fontSize: 17,
+            ListTile(
+              leading: const Icon(
+                  Icons.person_outline,color: Colors.grey,size: 30
+              ),
+              trailing: Text(
+                _fullName!,
+                style: GoogleFonts.acme(
+                  fontSize: 17,
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10,),
-            child: Divider(thickness: 1,color: Colors.grey),
-          ),
-          ListTile(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10,),
+              child: Divider(thickness: 1,color: Colors.grey),
+            ),
+            ListTile(
 
-            leading: const Icon(Icons.email_outlined,color: Colors.grey,size: 30,),
-            trailing: Text(
-              _email,
-              style: GoogleFonts.acme(
-                fontSize: 17,
+              leading: const Icon(Icons.email_outlined,color: Colors.grey,size: 30,),
+              trailing: Text(
+                _email,
+                style: GoogleFonts.acme(
+                  fontSize: 17,
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10,),
-            child: Divider(thickness: 1,color: Colors.grey),
-          ),
-          ListTile(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10,),
+              child: Divider(thickness: 1,color: Colors.grey),
+            ),
+            ListTile(
 
-            leading: const Icon(Icons.phone_enabled_outlined,color: Colors.grey,size: 30,),
-            trailing: Text(
-              _mobile,
-              style: GoogleFonts.acme(
-                fontSize: 17,
+              leading: const Icon(Icons.phone_enabled_outlined,color: Colors.grey,size: 30,),
+              trailing: Text(
+                _mobile,
+                style: GoogleFonts.acme(
+                  fontSize: 17,
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10,),
-            child: Divider(thickness: 1,color: Colors.grey),
-          ),
-          ListTile(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10,),
+              child: Divider(thickness: 1,color: Colors.grey),
+            ),
+            ListTile(
 
-            leading: const Icon(Icons.transgender_outlined,color: Colors.grey,size: 30,),
-            trailing: Text(
-              _gender,
-              style: GoogleFonts.acme(
-                fontSize: 17,
+              leading: const Icon(Icons.transgender_outlined,color: Colors.grey,size: 30,),
+              trailing: Text(
+                _gender,
+                style: GoogleFonts.acme(
+                  fontSize: 17,
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10,),
-            child: Divider(thickness: 1,color: Colors.grey),
-          ),
-          ListTile(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10,),
+              child: Divider(thickness: 1,color: Colors.grey),
+            ),
+            ListTile(
 
-            leading: const Icon(Icons.date_range,color: Colors.grey,size: 30,),
-            trailing: Text(
-              _birthDay,
-              style: GoogleFonts.acme(
-                fontSize: 17,
+              leading: const Icon(Icons.date_range,color: Colors.grey,size: 30,),
+              trailing: Text(
+                _birthDay,
+                style: GoogleFonts.acme(
+                  fontSize: 17,
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10,),
-            child: Divider(thickness: 1,color: Colors.grey),
-          ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10,),
+              child: Divider(thickness: 1,color: Colors.grey),
+            ),
 
-          ListTile(
-            leading: const Icon(Icons.location_city_outlined,color: Colors.grey,size: 30,),
-            trailing: Text(
-              _address,
-              style: GoogleFonts.acme(
-                fontSize: 17,
+            ListTile(
+              leading: const Icon(Icons.location_city_outlined,color: Colors.grey,size: 30,),
+              trailing: Text(
+                _address,
+                style: GoogleFonts.acme(
+                  fontSize: 17,
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10,),
-            child: Divider(thickness: 1,color: Colors.grey),
-          ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10,),
+              child: Divider(thickness: 1,color: Colors.grey),
+            ),
 
-        ],
+          ],
+        ),],
+
       ),
     );
   }

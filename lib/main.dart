@@ -2,11 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/Login_ui/login_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/add_address_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/add_data_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/add_rate_questions_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/data_keys_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/edit_profile_screen.dart';
-
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/profile_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/update_address_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/update_data_keys_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/update_data_screen.dart';
 import 'package:gp_106_flutter_project/screens/launch_screen.dart';
 import 'package:gp_106_flutter_project/screens/main_screen.dart';
 import 'package:gp_106_flutter_project/screens/on_boarding_screen.dart';
@@ -24,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/profile_screen',
+      initialRoute: '/add_questions_screen',
       theme: ThemeData(
         fontFamily: 'jannah',
       ),
@@ -35,8 +39,15 @@ class MyApp extends StatelessWidget {
         '/main_screen': (context) =>const MainScreen(),
         '/profile_screen' : (context) => const ProfileScreen(),
         '/editProfile_screen' : (context) =>  EditProfileScreen(),
-        '/addAddress_screen' : (context) =>  const AddAddressScreen(),
-        '/updateAddress_screen' : (context) =>  const UpdateAddressScreen(),
+        '/add_address_screen' : (context) =>  const AddAddressScreen(),
+        '/update_address_screen' : (context) =>  const UpdateAddressScreen(),
+        '/add_data_screen' : (context) =>  const AddDataScreen(),
+        '/update_data_screen' : (context) =>  const UpdateDataScreen(),
+        '/data_keys_screen' : (context) =>  const DataKeysScreen(),
+        '/update_data_keys_screen' : (context) =>  const UpdateDataKeysScreen(),
+        '/add_questions_screen' : (context) =>  const AddRateQuestionsScreen(),
+
+
       },
     );
   }
