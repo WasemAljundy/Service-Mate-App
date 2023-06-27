@@ -149,7 +149,7 @@ class _MainScreenState extends State<MainScreen> {
                        width: 3
                      )
                  ),
-                  child:ClipOval(child: Image.asset('assets/images/test.jpg',fit: BoxFit.cover,)),
+                  child:ClipOval(child: Image.asset('images/test.jpg',fit: BoxFit.cover,)),
                  ),
                  SizedBox(width: 10,),
                  Expanded(

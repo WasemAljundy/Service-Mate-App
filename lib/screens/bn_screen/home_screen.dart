@@ -9,17 +9,17 @@ class HomeScreen extends StatelessWidget {
    HomeScreen({Key? key}) : super(key: key);
 
   List<Category> lists = [
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
-    Category(name: 'It Manger', description: 'descriptoin 1', image: 'assets/images/test.jpg'),
+    Category(name: 'IT Manager', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
+    Category(name: 'IT Manger', description: 'description 1', image: 'images/test.jpg'),
   ];
 
   @override
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Expanded(child: Image.asset('assets/images/grey_logo.png',fit: BoxFit.cover,width: 250,height: 250,)),
+              Expanded(child: Image.asset('images/grey_logo.png',fit: BoxFit.cover,width: 250,height: 250,)),
               // Text('BEST ONLINE',style: TextStyle(fontSize: 35,color: Colors.white,fontWeight: FontWeight.bold),),
               // Text('RESERVATIONS',style: TextStyle(fontSize: 35,color: Colors.yellow,fontWeight: FontWeight.bold),),
 

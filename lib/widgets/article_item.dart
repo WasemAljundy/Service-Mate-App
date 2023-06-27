@@ -17,7 +17,7 @@ class ArticleItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(flex:2,child: Image.asset('assets/images/test.jpg',fit:BoxFit.cover,height: 135,)),
+          Expanded(flex:2,child: Image.asset('images/test.jpg',fit:BoxFit.cover,height: 135,)),
           SizedBox(width:10,),
           Expanded(flex:3,child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
