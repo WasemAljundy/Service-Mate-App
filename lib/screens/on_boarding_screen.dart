@@ -17,17 +17,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   List<BoardingModel> boarding = [
     BoardingModel(
-      image: 'assets/images/boarding.png',
+      image: 'images/boarding.png',
       title: 'Welcome to our Online Reservation App!',
       body: 'Explore a wide range of options and book your favorite services with ease.',
     ),
     BoardingModel(
-      image: 'assets/images/boarding11.png',
+      image: 'images/boarding11.png',
       title: 'Easy Booking Process',
       body: 'Find your desired service quickly and book it in a few simple steps.',
     ),
     BoardingModel(
-      image: 'assets/images/boarding.png',
+      image: 'images/boarding.png',
       title: 'Efficient Management',
       body: 'Streamline your reservation process and efficiently manage your bookings.',
     ),

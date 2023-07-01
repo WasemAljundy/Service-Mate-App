@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 import '../components/my_button.dart';
-import 'login_screen.dart';
+import '../components/my_textfield.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
@@ -143,11 +143,11 @@ class SignupScreen extends StatelessWidget {
                                     MyButtonAgree(
                                       text: "Agree and Continue",
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginScreen()));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             LoginScreen()));
                                       },
                                     ),
                                   ],

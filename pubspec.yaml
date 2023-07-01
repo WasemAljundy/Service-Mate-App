@@ -31,7 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -41,6 +40,9 @@ dependencies:
   google_fonts: ^4.0.4
   image_picker: ^0.8.9
   datetime_picker_formfield_new: ^2.1.0
+  material_dialogs: ^1.1.4
+  dotted_border: ^2.0.0+3
+  material_dialogs: ^1.1.4
 
 dev_dependencies:
   flutter_test:
@@ -80,7 +82,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Jannah
+    - family: Janna
       fonts:
         - asset: fonts/jannah.ttf
           weight: 700
