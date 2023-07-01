@@ -117,59 +117,77 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: ListView(
           children: [
-           Container(
-             padding: EdgeInsets.all(10),
-             height: 170,
-             decoration: BoxDecoration(
-               gradient: LinearGradient(
-                 colors: [
-                   HexColor('#4B95A2'),
-                   HexColor('#50A58E'),
-                 ],
-                 begin: AlignmentDirectional.topStart,
-                 end: AlignmentDirectional.bottomEnd
-               )
-             ),
-             width: double.infinity,
-             child: Row(
-               children: [
-                 Container(
-                  width: 80,
-                 clipBehavior: Clip.antiAlias,
-                 height: 80,
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(70),
-                     border: Border.all(
-                       color: Colors.white,
-                       width: 3
-                     )
-                 ),
-                  child:ClipOval(child: Image.asset('images/test.jpg',fit: BoxFit.cover,)),
-                 ),
-                 SizedBox(width: 10,),
-                 Expanded(
-                   child: Column(
-                     mainAxisSize: MainAxisSize.min,
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       SizedBox(height: 10,),
-                       Text('Anas Alsafadi',style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis),maxLines: 1,),
-                       Text('anasA2@gmail.com',style: TextStyle(color: Colors.white,fontSize: 18,overflow: TextOverflow.ellipsis),maxLines: 1,)
-                     ],
-                   ),
-                 )
-
-               ],
-             ),
-           ),
-
+            Container(
+              padding: EdgeInsets.all(10),
+              height: 170,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                    HexColor('#4B95A2'),
+                    HexColor('#50A58E'),
+                  ],
+                      begin: AlignmentDirectional.topStart,
+                      end: AlignmentDirectional.bottomEnd)),
+              width: double.infinity,
+              child: Row(
+                children: [
+                  Container(
+                    width: 80,
+                    clipBehavior: Clip.antiAlias,
+                    height: 80,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(70),
+                        border: Border.all(color: Colors.white, width: 3)),
+                    child: ClipOval(
+                        child: Image.asset(
+                      'images/test.jpg',
+                      fit: BoxFit.cover,
+                    )),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Anas Alsafadi',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis),
+                          maxLines: 1,
+                        ),
+                        Text(
+                          'anasA2@gmail.com',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              overflow: TextOverflow.ellipsis),
+                          maxLines: 1,
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, ''),
               title: const Text('Services'),
               subtitle: const Text('the details about services'),
               leading: const Icon(Icons.query_builder),
-              trailing: const Icon(Icons.arrow_forward_ios,size: 18,),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, ''),
