@@ -20,7 +20,7 @@ import 'package:gp_106_flutter_project/screens/main_screen.dart';
 import 'package:gp_106_flutter_project/screens/auth/login_screen.dart';
 import 'package:gp_106_flutter_project/screens/on_boarding_screen.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefController().initShared();
   runApp(const MyApp());
@@ -29,49 +29,42 @@ void main()async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/payment_methods_screen',
       theme: ThemeData(
-        fontFamily: 'Janna',
-        appBarTheme: AppBarTheme(
-          backgroundColor: primaryColors,
-          elevation: 0,
-        ),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: primaryColors,
-
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            minimumSize: Size(double.infinity, 55),
+          fontFamily: 'Janna',
+          appBarTheme: AppBarTheme(
             backgroundColor: primaryColors,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-            )
-          )
-        )
-      ),
+            elevation: 0,
+          ),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: primaryColors,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 55),
+                  backgroundColor: primaryColors,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10))))),
       routes: {
-        '/launch_screen': (context) =>const LaunchScreen(),
-        '/on_boarding_screen': (context) =>OnBoardingScreen(),
-        '/login_screen': (context) =>const LoginScreen(),
-        '/main_screen': (context) =>const MainScreen(),
-        '/profile_screen' : (context) => const ProfileScreen(),
-        '/editProfile_screen' : (context) => const EditProfileScreen(),
-        '/payment_methods_screen' : (context) => const PaymentMethodScreen(),
-        '/bills_screen' : (context) => const BillScreen(),
-        '/categories_screen' : (context) =>  CategoryScreen(),
-        '/articles_screen' : (context) =>  ArticlesScreen(),
-        '/articles_details_screen' : (context) =>  ArticlesDetailsScreen(),
-        '/add_attachment_screen' : (context) =>  AddAttachmentScreen(),
-        '/attachments_screen' : (context) =>  AttachmentsScreen(),
-        '/attachment_details_screen' : (context) =>  AttachmentDetailsScreen(),
-        '/contact_us_screen' : (context) =>  ContactUsScreen(),
+        '/payment_methods_screen': (context) => const PaymentMethodScreen(),
+        '/bills_screen': (context) => const BillScreen(),
+        '/categories_screen': (context) => CategoryScreen(),
+        '/articles_screen': (context) => ArticlesScreen(),
+        '/articles_details_screen': (context) => ArticlesDetailsScreen(),
+        '/add_attachment_screen': (context) => AddAttachmentScreen(),
+        '/attachments_screen': (context) => AttachmentsScreen(),
+        '/attachment_details_screen': (context) => AttachmentDetailsScreen(),
+        '/contact_us_screen': (context) => ContactUsScreen(),
+        '/launch_screen': (context) => const LaunchScreen(),
+        '/on_boarding_screen': (context) => OnBoardingScreen(),
+        '/login_screen': (context) => const LoginScreen(),
+        '/profile_screen': (context) => const ProfileScreen(),
+        '/main_screen': (context) => const MainScreen(),
+        '/editProfile_screen': (context) => const EditProfileScreen(),
       },
     );
   }
