@@ -41,6 +41,7 @@ dependencies:
   google_fonts: ^4.0.4
   image_picker: ^0.8.9
   material_dialogs: ^1.1.4
+  dotted_border: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
@@ -65,9 +66,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+
   assets:
     - images/
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -80,7 +81,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Jannah
+    - family: Janna
       fonts:
         - asset: fonts/jannah.ttf
           weight: 700

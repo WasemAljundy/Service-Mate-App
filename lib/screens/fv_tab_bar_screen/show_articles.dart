@@ -9,7 +9,7 @@ class ArticlesScreen extends StatelessWidget {
     return  ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 15,),
         itemCount: 10,
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         itemBuilder: (context,index) => ArticleItem()
