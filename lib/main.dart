@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:gp_106_flutter_project/Login_ui/login_screen.dart';
 import 'package:gp_106_flutter_project/Login_ui/singup_screen.dart';
 import 'package:gp_106_flutter_project/screens/bills_screen.dart';
 import 'package:gp_106_flutter_project/screens/payment_methods_screen.dart';
