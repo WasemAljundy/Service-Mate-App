@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../screens_keys.dart';
+
 class UpdateDataScreen extends StatefulWidget {
   const UpdateDataScreen({super.key});
 
@@ -97,7 +99,7 @@ class _UpdateDataScreenState extends State<UpdateDataScreen> {
         && _dataValueEditingController.text.isNotEmpty
     )
     {
-      Navigator.pushNamed(context, '/profile_screen');
+      Navigator.pushNamed(context, ScreenKeys.profileScreen);
     }else{
       _showSnackBar();
     }

@@ -9,6 +9,7 @@ class Service {
   late String updatedAt;
 
 
+  Service();
 
   Service.fromJson(Map<String, dynamic> json) {
     id = json['id'];

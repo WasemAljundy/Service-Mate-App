@@ -6,6 +6,8 @@ class Currency {
   late String updatedAt;
 
 
+  Currency();
+
   Currency.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];

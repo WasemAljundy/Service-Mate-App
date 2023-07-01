@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/edit_profile_screen.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:hexcolor/hexcolor.dart';
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -55,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 32,
               child: ElevatedButton(onPressed: (){
                 _getData();
-                // Navigator.pushNamed(context, '/editProfile_screen');
+                Navigator.pushNamed(context, ScreenKeys.editProfileScreen);
               },
                 style: ElevatedButton.styleFrom(
                     backgroundColor:const Color(0Xff4B989C),

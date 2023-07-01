@@ -14,6 +14,8 @@ class Article {
   late String updatedAt;
 
 
+  Article();
+
   Article.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];

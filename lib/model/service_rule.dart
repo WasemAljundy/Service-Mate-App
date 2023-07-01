@@ -13,6 +13,7 @@ class ServiceRule {
   late String updatedAt;
 
 
+  ServiceRule();
 
   ServiceRule.fromJson(Map<String, dynamic> json) {
     id = json['id'];

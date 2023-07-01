@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../screens_keys.dart';
+
 class EditProfileScreen extends StatefulWidget {
 
 
@@ -221,7 +223,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         && _image.path.isNotEmpty
         && _addressEditingController.text.isNotEmpty)
     {
-      Navigator.pushNamed(context, '/profile_screen');
+      Navigator.pushNamed(context, ScreenKeys.profileScreen);
     }else{
       _showSnackBar();
     }

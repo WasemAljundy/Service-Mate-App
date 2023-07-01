@@ -8,34 +8,35 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   List<Category> lists = [
-    Category(
+    Category.a(
         name: 'It Manger',
         description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'),
-    Category(
+        image: 'assets/images/test.jpg'
+        ),
+    Category.a(
         name: 'It Manger',
         description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'),
-    Category(
+        image: 'images/test.jpg'),
+    Category.a(
         name: 'It Manger',
         description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'),
-    Category(
+        image: 'images/test.jpg'),
+    Category.a(
         name: 'It Manger',
         description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'),
-    Category(
+        image: 'images/test.jpg'),
+    Category.a(
         name: 'It Manger',
         description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'),
-    Category(
+        image: 'images/test.jpg'),
+    Category.a(
         name: 'It Manger',
         description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'),
-    Category(
+        image: 'images/test.jpg'),
+    Category.a(
         name: 'It Manger',
         description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'),
+        image: 'images/test.jpg'),
   ];
 
   @override
@@ -54,7 +55,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Expanded(
                   child: Image.asset(
-                'images/grey_logo.png',
+                'images/logo.png',
                 fit: BoxFit.cover,
                 width: 250,
                 height: 250,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/reservations/reservations_screen.dart';
-import 'package:gp_106_flutter_project/screens/fv_tab_bar_screen/show_articles.dart';
+import '../fv_tab_bar_screen/show_articles.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -67,7 +67,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
             controller: _tabController,
             children: [
               ReservationsScreen(),
-              ArticlesScreen(),
+              TapBarArticlesScreen(),
             ],
           ),
         )

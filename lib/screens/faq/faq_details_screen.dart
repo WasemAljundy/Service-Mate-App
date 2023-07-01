@@ -12,7 +12,7 @@ class FaqDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(
-          backgroundColor: primaryColors,
+          backgroundColor: UsedColor.PRIMARY_COLOR,
           title: const  Text('FAQ Details'),
           centerTitle: true,
         ),

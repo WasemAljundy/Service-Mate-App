@@ -5,15 +5,15 @@ import '../../constent.dart';
 import '../../widgets/service_card.dart';
 import '../../widgets/service_work_time_card.dart';
 
-class ServiceWorkTime extends StatelessWidget {
-     const ServiceWorkTime({super.key});
+class ServiceWorkTimeScreen extends StatelessWidget {
+     const ServiceWorkTimeScreen({super.key});
       final String serviceName = "Service Name ";
      @override
      Widget build(BuildContext context) {
        return  Scaffold(
          appBar: AppBar(
            title: Text("$serviceName Work Time"),
-           backgroundColor: primaryColors,
+           backgroundColor: UsedColor.PRIMARY_COLOR,
          ),
          body: ListView.separated(
            padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),

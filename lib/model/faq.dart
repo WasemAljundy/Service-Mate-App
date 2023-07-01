@@ -9,6 +9,8 @@ class Faq {
   late String visablity;
 
 
+  Faq();
+
   Faq.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     question = json['question'];

@@ -11,6 +11,7 @@ class Attachment {
   late String updatedAt;
 
 
+  Attachment();
 
   Attachment.fromJson(Map<String, dynamic> json) {
     id = json['id'];

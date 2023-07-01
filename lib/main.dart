@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/reservations/reservations_screen.dart';
+import 'package:gp_106_flutter_project/screens/auth/change_password.dart';
+import 'package:gp_106_flutter_project/screens/auth/register_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/add_address_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/add_data_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/add_rate_questions_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/data_keys_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/edit_profile_screen.dart';
-
 import 'package:gp_106_flutter_project/screens/bills_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/favorite_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/home_screen.dart';
+import 'package:gp_106_flutter_project/screens/bn_screen/order_screen.dart';
+import 'package:gp_106_flutter_project/screens/experencie/add_experencies_screen.dart';
+import 'package:gp_106_flutter_project/screens/experencie/show_experiences_screen.dart';
+import 'package:gp_106_flutter_project/screens/experencie/update_experencies_screen.dart';
+import 'package:gp_106_flutter_project/screens/faq/faq_details_screen.dart';
+import 'package:gp_106_flutter_project/screens/faq/faq_screen.dart';
+import 'package:gp_106_flutter_project/screens/fv_tab_bar_screen/show_articles.dart';
 import 'package:gp_106_flutter_project/screens/payment_methods_screen.dart';
 import 'package:gp_106_flutter_project/screens/auth/login_screen.dart';
-
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/profile_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/update_address_screen.dart';
@@ -25,6 +35,10 @@ import 'package:gp_106_flutter_project/screens/attachment_details_screen.dart';
 import 'package:gp_106_flutter_project/screens/attachments.screen.dart';
 import 'package:gp_106_flutter_project/screens/categories_screen.dart';
 import 'package:gp_106_flutter_project/screens/contact_us_screen.dart';
+import 'package:gp_106_flutter_project/screens/services/service_details_screen.dart';
+import 'package:gp_106_flutter_project/screens/services/service_work_time_screen.dart';
+import 'package:gp_106_flutter_project/screens/services/services_screen.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +53,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/payment_methods_screen',
+      initialRoute: ScreenKeys.launchScreen,
       theme: ThemeData(
           fontFamily: 'Janna',
           appBarTheme: AppBarTheme(
@@ -56,29 +70,46 @@ class MyApp extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))))),
       routes: {
-        '/payment_methods_screen': (context) => const PaymentMethodScreen(),
-        '/bills_screen': (context) => const BillScreen(),
-        '/categories_screen': (context) => CategoryScreen(),
-        '/articles_screen': (context) => ArticlesScreen(),
-        '/articles_details_screen': (context) => ArticlesDetailsScreen(),
-        '/add_attachment_screen': (context) => AddAttachmentScreen(),
-        '/attachments_screen': (context) => AttachmentsScreen(),
-        '/attachment_details_screen': (context) => AttachmentDetailsScreen(),
-        '/contact_us_screen': (context) => ContactUsScreen(),
-        '/launch_screen': (context) => const LaunchScreen(),
-        '/on_boarding_screen': (context) => OnBoardingScreen(),
-        '/login_screen': (context) => const LoginScreen(),
-        '/profile_screen': (context) => const ProfileScreen(),
-        '/main_screen': (context) => const MainScreen(),
-        '/editProfile_screen': (context) => EditProfileScreen(),
-        '/add_address_screen': (context) => const AddAddressScreen(),
-        '/update_address_screen': (context) => const UpdateAddressScreen(),
-        '/add_data_screen': (context) => const AddDataScreen(),
-        '/update_data_screen': (context) => const UpdateDataScreen(),
-        '/data_keys_screen': (context) => const DataKeysScreen(),
-        '/update_data_keys_screen': (context) => const UpdateDataKeysScreen(),
-        '/add_questions_screen': (context) => const AddRateQuestionsScreen(),
-      },
+        ScreenKeys.changePasswordScreen: (context) =>  ChangePasswordScreen(),
+        ScreenKeys.loginScreen: (context) =>  const LoginScreen(),
+        ScreenKeys.registerScreen: (context) =>  RegisterScreen(),
+        ScreenKeys.addAddressScreen: (context) =>  const AddAddressScreen(),
+        ScreenKeys.addDataScreen: (context) =>  const AddDataScreen(),
+        ScreenKeys.addRateQuestionsScreen: (context) =>  const AddRateQuestionsScreen(),
+        ScreenKeys.dataKeysScreen: (context) =>  const DataKeysScreen(),
+        ScreenKeys.editProfileScreen: (context) =>   EditProfileScreen(),
+        ScreenKeys.favoriteScreen: (context) =>  const FavoriteScreen(),
+        ScreenKeys.homeScreen: (context) =>   HomeScreen(),
+        ScreenKeys.orderScreen: (context) =>  const OrderScreen(),
+        ScreenKeys.profileScreen: (context) =>  const ProfileScreen(),
+        ScreenKeys.updateAddressScreen: (context) =>  const UpdateAddressScreen(),
+        ScreenKeys.updateDataKeysScreen: (context) =>  const UpdateDataKeysScreen(),
+        ScreenKeys.updateDataScreen: (context) =>  const UpdateDataScreen(),
+        ScreenKeys.addExperiencesScreen: (context) =>  const AddExperiencesScreen(),
+        ScreenKeys.showExperiencesScreen: (context) =>  const ShowExperiencesScreen(),
+        ScreenKeys.updateExperiencesScreen: (context) =>  const UpdateExperiencesScreen(),
+        ScreenKeys.tapBarArticlesScreen: (context) =>  const TapBarArticlesScreen(),
+        ScreenKeys.faqDetailsScreen: (context) =>  const FaqDetailsScreen(),
+        ScreenKeys.faqScreen: (context) =>  const FaqScreen(),
+        ScreenKeys.articlesScreen: (context) =>  const ArticlesScreen(),
+        ScreenKeys.reservationsScreen: (context) =>  const ReservationsScreen(),
+        ScreenKeys.serviceDetailsScreen: (context) =>  const ServiceDetailsScreen(),
+        ScreenKeys.serviceWorkTimeScreen: (context) =>  const ServiceWorkTimeScreen(),
+        ScreenKeys.serviceScreen: (context) =>  const ServiceScreen(),
+        ScreenKeys.addAttachmentScreen: (context) =>  const AddAttachmentScreen(),
+        ScreenKeys.articlesDetailsScreen: (context) =>  const ArticlesDetailsScreen(),
+        ScreenKeys.attachmentDetailsScreen: (context) =>  const AttachmentDetailsScreen(),
+        ScreenKeys.attachmentsScreen: (context) =>  const AttachmentsScreen(),
+        ScreenKeys.billScreen: (context) =>  const BillScreen(),
+        ScreenKeys.categoryScreen: (context) =>  CategoryScreen(),
+        ScreenKeys.contactUsScreen: (context) =>  const ContactUsScreen(),
+        ScreenKeys.launchScreen: (context) =>  const LaunchScreen(),
+        ScreenKeys.mainScreen: (context) =>  const MainScreen(),
+        ScreenKeys.onBoardingScreen: (context) =>  OnBoardingScreen(),
+        ScreenKeys.paymentMethodScreen: (context) =>  const PaymentMethodScreen(),
+
+
+    },
     );
   }
 }

@@ -12,6 +12,8 @@ class Appointment {
   late String updatedAt;
 
 
+  Appointment();
+
   Appointment.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     date = json['date'];

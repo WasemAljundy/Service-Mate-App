@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/model/bill.dart';
-import 'package:gp_106_flutter_project/model/financial_statement.dart';
+import 'package:gp_106_flutter_project/model/financial_statment.dart';
 import 'package:gp_106_flutter_project/widgets/billCard.dart';
 import 'package:gp_106_flutter_project/widgets/financialStatementCard.dart';
 import 'package:gp_106_flutter_project/constent.dart';
@@ -14,16 +14,16 @@ class BillScreen extends StatefulWidget {
 
 class _BillScreenState extends State<BillScreen> {
   final List<Bill> _bills = <Bill>[
-    Bill(
-      billNumber: 123456789,
+    Bill.a(
+      billNumber: '123456789',
       dateTime: '14/06/2002',
       amount: 1000,
       details: 'First Bill Details',
       discount: 50,
       reservationId: 1,
     ),
-    Bill(
-      billNumber: 987654321,
+    Bill.a(
+      billNumber: '987654321',
       dateTime: '26/06/2023',
       amount: 3000,
       details: 'Second Bill Details',
@@ -33,12 +33,12 @@ class _BillScreenState extends State<BillScreen> {
   ];
 
   final List<FinancialStatement> _financialStatement = <FinancialStatement>[
-    FinancialStatement(
+    FinancialStatement.a(
       details: 'Financial Statement Details',
       paymentDate: '01/01/2023',
       paidAmount: 500,
       remains: 1000,
-      paymentMethod: 'Visa Card',
+      paymentMethodId: 1,
     ),
   ];
 
@@ -129,8 +129,8 @@ class _BillScreenState extends State<BillScreen> {
                           paymentDate: _financialStatement[index].paymentDate,
                           paidAmount: _financialStatement[index].paidAmount,
                           remains: _financialStatement[index].remains,
-                          paymentMethod:
-                              _financialStatement[index].paymentMethod);
+                          // paymentMethod: _financialStatement[index].paymentMethodId);
+                          paymentMethod: '_financialStatement[index].paymentMethodId');
                     },
                   ),
                 ],

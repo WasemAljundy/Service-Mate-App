@@ -10,6 +10,8 @@ class WorkTime {
   late String updatedAt;
 
 
+  WorkTime();
+
   WorkTime.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     day = json['day'];

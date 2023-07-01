@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -129,7 +130,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         && _isPrimary!=null
     )
     {
-      Navigator.pushNamed(context, '/profile_screen');
+      Navigator.pushNamed(context, ScreenKeys.profileScreen);
     }else{
       _showSnackBar();
     }

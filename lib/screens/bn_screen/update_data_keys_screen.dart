@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../screens_keys.dart';
+
 class UpdateDataKeysScreen extends StatefulWidget {
   const UpdateDataKeysScreen({super.key});
 
@@ -167,7 +169,7 @@ class _UpdateDataKeysScreenState extends State<UpdateDataKeysScreen> {
       &&_gender!=null
     )
     {
-      Navigator.pushNamed(context, '/profile_screen');
+      Navigator.pushNamed(context, ScreenKeys.profileScreen);
     }else{
       _showSnackBar();
     }

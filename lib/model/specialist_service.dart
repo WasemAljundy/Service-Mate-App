@@ -7,6 +7,7 @@ class SpecialistService {
   late String updatedAt;
 
 
+  SpecialistService();
 
   SpecialistService.fromJson(Map<String, dynamic> json) {
     id = json['id'];

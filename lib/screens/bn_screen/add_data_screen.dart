@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../screens_keys.dart';
+
 class AddDataScreen extends StatefulWidget {
   const AddDataScreen({super.key});
 
@@ -171,7 +173,7 @@ class _AddDataScreenState extends State<AddDataScreen> {
         &&_gender!=null
     )
     {
-      Navigator.pushNamed(context, '/data_keys_screen');
+      Navigator.pushNamed(context, ScreenKeys.dataKeysScreen);
     }else{
       _showSnackBar();
     }

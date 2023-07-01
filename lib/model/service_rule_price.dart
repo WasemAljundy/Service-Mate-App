@@ -10,6 +10,7 @@ class ServiceRulePrice {
   late String updatedAt;
 
 
+  ServiceRulePrice();
 
   ServiceRulePrice.fromJson(Map<String, dynamic> json) {
     id = json['id'];

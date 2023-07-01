@@ -121,7 +121,7 @@ class _ForgotPasswordState extends State<ForgotPassword> with Helpers {
   void checkErrors() {
     setState(() {
       _emailErrors =
-          _emailController.text.isEmpty ? 'Enter Email Address' : null;
+      _emailController.text.isEmpty ? 'Enter Email Address' : null;
     });
   }
 

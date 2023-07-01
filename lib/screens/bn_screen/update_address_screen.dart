@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../screens_keys.dart';
+
 class UpdateAddressScreen extends StatefulWidget {
   const UpdateAddressScreen({super.key});
 
@@ -128,7 +130,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
         && _isPrimary!=null
     )
     {
-      Navigator.pushNamed(context, '/profile_screen');
+      Navigator.pushNamed(context, ScreenKeys.profileScreen);
     }else{
       _showSnackBar();
     }

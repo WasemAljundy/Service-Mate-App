@@ -11,7 +11,7 @@ class BillCard extends StatelessWidget {
     super.key,
   });
 
-  late int billNumber;
+  late String billNumber;
   late String dateTime;
   late int amount;
   late String details;

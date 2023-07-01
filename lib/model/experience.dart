@@ -9,6 +9,7 @@ class Experience {
   late String updatedAt;
 
 
+  Experience();
 
   Experience.fromJson(Map<String, dynamic> json) {
     id = json['id'];

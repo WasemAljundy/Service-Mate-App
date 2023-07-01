@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import '../../widgets/faq_container.dart';
 
+
 class FaqScreen extends StatelessWidget {
   const FaqScreen({super.key});
-
   final String question = "what is your favorite color";
-  final String service = "color service";
+  final String service =  "color service";
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class FaqScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: primaryColors,
+        backgroundColor: UsedColor.PRIMARY_COLOR,
         elevation: 0,
       ),
       body: SafeArea(
@@ -30,6 +30,7 @@ class FaqScreen extends StatelessWidget {
       ),
     );
   }
+
 }
 
 class Faq_widgets extends StatelessWidget {
@@ -46,18 +47,16 @@ class Faq_widgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           return Column(
             children: [
-              SizedBox(
-                width: 20,
-              ),
+              SizedBox(width: 20,),
               FaqContainer(
                 question: question,
                 service_name: service,
-                onPressed: () {},
+                onPressed: (){},
               ),
             ],
           );
@@ -68,9 +67,9 @@ class Faq_widgets extends StatelessWidget {
             indent: 20,
             endIndent: 20,
           );
-        },
-        itemCount: 5,
+        }, itemCount: 5,
       ),
     );
   }
 }
+

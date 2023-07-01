@@ -12,6 +12,8 @@ class ContactUsRequest {
   late String updatedAt;
 
 
+  ContactUsRequest();
+
   ContactUsRequest.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];

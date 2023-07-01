@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../screens_keys.dart';
+
 class AddRateQuestionsScreen extends StatefulWidget {
   const AddRateQuestionsScreen({super.key});
 
@@ -154,7 +156,7 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
         &&_questionType!=null
     )
     {
-      Navigator.pushNamed(context, '/data_keys_screen');
+      Navigator.pushNamed(context, ScreenKeys.dataKeysScreen);
     }else{
       _showSnackBar();
     }

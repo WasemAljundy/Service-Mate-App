@@ -11,6 +11,8 @@ class EducationDegree {
   late String updatedAt;
 
 
+  EducationDegree();
+
   EducationDegree.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
