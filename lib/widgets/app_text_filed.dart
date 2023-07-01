@@ -221,7 +221,6 @@ class AppLongTextFiled extends StatelessWidget {
         borderSide: BorderSide(
           color: color,
           width: width,
-
         )
     );
   }

@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 import '../components/my_button.dart';
-import '../components/my_textfield.dart';
+
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -114,10 +115,10 @@ class LoginScreen extends StatelessWidget {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.03),
-                                MyTextField(
+                                AppTextFiled(
                                   controller: passwordController,
-                                  hintText: 'Password',
-                                  obscureText: true,
+                                  hint: 'Password',
+                                  obSecureText:  true,
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height *
