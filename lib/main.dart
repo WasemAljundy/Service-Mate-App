@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/Login_ui/singup_screen.dart';
+import 'package:gp_106_flutter_project/screens/bills_screen.dart';
+import 'package:gp_106_flutter_project/screens/payment_methods_screen.dart';
 import 'package:gp_106_flutter_project/screens/auth/change_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/reset_forgotten_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/forgot_password.dart';
@@ -20,6 +23,7 @@ import 'package:gp_106_flutter_project/screens/profile.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/screens/launch_screen.dart';
 import 'package:gp_106_flutter_project/screens/main_screen.dart';
+import 'package:gp_106_flutter_project/screens/auth/login_screen.dart';
 import 'package:gp_106_flutter_project/screens/on_boarding_screen.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/screens/add_attachment_screen.dart';
@@ -29,6 +33,13 @@ import 'package:gp_106_flutter_project/screens/attachment_details_screen.dart';
 import 'package:gp_106_flutter_project/screens/attachments.screen.dart';
 import 'package:gp_106_flutter_project/screens/categories_screen.dart';
 import 'package:gp_106_flutter_project/screens/contact_us_screen.dart';
+import 'package:gp_106_flutter_project/screens/edit_profile.dart';
+import 'package:gp_106_flutter_project/screens/profile.dart';
+import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
+import 'package:gp_106_flutter_project/screens/launch_screen.dart';
+import 'package:gp_106_flutter_project/screens/main_screen.dart';
+import 'package:gp_106_flutter_project/screens/auth/login_screen.dart';
+import 'package:gp_106_flutter_project/screens/on_boarding_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,33 +54,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/main_screen',
+      initialRoute: '/payment_methods_screen',
       theme: ThemeData(
-        fontFamily: 'Janna',
-        appBarTheme: AppBarTheme(
-          backgroundColor: primaryColors,
-          elevation: 0,
-        ),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: primaryColors,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            minimumSize: Size(double.infinity, 55),
+          fontFamily: 'Janna',
+          appBarTheme: AppBarTheme(
             backgroundColor: primaryColors,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+            elevation: 0,
           ),
-        ),
-      ),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: primaryColors,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 55),
+                  backgroundColor: primaryColors,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10))))),
       routes: {
-        '/launch_screen': (context) => LaunchScreen(),
-        '/on_boarding_screen': (context) => OnBoardingScreen(),
-        // '/login_screen': (context) =>LoginScreen(),
-        '/main_screen': (context) => MainScreen(),
-        '/profile_screen': (context) => const ProfileScreen(),
-        '/editProfile_screen': (context) => const EditProfileScreen(),
+        '/payment_methods_screen': (context) => const PaymentMethodScreen(),
+        '/bills_screen': (context) => const BillScreen(),
+
         '/categories_screen': (context) => CategoryScreen(),
         '/articles_screen': (context) => ArticlesScreen(),
         '/articles_details_screen': (context) => ArticlesDetailsScreen(),
@@ -77,6 +81,12 @@ class MyApp extends StatelessWidget {
         '/attachments_screen': (context) => AttachmentsScreen(),
         '/attachment_details_screen': (context) => AttachmentDetailsScreen(),
         '/contact_us_screen': (context) => ContactUsScreen(),
+        '/launch_screen': (context) => const LaunchScreen(),
+        '/on_boarding_screen': (context) => OnBoardingScreen(),
+        '/login_screen': (context) => const LoginScreen(),
+        '/profile_screen': (context) => const ProfileScreen(),
+        '/main_screen': (context) => const MainScreen(),
+        '/editProfile_screen': (context) => const EditProfileScreen(),
       },
     );
   }

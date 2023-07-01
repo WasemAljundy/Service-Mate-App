@@ -180,9 +180,9 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, '/categories_screen'),
-              title: const Text('Categories'),
-              subtitle: const Text('the details about category'),
+              onTap: () => Navigator.pushNamed(context, ''),
+              title: const Text('Services'),
+              subtitle: const Text('the details about services'),
               leading: const Icon(Icons.query_builder),
               trailing: const Icon(
                 Icons.arrow_forward_ios,

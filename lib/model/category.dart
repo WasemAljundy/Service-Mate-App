@@ -15,6 +15,8 @@ class Category {
     name = json['name'];
     description = json['description'];
     image = json['image'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {

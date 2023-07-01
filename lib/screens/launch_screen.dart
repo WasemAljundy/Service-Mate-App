@@ -26,7 +26,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset('assets/images/blue_logo.png', fit: BoxFit.cover,height: 250,width: 250,),
+        child: Image.asset('images/blue_logo.png', fit: BoxFit.cover,height: 250,width: 250,),
       ),
     );
   }
