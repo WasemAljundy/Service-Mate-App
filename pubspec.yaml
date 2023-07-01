@@ -40,7 +40,6 @@ dependencies:
   google_fonts: ^4.0.4
   image_picker: ^0.8.9
   datetime_picker_formfield_new: ^2.1.0
-  material_dialogs: ^1.1.4
   dotted_border: ^2.0.0+3
   material_dialogs: ^1.1.4
 
