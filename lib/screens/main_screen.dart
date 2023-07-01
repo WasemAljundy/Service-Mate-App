@@ -31,22 +31,19 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:HexColor('#4B989C'),
+        backgroundColor: HexColor('#4B989C'),
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.notification_important
-            ),
+            icon: const Icon(Icons.notification_important),
             color: Colors.white,
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
         ],
         title: Text(titleLists[_currentIndex]),
         centerTitle: true,
       ),
-      body:bottomScreens[_currentIndex],
+      body: bottomScreens[_currentIndex],
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -87,9 +84,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
-                      Icons.shopping_cart_outlined
-                  ),
+                  icon: Icon(Icons.shopping_cart_outlined),
                   activeIcon: Icon(Icons.shopping_cart),
                   label: 'My order',
                 ),
@@ -122,93 +117,128 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: ListView(
           children: [
-           Container(
-             padding: EdgeInsets.all(10),
-             height: 170,
-             decoration: BoxDecoration(
-               gradient: LinearGradient(
-                 colors: [
-                   HexColor('#4B95A2'),
-                   HexColor('#50A58E'),
-                 ],
-                 begin: AlignmentDirectional.topStart,
-                 end: AlignmentDirectional.bottomEnd
-               )
-             ),
-             width: double.infinity,
-             child: Row(
-               children: [
-                 Container(
-                  width: 80,
-                 clipBehavior: Clip.antiAlias,
-                 height: 80,
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(70),
-                     border: Border.all(
-                       color: Colors.white,
-                       width: 3
-                     )
-                 ),
-                  child:ClipOval(child: Image.asset('images/test.jpg',fit: BoxFit.cover,)),
-                 ),
-                 SizedBox(width: 10,),
-                 Expanded(
-                   child: Column(
-                     mainAxisSize: MainAxisSize.min,
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       SizedBox(height: 10,),
-                       Text('Anas Alsafadi',style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis),maxLines: 1,),
-                       Text('anasA2@gmail.com',style: TextStyle(color: Colors.white,fontSize: 18,overflow: TextOverflow.ellipsis),maxLines: 1,)
-                     ],
-                   ),
-                 )
-
-               ],
-             ),
-           ),
-
+            Container(
+              padding: EdgeInsets.all(10),
+              height: 170,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                    HexColor('#4B95A2'),
+                    HexColor('#50A58E'),
+                  ],
+                      begin: AlignmentDirectional.topStart,
+                      end: AlignmentDirectional.bottomEnd)),
+              width: double.infinity,
+              child: Row(
+                children: [
+                  Container(
+                    width: 80,
+                    clipBehavior: Clip.antiAlias,
+                    height: 80,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(70),
+                        border: Border.all(color: Colors.white, width: 3)),
+                    child: ClipOval(
+                        child: Image.asset(
+                      'images/test.jpg',
+                      fit: BoxFit.cover,
+                    )),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Anas Alsafadi',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis),
+                          maxLines: 1,
+                        ),
+                        Text(
+                          'anasA2@gmail.com',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              overflow: TextOverflow.ellipsis),
+                          maxLines: 1,
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, '/categories_screen'),
               title: const Text('Categories'),
               subtitle: const Text('the details about category'),
               leading: const Icon(Icons.query_builder),
-              trailing: const Icon(Icons.arrow_forward_ios,size: 18,),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, ''),
               title: const Text('Profile'),
               subtitle: const Text('the details about profile'),
               leading: const Icon(Icons.person_pin),
-              trailing: const Icon(Icons.arrow_forward_ios,size: 18,),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, '/faqs_screen'),
               title: const Text('FAQs'),
               subtitle: const Text('the details about FAQs'),
               leading: const Icon(Icons.question_answer),
-              trailing: const Icon(Icons.arrow_forward_ios,size: 18,),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, '/articles_screen'),
               title: const Text('Articles'),
               subtitle: const Text('the details about Articles'),
               leading: const Icon(Icons.article),
-              trailing: const Icon(Icons.arrow_forward_ios,size: 18,),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, '/'),
               title: const Text('My Order'),
               subtitle: const Text('the details about my order'),
               leading: const Icon(Icons.shopping_cart_outlined),
-              trailing: const Icon(Icons.arrow_forward_ios,size: 18,),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
             ),
-            const Divider(endIndent: 20,indent: 20,color: Colors.grey,),
+            const Divider(
+              endIndent: 20,
+              indent: 20,
+              color: Colors.grey,
+            ),
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/', (route) => false);
               },
               title: const Text('Contact Us'),
               subtitle: const Text('Get Support and Inquiries'),
@@ -217,8 +247,8 @@ class _MainScreenState extends State<MainScreen> {
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamedAndRemoveUntil(context, '/login_screen', (route) => false);
-
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/login_screen', (route) => false);
               },
               title: const Text('Logout'),
               subtitle: const Text('Waiting your return'),
@@ -227,7 +257,6 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-
     );
   }
 }
