@@ -12,13 +12,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> with Helpers {
-  late final TextEditingController _emailController;
+  late final  TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late TapGestureRecognizer tapGestureRecognizer;
 
   String? _emailErrors;
   String? _passwordErrors;
-
   @override
   void initState() {
     super.initState();
@@ -29,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
   }
 
   bool _isSecure = false;
-
   @override
   void dispose() {
     _emailController.dispose();

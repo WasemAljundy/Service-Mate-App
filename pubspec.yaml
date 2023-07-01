@@ -31,7 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -65,18 +64,11 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-<<<<<<< HEAD
-=======
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
->>>>>>> a3719d8 (new screens)
 
-  # To add assets to your application, add an assets section, like this:
-
-  assets:
-    - images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -89,11 +81,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-<<<<<<< HEAD
     - family: Janna
-=======
-    - family: Jannah
->>>>>>> a3719d8 (new screens)
       fonts:
         - asset: fonts/jannah.ttf
           weight: 700

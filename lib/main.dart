@@ -2,7 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/Login_ui/singup_screen.dart';
 import 'package:gp_106_flutter_project/screens/bills_screen.dart';
 import 'package:gp_106_flutter_project/screens/payment_methods_screen.dart';
-// import 'Login_ui/welcome_screen.dart';
+import 'package:gp_106_flutter_project/screens/auth/change_password.dart';
+import 'package:gp_106_flutter_project/screens/auth/reset_forgotten_password.dart';
+import 'package:gp_106_flutter_project/screens/auth/forgot_password.dart';
+import 'package:gp_106_flutter_project/screens/auth/login_screen.dart';
+import 'package:gp_106_flutter_project/screens/auth/register_screen.dart';
+import 'package:gp_106_flutter_project/screens/experencie/add_experencies_screen.dart';
+import 'package:gp_106_flutter_project/screens/experencie/show_experiences.dart';
+import 'package:gp_106_flutter_project/screens/experencie/update_experencies_screen.dart';
+import 'package:gp_106_flutter_project/screens/faq/faq_details_screen.dart';
+import 'package:gp_106_flutter_project/screens/faq/faq_screen.dart';
+import 'package:gp_106_flutter_project/reservations/reservations_screen.dart';
+import 'package:gp_106_flutter_project/screens/services/service_details_screen.dart';
+import 'package:gp_106_flutter_project/screens/services/service_work_time.dart';
+import 'package:gp_106_flutter_project/screens/services/services.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
+
 import 'package:gp_106_flutter_project/screens/edit_profile.dart';
 import 'package:gp_106_flutter_project/screens/profile.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
@@ -58,6 +73,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/payment_methods_screen': (context) => const PaymentMethodScreen(),
         '/bills_screen': (context) => const BillScreen(),
+
         '/categories_screen': (context) => CategoryScreen(),
         '/articles_screen': (context) => ArticlesScreen(),
         '/articles_details_screen': (context) => ArticlesDetailsScreen(),

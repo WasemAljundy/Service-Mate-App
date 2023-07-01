@@ -190,7 +190,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, ''),
+              onTap: () => Navigator.pushNamed(context, '/profile_screen'),
               title: const Text('Profile'),
               subtitle: const Text('the details about profile'),
               leading: const Icon(Icons.person_pin),
