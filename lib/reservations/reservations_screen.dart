@@ -61,7 +61,7 @@ class _ReservationsScreenState extends State<ReservationsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: UsedColor.PRIMARY_COLOR,
+          backgroundColor: primaryColors,
           title: Text('Reservations' ,style:
           TextStyle(
               fontSize: 24,
@@ -173,7 +173,7 @@ class _ReservationsScreenState extends State<ReservationsScreen> {
                   // perFormRegister();
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: UsedColor.PRIMARY_COLOR,
+                  backgroundColor: primaryColors,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),

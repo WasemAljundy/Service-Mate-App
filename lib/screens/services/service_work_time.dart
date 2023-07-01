@@ -13,7 +13,7 @@ class ServiceWorkTime extends StatelessWidget {
        return  Scaffold(
          appBar: AppBar(
            title: Text("$serviceName Work Time"),
-           backgroundColor: UsedColor.PRIMARY_COLOR,
+           backgroundColor: primaryColors,
          ),
          body: ListView.separated(
            padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),

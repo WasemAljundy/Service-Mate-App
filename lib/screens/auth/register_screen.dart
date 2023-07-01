@@ -1,4 +1,3 @@
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
@@ -10,20 +9,19 @@ class RegisterScreen extends StatefulWidget {
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
-
 }
 
 class _RegisterScreenState extends State<RegisterScreen> with Helpers {
   String? _gender;
-  late final  TextEditingController _emailController;
+  late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final TextEditingController _birthDayEditingController;
   late TapGestureRecognizer tapGestureRecognizer;
   late DateTime _birthday;
 
-
   String? _emailErrors;
   String? _passwordErrors;
+
   @override
   void initState() {
     super.initState();
@@ -34,6 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
   }
 
   bool _isSecure = false;
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -48,99 +47,151 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: UsedColor.PRIMARY_COLOR,
-            title: Text('Registration',style:
-            TextStyle(color: Colors.white,
-              fontSize: 20,
-            ),
+            backgroundColor: primaryColors,
+            title: Text(
+              'Registration',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
           ),
           backgroundColor: Colors.white,
           body: ListView(
-            padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 20),
-            children:[
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+            children: [
               Center(
                 child: Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      SizedBox(
-                        width: 120,
-                        height: 120,
-                        child: ClipOval(
-                          child: Image.asset('images/photo.png' ),
-                        ),
+                  alignment: AlignmentDirectional.bottomEnd,
+                  children: [
+                    SizedBox(
+                      width: 120,
+                      height: 120,
+                      child: ClipOval(
+                        child: Image.asset('images/photo.png'),
                       ),
-                      SizedBox(
-                        height: 35,
-                        width: 35,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.black,
-                          child: IconButton(
-                            onPressed: (){
-                              //Show Camera
-                            },
-                            icon: const Icon(Icons.camera_alt,color: Colors.white,size: 18,),
+                    ),
+                    SizedBox(
+                      height: 35,
+                      width: 35,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.black,
+                        child: IconButton(
+                          onPressed: () {
+                            //Show Camera
+                          },
+                          icon: const Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                            size: 18,
                           ),
                         ),
-                      )
-
-
-                    ],
-                    ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-
-              const SizedBox(height: 30,),
-              Text('  Enter your full name',style: TextStyle(color: Colors.grey),),
-              const SizedBox(height: 5,),
-              AppTextFiled(controller: _emailController, hint: 'Full name',errorText: _emailErrors, icon: Icons.badge),
-              const SizedBox(height: 10,),
-
-              Text('  Enter email Address',style: TextStyle(color: Colors.grey),),
-              const SizedBox(height: 5,),
-              AppTextFiled(controller: _emailController, hint: 'Email',
-                  errorText: _emailErrors, icon: Icons.email,
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                '  Enter your full name',
+                style: TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              AppTextFiled(
+                  controller: _emailController,
+                  hint: 'Full name',
+                  errorText: _emailErrors,
+                  icon: Icons.badge),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                '  Enter email Address',
+                style: TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              AppTextFiled(
+                  controller: _emailController,
+                  hint: 'Email',
+                  errorText: _emailErrors,
+                  icon: Icons.email,
                   type: TextInputType.emailAddress),
-              const SizedBox(height: 10,),
-
-
-              Text(' Enter password',style: TextStyle(color: Colors.grey),),
-              const SizedBox(height: 5,),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                ' Enter password',
+                style: TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
               AppTextFiled(
                 function: () {
                   setState(() {
-                    _isSecure =!_isSecure;
+                    _isSecure = !_isSecure;
                   });
                 },
-                controller: _passwordController, obSecureText: _isSecure,suffixIcon:_isSecure?Icons.visibility_off:Icons.visibility ,hint: 'Password',errorText:_passwordErrors, icon: Icons.lock,),
-              const SizedBox(height: 10,),
-
-
-              Text('  Enter Mobile Number',style: TextStyle(color: Colors.grey),),
-              const SizedBox(height: 5,),
-              AppTextFiled(controller: _emailController, hint: 'Mobile',
-                  errorText: _emailErrors, icon: Icons.phone,
-              type: TextInputType.number),
-              const SizedBox(height: 10,),
-
-
-              Text('  Choose BirthDate',style: TextStyle(color: Colors.grey),),
-              const SizedBox(height: 5,),
-              AppTextFiled(controller: _emailController,
+                controller: _passwordController,
+                obSecureText: _isSecure,
+                suffixIcon: _isSecure ? Icons.visibility_off : Icons.visibility,
+                hint: 'Password',
+                errorText: _passwordErrors,
+                icon: Icons.lock,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                '  Enter Mobile Number',
+                style: TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              AppTextFiled(
+                  controller: _emailController,
+                  hint: 'Mobile',
+                  errorText: _emailErrors,
+                  icon: Icons.phone,
+                  type: TextInputType.number),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                '  Choose BirthDate',
+                style: TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              AppTextFiled(
+                controller: _emailController,
                 hint: 'BirthDate',
                 errorText: _emailErrors,
                 // icon: Icons.date_range,
-                type: TextInputType.datetime
-                , suffixIcon: Icons.date_range,function: _showDatePicker,),
-
-              const SizedBox(height: 10,),
-
-
+                type: TextInputType.datetime,
+                suffixIcon: Icons.date_range,
+                function: _showDatePicker,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   Expanded(
                     child: RadioListTile<String>(
                       contentPadding: EdgeInsets.zero,
-                      title: const Text('Male' , style: TextStyle(color: UsedColor.PRIMARY_COLOR),),
+                      title: Text(
+                        'Male',
+                        style: TextStyle(color: primaryColors),
+                      ),
                       value: 'M',
                       groupValue: _gender,
                       onChanged: (String? value) {
@@ -150,7 +201,8 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
                   ),
                   Expanded(
                     child: RadioListTile<String>(
-                      title: const Text('Female', style: TextStyle(color: UsedColor.PRIMARY_COLOR)),
+                      title: Text('Female',
+                          style: TextStyle(color: primaryColors)),
                       value: 'F',
                       groupValue: _gender,
                       onChanged: (String? value) {
@@ -160,31 +212,31 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
                   ),
                 ],
               ),
-              const SizedBox(height: 25,),
-
-
-
+              const SizedBox(
+                height: 25,
+              ),
               ElevatedButton(
-                onPressed: (){
-                // perFormRegister();
-              },
+                onPressed: () {
+                  // perFormRegister();
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: UsedColor.PRIMARY_COLOR,
+                  backgroundColor: primaryColors,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  minimumSize: const Size(double.infinity,50),
-                ), child: const  Text('Register',style: TextStyle(fontSize: 20),),
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                child: const Text(
+                  'Register',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
-              const SizedBox(height: 35,),
-
-
+              const SizedBox(
+                height: 35,
+              ),
             ],
-          )
-      ),
+          )),
     );
-
-
   }
 
   void _showDatePicker() {
@@ -192,18 +244,13 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(1900),
-      lastDate: DateTime(2100),)
-        .then((value) {
+      lastDate: DateTime(2100),
+    ).then((value) {
       setState(() {
         _birthday = value!;
         _birthDayEditingController.text = value.toString();
         print(_birthday.toString());
       });
-
     });
   }
-
 }
-
-
-

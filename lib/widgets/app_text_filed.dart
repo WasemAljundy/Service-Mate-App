@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constent.dart';
+
 class AppTextFiled extends StatelessWidget {
-
-
-
   final IconData? suffixIcon;
   final String hint;
   final bool obSecureText;
@@ -16,7 +14,6 @@ class AppTextFiled extends StatelessWidget {
   final Function()? function;
   final IconData? icon;
   final bool? textFieldEnable;
-
 
   AppTextFiled({
     required this.controller,
@@ -29,13 +26,7 @@ class AppTextFiled extends StatelessWidget {
     this.function,
     this.icon,
     this.textFieldEnable = true,
-
-});
-
-
-
-
-
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,27 +38,33 @@ class AppTextFiled extends StatelessWidget {
       obscureText: obSecureText,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
-        constraints:
-        BoxConstraints(maxHeight: errorText == null ? 50 : 75),
+        constraints: BoxConstraints(maxHeight: errorText == null ? 50 : 75),
         errorText: errorText,
         hintText: hint,
         hintStyle: GoogleFonts.poppins(
-          color: UsedColor.PRIMARY_COLOR,
+          color: primaryColors,
           fontSize: 12,
         ),
         hintMaxLines: 1,
-        suffixIcon: IconButton(onPressed: function, icon: Icon(suffixIcon) , color: UsedColor.PRIMARY_COLOR,),
-        prefixIcon: Icon(icon , color: UsedColor.PRIMARY_COLOR,),
+        suffixIcon: IconButton(
+          onPressed: function,
+          icon: Icon(suffixIcon),
+          color: primaryColors,
+        ),
+        prefixIcon: Icon(
+          icon,
+          color: primaryColors,
+        ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: UsedColor.PRIMARY_COLOR,
+            color: primaryColors,
             width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: UsedColor.PRIMARY_COLOR,
+            color: primaryColors,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(10),
@@ -75,7 +72,7 @@ class AppTextFiled extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: UsedColor.PRIMARY_COLOR,
+            color: primaryColors,
             width: 1,
           ),
         ),
@@ -96,25 +93,19 @@ class AppTextFiled extends StatelessWidget {
       ),
     );
   }
-  OutlineInputBorder _border({required double radius, required Color color , required double width}){
+
+  OutlineInputBorder _border(
+      {required double radius, required Color color, required double width}) {
     return OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
           color: color,
           width: width,
-
-        )
-    );
+        ));
   }
 }
 
-
-
-
 class AppLongTextFiled extends StatelessWidget {
-
-
-
   final IconData? suffixIcon;
   final String hint;
   final bool obSecureText;
@@ -126,7 +117,6 @@ class AppLongTextFiled extends StatelessWidget {
   final IconData? icon;
   final bool? textFieldEnable;
   final bool visibility;
-
 
   AppLongTextFiled({
     required this.controller,
@@ -140,13 +130,7 @@ class AppLongTextFiled extends StatelessWidget {
     this.icon,
     this.textFieldEnable = true,
     this.visibility = true,
-
   });
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +138,7 @@ class AppLongTextFiled extends StatelessWidget {
       child: Visibility(
         visible: visibility,
         child: TextField(
-          enabled: textFieldEnable ,
+          enabled: textFieldEnable,
           expands: true,
           minLines: null,
           maxLines: null,
@@ -164,19 +148,26 @@ class AppLongTextFiled extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.zero,
             constraints:
-            BoxConstraints(maxHeight: errorText == null ? 150 : 175),
+                BoxConstraints(maxHeight: errorText == null ? 150 : 175),
             errorText: errorText,
             hintText: hint,
             hintStyle: GoogleFonts.poppins(
-              color: UsedColor.PRIMARY_COLOR,
+              color: primaryColors,
               fontSize: 12,
             ),
             hintMaxLines: 1,
-            suffixIcon: IconButton(onPressed: function, icon: Icon(suffixIcon) , color: UsedColor.PRIMARY_COLOR,),
-            prefixIcon: Icon(icon , color: UsedColor.PRIMARY_COLOR,),
+            suffixIcon: IconButton(
+              onPressed: function,
+              icon: Icon(suffixIcon),
+              color: primaryColors,
+            ),
+            prefixIcon: Icon(
+              icon,
+              color: primaryColors,
+            ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: UsedColor.PRIMARY_COLOR,
+                color: primaryColors,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(10),
@@ -185,7 +176,7 @@ class AppLongTextFiled extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: UsedColor.PRIMARY_COLOR,
+                color: primaryColors,
                 width: 1,
               ),
             ),
@@ -206,7 +197,7 @@ class AppLongTextFiled extends StatelessWidget {
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: UsedColor.PRIMARY_COLOR,
+                color: primaryColors,
                 width: 1,
               ),
             ),
@@ -215,13 +206,14 @@ class AppLongTextFiled extends StatelessWidget {
       ),
     );
   }
-  OutlineInputBorder _border({required double radius, required Color color , required double width}){
+
+  OutlineInputBorder _border(
+      {required double radius, required Color color, required double width}) {
     return OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
           color: color,
           width: width,
-        )
-    );
+        ));
   }
 }

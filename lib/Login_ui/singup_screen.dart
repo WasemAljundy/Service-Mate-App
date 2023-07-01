@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 import '../components/my_button.dart';
-import '../components/my_textfield.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});

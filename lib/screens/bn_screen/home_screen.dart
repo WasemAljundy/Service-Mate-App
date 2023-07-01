@@ -9,53 +9,32 @@ class HomeScreen extends StatelessWidget {
 
   List<Category> lists = [
     Category(
-        id: 1,
         name: 'It Manger',
         description: 'descriptoin 1',
-        createdAt: '12',
-        updatedAt: "13",
         image: 'assets/images/test.jpg'),
     Category(
-        id: 2,
         name: 'It Manger',
         description: 'descriptoin 1',
-        createdAt: '12',
-        updatedAt: "13",
         image: 'assets/images/test.jpg'),
     Category(
-        id: 3,
         name: 'It Manger',
         description: 'descriptoin 1',
-        createdAt: '12',
-        updatedAt: "13",
         image: 'assets/images/test.jpg'),
     Category(
-        id: 4,
         name: 'It Manger',
         description: 'descriptoin 1',
-        createdAt: '12',
-        updatedAt: "13",
         image: 'assets/images/test.jpg'),
     Category(
-        id: 5,
         name: 'It Manger',
         description: 'descriptoin 1',
-        createdAt: '12',
-        updatedAt: "13",
         image: 'assets/images/test.jpg'),
     Category(
-        id: 6,
         name: 'It Manger',
         description: 'descriptoin 1',
-        createdAt: '12',
-        updatedAt: "13",
         image: 'assets/images/test.jpg'),
     Category(
-        id: 7,
         name: 'It Manger',
         description: 'descriptoin 1',
-        createdAt: '12',
-        updatedAt: "13",
         image: 'assets/images/test.jpg'),
   ];
 
@@ -73,7 +52,13 @@ class HomeScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Expanded(child: Image.asset('images/grey_logo.png',fit: BoxFit.cover,width: 250,height: 250,)),
+              Expanded(
+                  child: Image.asset(
+                'images/grey_logo.png',
+                fit: BoxFit.cover,
+                width: 250,
+                height: 250,
+              )),
               // Text('BEST ONLINE',style: TextStyle(fontSize: 35,color: Colors.white,fontWeight: FontWeight.bold),),
               // Text('RESERVATIONS',style: TextStyle(fontSize: 35,color: Colors.yellow,fontWeight: FontWeight.bold),),
             ],
