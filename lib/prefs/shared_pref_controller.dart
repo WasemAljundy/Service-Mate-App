@@ -1,21 +1,20 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefController{
+class SharedPrefController {
   SharedPrefController._internal();
-  static final SharedPrefController _instance = SharedPrefController._internal();
+  static final SharedPrefController _instance =
+      SharedPrefController._internal();
   late SharedPreferences preferences;
-  factory SharedPrefController(){
+  factory SharedPrefController() {
     return _instance;
   }
 
-  Future<void> initShared()async{
+  Future<void> initShared() async {
     preferences = await SharedPreferences.getInstance();
   }
 
-
-  bool get onBoarding => preferences.getBool(PrefsKey.onBoarding.toString())??false;
-
-
+  bool get onBoarding =>
+      preferences.getBool(PrefsKey.onBoarding.toString()) ?? false;
 
   // Future<void> save({required Student student}) async {
   //   await preferences.setBool(PrefsKey.loggedIn.toString(), true);
@@ -34,11 +33,9 @@ class SharedPrefController{
   //     return  await preferences.remove(PrefsKey.loggedIn.name);
   // }
 
-  Future<void> saveBoarding() async{
+  Future<void> saveBoarding() async {
     await preferences.setBool(PrefsKey.onBoarding.name, true);
   }
 }
 
-enum PrefsKey{
-onBoarding
-}
+enum PrefsKey { onBoarding }

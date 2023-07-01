@@ -8,7 +8,7 @@ class Reservation {
   late int serviceRuleId;
   late int serviceRulePriceId;
 
-  Reservation.fromJson(Map<String,dynamic> json){
+  Reservation.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     details = json['details'];
     price = json['price'];
@@ -18,8 +18,9 @@ class Reservation {
     serviceRuleId = json['service_rule_id'];
     serviceRulePriceId = json['service_rule_price_id'];
   }
-  Map<String,dynamic> toJson(){
-    Map<String,dynamic> map = {};
+  
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> map = {};
     map['id'] = id;
     map['details'] = details;
     map['price'] = price;
@@ -30,6 +31,4 @@ class Reservation {
     map['service_rule_price_id'] = serviceRulePriceId;
     return map;
   }
-
-
 }
