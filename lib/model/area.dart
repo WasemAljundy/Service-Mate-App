@@ -7,6 +7,7 @@ class Area {
   late String updatedAt;
 
 
+  Area();
 
   Area.fromJson(Map<String, dynamic> json) {
     id = json['id'];

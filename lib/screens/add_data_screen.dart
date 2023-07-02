@@ -2,43 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/secondary_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class AddRateQuestionsScreen extends StatefulWidget {
-  const AddRateQuestionsScreen({super.key});
+import '../../screens_keys.dart';
+
+class AddDataScreen extends StatefulWidget {
+  const AddDataScreen({super.key});
 
   @override
-  State<AddRateQuestionsScreen> createState() => _AddRateQuestionsScreenState();
+  State<AddDataScreen> createState() => _AddDataScreenState();
 
 }
 
-late TextEditingController _questionEditingController;
-late TextEditingController _respondedEditingController;
-late TextEditingController _answerEditingController;
 
-
-class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
+late TextEditingController _dataTypeEditingController;
+late TextEditingController _dataValueEditingController;
+late TextEditingController _infoEditingController;
+late TextEditingController _typeEditingController;
+class _AddDataScreenState extends State<AddDataScreen> {
 
 
 
   late bool _isActive = false;
-  String? _questionType;
-  final List<String> _questionTypes = ['range','boolean'];
+  late bool _isRequired = false;
+  String? _gender;
+  final List<String> _genderList = ['Female','Male'];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _questionEditingController = TextEditingController();
-    _respondedEditingController = TextEditingController();
-    _answerEditingController = TextEditingController();
+    _dataTypeEditingController = TextEditingController();
+    _dataValueEditingController = TextEditingController();
+    _infoEditingController = TextEditingController();
+    _typeEditingController = TextEditingController();
   }
 
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _questionEditingController.dispose();
-    _respondedEditingController.dispose();
-    _answerEditingController.dispose();
+    _dataTypeEditingController.dispose();
+    _dataValueEditingController.dispose();
+    _infoEditingController.dispose();
+    _typeEditingController.dispose();
     super.dispose();
   }
   @override
@@ -46,7 +51,7 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor('#4B989C'),
-        title: const Text('Rate Questions'),
+        title: const Text('Data'),
         centerTitle: true,
       ),
       body: Padding(
@@ -55,7 +60,7 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
           children: [
 
             const Text(
-                'Add Rate Question',
+                'Add Data',
               style: TextStyle(
                 color: Color(0Xff4B989C) ,
                 fontSize: 22,
@@ -64,11 +69,15 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
             ),
             const SizedBox(height: 15,),
 
-            SecondaryTextFiled(controller: _questionEditingController, hint: 'Question', icon : Icons.question_mark , type: TextInputType.text,),
+            SecondaryTextFiled(controller: _dataValueEditingController, hint: 'value', icon : Icons.data_exploration_outlined , type: TextInputType.text,),
             const  SizedBox(height: 10),
-            SecondaryTextFiled(controller: _respondedEditingController, hint: 'responded',type: TextInputType.text,icon: Icons.question_answer),
+            SecondaryTextFiled(controller: _dataTypeEditingController, hint: 'data type',type: TextInputType.text,icon: Icons.data_thresholding_outlined),
             const SizedBox(height: 10,),
-            SecondaryTextFiled(controller: _answerEditingController, hint: 'Answer',type: TextInputType.text,icon: Icons.question_answer),
+
+            SecondaryTextFiled(controller: _infoEditingController, hint: 'info', icon : Icons.info_outline , type: TextInputType.text,),
+            const SizedBox(height: 10,),
+            SecondaryTextFiled(controller: _typeEditingController, hint: 'type', icon : Icons.merge_type , type: TextInputType.text,),
+
             const SizedBox(height: 10,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
@@ -78,13 +87,9 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
                 border: Border.all(color: const Color(0Xff4B989C)),
               ),
               child: DropdownButton(
-                hint: const Text('Question Type',
-                  style: TextStyle(
-                  fontSize: 12,
-                    color:  Color(0Xff4B989C),
-                ),),
-                value: _questionType,
-                items: _questionTypes.map((item) =>
+                hint: const Text('gender'),
+                value: _gender,
+                items: _genderList.map((item) =>
                     DropdownMenuItem(
                       value: item,
                       child: Text(item),
@@ -92,17 +97,16 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
                     .toList(),
                 onChanged: (value) {
                   setState(() {
-                    _questionType = value!;
+                    _gender = value!;
                   });
                 },
                 isDense: true,
                 isExpanded: true,
-                icon: const Icon(Icons.arrow_drop_down_sharp, size: 30,color: Color(0Xff4B989C),),
+                icon: const Icon(Icons.arrow_drop_down_sharp, size: 30,),
               ),
 
             ),
 
-            const SizedBox(height: 10,),
             SwitchListTile(
                 activeColor: HexColor('#4B989C'),
                 title: const Text('Active',style: TextStyle(
@@ -116,7 +120,21 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
               });
             }
             ),
+            SwitchListTile(
+                activeColor: HexColor('#4B989C'),
 
+                title: const Text('Required',style: TextStyle(
+                    fontSize: 18
+                ),),
+                contentPadding: const EdgeInsets.symmetric(horizontal:10),
+                subtitle: const Text('On/OFF'),
+                value: _isRequired, onChanged: (bool value){
+              setState(() {
+                _isRequired = value;
+              });
+            }
+            ),
+            const SizedBox(height: 10),
             const SizedBox(height: 16),
             SizedBox(
               width: 150,
@@ -148,13 +166,14 @@ class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
 
 
   void _checkData(){
-    if(_questionEditingController.text.isNotEmpty
-        && _respondedEditingController.text.isNotEmpty
-         &&_answerEditingController.text.isNotEmpty
-        &&_questionType!=null
+    if(_dataTypeEditingController.text.isNotEmpty
+        && _dataValueEditingController.text.isNotEmpty
+        &&_infoEditingController.text.isNotEmpty
+        &&_typeEditingController.text.isNotEmpty
+        &&_gender!=null
     )
     {
-      Navigator.pushNamed(context, '/data_keys_screen');
+      Navigator.pushNamed(context, ScreenKeys.dataKeysScreen);
     }else{
       _showSnackBar();
     }

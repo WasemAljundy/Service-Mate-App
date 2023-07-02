@@ -7,6 +7,7 @@ class Favourite {
   late String updatedAt;
 
 
+  Favourite();
 
   Favourite.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/model/bill.dart';
-import 'package:gp_106_flutter_project/model/financial_statement.dart';
+import 'package:gp_106_flutter_project/model/financial_statment.dart';
 import 'package:gp_106_flutter_project/widgets/billCard.dart';
 import 'package:gp_106_flutter_project/widgets/financialStatementCard.dart';
 import 'package:gp_106_flutter_project/constent.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class BillScreen extends StatefulWidget {
   const BillScreen({super.key});
@@ -14,16 +15,16 @@ class BillScreen extends StatefulWidget {
 
 class _BillScreenState extends State<BillScreen> {
   final List<Bill> _bills = <Bill>[
-    Bill(
-      billNumber: 123456789,
+    Bill.a(
+      billNumber: '123456789',
       dateTime: '14/06/2002',
       amount: 1000,
       details: 'First Bill Details',
       discount: 50,
       reservationId: 1,
     ),
-    Bill(
-      billNumber: 987654321,
+    Bill.a(
+      billNumber: '987654321',
       dateTime: '26/06/2023',
       amount: 3000,
       details: 'Second Bill Details',
@@ -33,12 +34,12 @@ class _BillScreenState extends State<BillScreen> {
   ];
 
   final List<FinancialStatement> _financialStatement = <FinancialStatement>[
-    FinancialStatement(
+    FinancialStatement.a(
       details: 'Financial Statement Details',
       paymentDate: '01/01/2023',
       paidAmount: 500,
       remains: 1000,
-      paymentMethod: 'Visa Card',
+      paymentMethodId: 1,
     ),
   ];
 
@@ -54,14 +55,14 @@ class _BillScreenState extends State<BillScreen> {
       body: ListView(
         // physics: NeverScrollableScrollPhysics(),
         children: [
+
           Container(
-            height: 225,
-            decoration: const BoxDecoration(
-              color: Color(0xff4b989c),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(300),
-                bottomRight: Radius.circular(300),
-              ),
+            height: 200,
+            decoration: BoxDecoration(
+              color: HexColor('#4B989C'),
+              borderRadius: const BorderRadiusDirectional.only(
+                  bottomEnd: Radius.elliptical(200, 40),
+                  bottomStart: Radius.elliptical(200, 40)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -102,40 +103,43 @@ class _BillScreenState extends State<BillScreen> {
           const SizedBox(
             height: 10,
           ),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: _bills.length,
-            itemBuilder: (context, index) {
-              return ExpansionTile(
-                tilePadding: const EdgeInsets.only(left: 20, bottom: 20),
-                childrenPadding: const EdgeInsets.only(bottom: 20),
-                title: BillCard(
-                  billNumber: _bills[index].billNumber,
-                  dateTime: _bills[index].dateTime,
-                  amount: _bills[index].amount,
-                  details: _bills[index].details,
-                  discount: _bills[index].discount,
-                  reservationId: _bills[index].reservationId,
-                ),
-                children: [
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: _financialStatement.length,
-                    itemBuilder: (context, index) {
-                      return FinancialStatementCard(
-                          details: _financialStatement[index].details,
-                          paymentDate: _financialStatement[index].paymentDate,
-                          paidAmount: _financialStatement[index].paidAmount,
-                          remains: _financialStatement[index].remains,
-                          paymentMethod:
-                              _financialStatement[index].paymentMethod);
-                    },
+          Container(
+            margin: const EdgeInsets.all(20),
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: _bills.length,
+              itemBuilder: (context, index) {
+                return ExpansionTile(
+                  tilePadding: const EdgeInsets.only(left: 20, bottom: 20),
+                  childrenPadding: const EdgeInsets.only(bottom: 20),
+                  title: BillCard(
+                    billNumber: _bills[index].billNumber,
+                    dateTime: _bills[index].dateTime,
+                    amount: _bills[index].amount,
+                    details: _bills[index].details,
+                    discount: _bills[index].discount,
+                    reservationId: _bills[index].reservationId,
                   ),
-                ],
-              );
-            },
+                  children: [
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: _financialStatement.length,
+                      itemBuilder: (context, index) {
+                        return FinancialStatementCard(
+                            details: _financialStatement[index].details,
+                            paymentDate: _financialStatement[index].paymentDate,
+                            paidAmount: _financialStatement[index].paidAmount,
+                            remains: _financialStatement[index].remains,
+                            // paymentMethod: _financialStatement[index].paymentMethodId);
+                            paymentMethod: '_financialStatement');
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ],
       ),

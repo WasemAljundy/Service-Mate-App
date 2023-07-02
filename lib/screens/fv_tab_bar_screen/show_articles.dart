@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/widgets/article_item.dart';
 
-class ArticlesScreen extends StatelessWidget {
-  const ArticlesScreen({Key? key}) : super(key: key);
+class TapBarArticlesScreen extends StatelessWidget {
+  const TapBarArticlesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

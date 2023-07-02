@@ -8,6 +8,7 @@ class RateQuestion {
   late String updatedAt;
 
 
+  RateQuestion();
 
   RateQuestion.fromJson(Map<String, dynamic> json) {
     id = json['id'];

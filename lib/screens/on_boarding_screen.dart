@@ -6,6 +6,8 @@ import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/widgets/on_boarding_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../screens_keys.dart';
+
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -128,7 +130,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   void saveAndPush() async {
     await SharedPrefController().saveBoarding();
-    Navigator.pushReplacementNamed(context, '/login_screen');
+    Navigator.pushReplacementNamed(context, ScreenKeys.loginScreen);
   }
 
 

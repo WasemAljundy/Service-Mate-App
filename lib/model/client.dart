@@ -9,6 +9,8 @@ class Client {
   late String birthDate;
 
 
+  Client();
+
   Client.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     fullName = json['fullName'];

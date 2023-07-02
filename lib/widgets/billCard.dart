@@ -11,7 +11,7 @@ class BillCard extends StatelessWidget {
     super.key,
   });
 
-  late int billNumber;
+  late String billNumber;
   late String dateTime;
   late int amount;
   late String details;
@@ -21,10 +21,11 @@ class BillCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white60,
       clipBehavior: Clip.antiAlias,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
+
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -36,7 +37,7 @@ class BillCard extends StatelessWidget {
                   'Bill Number ',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),
@@ -53,7 +54,7 @@ class BillCard extends StatelessWidget {
                   'Date Time',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),
@@ -70,7 +71,7 @@ class BillCard extends StatelessWidget {
                   'Amount',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),
@@ -87,7 +88,7 @@ class BillCard extends StatelessWidget {
                   'Discount',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),

@@ -10,6 +10,7 @@ class AttachmentType {
   late String visablity;
 
 
+  AttachmentType();
 
   AttachmentType.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -5,6 +5,8 @@ class Country {
   late String updatedAt;
 
 
+  Country();
+
   Country.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];

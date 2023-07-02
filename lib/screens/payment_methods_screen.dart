@@ -14,10 +14,10 @@ class PaymentMethodScreen extends StatefulWidget {
 
 class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
   final List<PaymentMethod> _paymentMethods = <PaymentMethod>[
-    PaymentMethod(name: 'Visa Card', image: 'images/visa_card.png'),
-    PaymentMethod(name: 'Master Card', image: 'images/master_card.png'),
-    PaymentMethod(name: 'Bank Account', image: 'images/bank_account.png'),
-    PaymentMethod(name: 'PayPal', image: 'images/paypal.png'),
+    PaymentMethod.a(name: 'Visa Card', image: 'images/visa_card.png'),
+    PaymentMethod.a(name: 'Master Card', image: 'images/master_card.png'),
+    PaymentMethod.a(name: 'Bank Account', image: 'images/bank_account.png'),
+    PaymentMethod.a(name: 'PayPal', image: 'images/paypal.png'),
   ];
 
   late TextEditingController paymentNameController;

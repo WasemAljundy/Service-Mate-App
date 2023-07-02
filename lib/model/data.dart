@@ -9,6 +9,8 @@ class Data {
   late String updatedAt;
 
 
+  Data();
+
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     objectType = json['object_type'];

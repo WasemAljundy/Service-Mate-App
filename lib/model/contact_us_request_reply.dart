@@ -9,6 +9,8 @@ class ContactUsRequestReply {
   late String updatedAt;
 
 
+  ContactUsRequestReply();
+
   ContactUsRequestReply.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     reply = json['reply'];

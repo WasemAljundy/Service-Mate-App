@@ -1,5 +1,6 @@
 class Specialist {
-  int? id;
+  late int id;
+  late int active;
   late String fullName;
   late String gender;
   late String birthdate;
@@ -10,10 +11,9 @@ class Specialist {
   late String jobTitle;
   late String bio;
   late String zipCode;
-  late int active;
   late String visablity;
 
-
+  Specialist();
 
   Specialist.fromJson(Map<String, dynamic> json) {
     id = json['id'];

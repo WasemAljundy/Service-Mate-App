@@ -11,6 +11,8 @@ class DataKey {
   late String require;
 
 
+  DataKey();
+
   DataKey.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     active = json['active'];

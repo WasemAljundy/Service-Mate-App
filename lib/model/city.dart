@@ -6,6 +6,8 @@ class City {
   late String updatedAt;
 
 
+  City();
+
   City.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
