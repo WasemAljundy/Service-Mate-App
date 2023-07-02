@@ -104,6 +104,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             children: [
               AppTextFiled(
                 controller: paymentNameController,
+                icon: Icons.person,
                 hint: 'Payment Name',
               ),
               const SizedBox(
@@ -111,6 +112,8 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
               ),
               AppTextFiled(
                 controller: cardNumberController,
+                type: TextInputType.number,
+                icon: Icons.credit_card,
                 hint: 'Card Number',
               ),
               const SizedBox(
@@ -121,6 +124,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                   Expanded(
                     child: AppTextFiled(
                       controller: expDateController,
+                      type: TextInputType.datetime,
                       hint: 'Exp. date',
                     ),
                   ),
@@ -130,6 +134,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                   Expanded(
                     child: AppTextFiled(
                       controller: cvvController,
+                      type: TextInputType.number,
                       hint: 'CVV',
                     ),
                   ),
