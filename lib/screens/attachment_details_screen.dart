@@ -20,7 +20,7 @@ class AttachmentDetailsScreen extends StatelessWidget {
                   child:Stack(
                     alignment: AlignmentDirectional.topEnd,
                     children: [
-                      Image.asset('assets/images/test.jpg',width: double.infinity,height: 250,fit: BoxFit.cover,),
+                      Image.asset('images/test.jpg',width: double.infinity,height: 250,fit: BoxFit.cover,),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(

@@ -34,7 +34,7 @@ class FinancialStatementCard extends StatelessWidget {
                   'Details ',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),
@@ -51,7 +51,7 @@ class FinancialStatementCard extends StatelessWidget {
                   'Payment Date',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),
@@ -68,7 +68,7 @@ class FinancialStatementCard extends StatelessWidget {
                   'Paid Amount',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),
@@ -85,7 +85,7 @@ class FinancialStatementCard extends StatelessWidget {
                   'Remains',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),
@@ -102,7 +102,7 @@ class FinancialStatementCard extends StatelessWidget {
                   'Payment Method',
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black),
                 ),

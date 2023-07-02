@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -52,16 +53,16 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
              ),
               const Text('Login',style: TextStyle(color: UsedColor.PRIMARY_COLOR,fontSize: 24,fontWeight: FontWeight.w900),),
               const SizedBox(height: 30,),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Text('  Enter email Address',style: TextStyle(color: Colors.grey),),
                 ],
               ),
               const SizedBox(height: 5,),
               AppTextFiled(controller: _emailController, hint: 'Email',errorText: _emailErrors,icon: Icons.email,),
               const SizedBox(height: 10,),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Text(' Enter password',style: TextStyle(color: Colors.grey),),
                 ],
               ),
@@ -77,9 +78,10 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
                 alignment: AlignmentDirectional.centerEnd,
                 child: TextButton(
                     onPressed: (){
-
+                      // Navigator.pushNamed(context, ScreenKeys.forgetPasswordScreen);
                     },
-                    child: Text('Forget password?',style: TextStyle(fontSize: 14, color: UsedColor.PRIMARY_COLOR),),
+                    child: TextButton( onPressed: () {
+                    },child: const Text('Forget password?',style: TextStyle(fontSize: 14, color: UsedColor.PRIMARY_COLOR)),),
 
 
                 ),
@@ -96,21 +98,29 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
                   minimumSize: const Size(double.infinity,50),
                 ), child: const  Text('Login',style: TextStyle(fontSize: 20),),
               ),
-              SizedBox(height: 10),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    text: 'Don\'t have an account? ',
-                    style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),
-                    children: [
-                      TextSpan(
-                          recognizer: tapGestureRecognizer,
-                          text: 'Create Now!',
-                          style: const TextStyle(color: UsedColor.PRIMARY_COLOR,fontWeight: FontWeight.bold,fontSize: 14)
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Center(
+                    child: Expanded(
+                      child: Text('Don\'t have an account? ',
+                          style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14)),
+                    ),
+                  ),
+                  Center(
+                    child: Expanded(
+                      child: TextButton( onPressed: () {
+                        Navigator.pushNamed(context, ScreenKeys.registerScreen);
+                      },
+                        child: const Text('Create Now!',
+                            style: TextStyle(color: UsedColor.PRIMARY_COLOR,fontWeight: FontWeight.bold,fontSize: 14)),
                       )
-                    ]
-                ),
-              ),
+                    ),
+                  ),
+                ],
+              )
+
 
             ],
           )
@@ -146,12 +156,12 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
   void login(){
     showSnackBar(message: 'Login In Successfully', error: false, context: context);
     Future.delayed(const Duration(seconds: 1),(){
-      Navigator.pushReplacementNamed(context, '/main_screen');
+      Navigator.pushReplacementNamed(context, ScreenKeys.mainScreen);
     });
   }
 
   void navigateToRegisterScreen(){
-    Navigator.pushNamed(context, '/register_screen');
+    Navigator.pushNamed(context, ScreenKeys.registerScreen);
   }
 
 }
