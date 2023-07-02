@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/reservations/reservations_status_model.dart';
+import 'package:gp_106_flutter_project/screens/reservations/reservations_status_model.dart';
 
-import '../constent.dart';
-import '../widgets/app_text_filed.dart';
+import '../../constent.dart';
+import '../../widgets/app_text_filed.dart';
 
 class ReservationsScreen extends StatefulWidget {
   const ReservationsScreen({super.key});

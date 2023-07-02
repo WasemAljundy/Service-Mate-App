@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/reservations/reservations_screen.dart';
 import 'package:gp_106_flutter_project/screens/add_address_screen.dart';
 import 'package:gp_106_flutter_project/screens/add_data_screen.dart';
 import 'package:gp_106_flutter_project/screens/add_rate_questions_screen.dart';
-import 'package:gp_106_flutter_project/screens/auth/change_password.dart';
 import 'package:gp_106_flutter_project/screens/auth/register_screen.dart';
 import 'package:gp_106_flutter_project/screens/data_keys_screen.dart';
 import 'package:gp_106_flutter_project/screens/bills_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/favorite_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/home_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/order_screen.dart';
+import 'package:gp_106_flutter_project/screens/fv_tab_bar_screen/show_reservation.dart';
 import 'package:gp_106_flutter_project/screens/update_profile_screen.dart';
 import 'package:gp_106_flutter_project/screens/experencie/add_experencies_screen.dart';
 import 'package:gp_106_flutter_project/screens/experencie/show_experiences_screen.dart';
@@ -55,7 +54,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // initialRoute: ScreenKeys.launchScreen,
-      initialRoute: '/textScreen',
+      initialRoute: ScreenKeys.launchScreen,
       theme: ThemeData(
           fontFamily: 'Janna',
           appBarTheme: AppBarTheme(
@@ -72,7 +71,7 @@ class MyApp extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),),),),),
       routes: {
-        ScreenKeys.changePasswordScreen: (context) =>  ChangePasswordScreen(),
+        // ScreenKeys.changePasswordScreen: (context) =>  ChangePasswordScreen(),
         ScreenKeys.loginScreen: (context) =>  const LoginScreen(),
         ScreenKeys.registerScreen: (context) =>  RegisterScreen(),
         ScreenKeys.addAddressScreen: (context) =>  const AddAddressScreen(),
@@ -109,7 +108,7 @@ class MyApp extends StatelessWidget {
         ScreenKeys.mainScreen: (context) =>  const MainScreen(),
         ScreenKeys.onBoardingScreen: (context) =>  OnBoardingScreen(),
         ScreenKeys.paymentMethodScreen: (context) =>  const PaymentMethodScreen(),
-        '/textScreen': (context) =>  const textScreen(),
+        // '/textScreen': (context) =>  const textScreen(),
 
 
     },
