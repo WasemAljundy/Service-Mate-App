@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
-// import 'package:gp_106_flutter_project/screens/auth/reset_password_screen.dart';
+import 'package:gp_106_flutter_project/screens/auth/reset_password_screen.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -32,70 +32,68 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Helper
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Image.asset(
-                'images/blue_logo.png',
-                width: 200,
-                height: 200,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(
+              'images/logo.png',
+              width: 200,
+              height: 200,
+            ),
+          ),
+          Text(
+            'Forgot Password',
+            style: TextStyle(
+                color: HexColor('#4B989C'),
+                fontSize: 24,
+                fontWeight: FontWeight.w900),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          const Row(
+            children: [
+              Text(
+                '  Enter email Address',
+                style: TextStyle(color: Colors.grey),
               ),
-            ),
-            Text(
-              'Forgot Password',
-              style: TextStyle(
-                  color: HexColor('#4B989C'),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w900),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Row(
-              children: [
-                Text(
-                  '  Enter email Address',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            AppTextFiled(
-              controller: _emailController,
-              hint: 'Email',
-              errorText: _emailErrors,
-              icon: Icons.email,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            ElevatedButton(
-              onPressed: () => performForgetPassword(),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                backgroundColor: HexColor('#4B989C'),
-                minimumSize: const Size(double.infinity, 50),
+            ],
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          AppTextFiled(
+            controller: _emailController,
+            hint: 'Email',
+            errorText: _emailErrors,
+            icon: Icons.email,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          ElevatedButton(
+            onPressed: () => performForgetPassword(),
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
-              child: const Text(
-                'Send verification message',
-                style: TextStyle(fontSize: 20),
-              ),
+              backgroundColor: HexColor('#4B989C'),
+              minimumSize: const Size(double.infinity, 50),
             ),
-            const SizedBox(height: 10),
-          ],
-        ),
+            child: const Text(
+              'Send verification message',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
       ),
     );
   }
@@ -119,19 +117,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Helper
   }
 
   Future<void> forgotPassword() async {
-  //   bool status = await AuthApiController().forgotPassword(
-  //     context,
-  //     email: _emailController.text,
-  //   );
-  //   if (status && context.mounted) {
-  //     Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => ResetPasswordScreen(
-  //           email: _emailController.text,
-  //         ),
-  //       ),
-  //     );
-  //   }
+    bool status = await AuthApiController().forgotPassword(
+      context,
+      email: _emailController.text,
+    );
+    if (status && context.mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ResetPasswordScreen(
+            email: _emailController.text,
+          ),
+        ),
+      );
+    }
   }
 }
