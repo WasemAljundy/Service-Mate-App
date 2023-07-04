@@ -44,6 +44,9 @@ dependencies:
   material_dialogs: ^1.1.4
   lottie: ^2.4.0
   intl: ^0.17.0
+  get: ^4.6.5
+  http: ^1.1.0
+  shimmer_animation: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:

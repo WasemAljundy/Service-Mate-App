@@ -17,11 +17,11 @@ class CategoryItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: Image.asset(category.image,fit: BoxFit.cover,)),
+            Expanded(child:Image(image: NetworkImage(category.image),)),
             const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10,),
-              child: Text(category.name,style: const TextStyle(fontSize: 20,overflow: TextOverflow.ellipsis),),
+              child: Text(category.name,style: const TextStyle(fontSize: 18,overflow: TextOverflow.ellipsis),maxLines: 1,),
             ),
             const SizedBox(height: 5,),
           ],

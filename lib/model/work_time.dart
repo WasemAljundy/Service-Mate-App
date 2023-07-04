@@ -6,8 +6,7 @@ class WorkTime {
   late String fromTime;
   late String toTime;
   late String type;
-  late String createdAt;
-  late String updatedAt;
+ 
 
 
   WorkTime();
@@ -20,21 +19,19 @@ class WorkTime {
     type = json['type'];
     specialistId = json['specialist_id'];
     serviceId = json['service_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['day'] = this.day;
-    data['from_time'] = this.fromTime;
-    data['to_time'] = this.toTime;
-    data['type'] = this.type;
-    data['specialist_id'] = this.specialistId;
-    data['service_id'] = this.serviceId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['day'] = day;
+    data['from_time'] = fromTime;
+    data['to_time'] = toTime;
+    data['type'] = type;
+    data['specialist_id'] = specialistId;
+    data['service_id'] = serviceId;
+
     return data;
   }
 }

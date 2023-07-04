@@ -10,32 +10,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
-  final String? _fullName = "Hicats Sam";
-  final String _email = "hicats@gmial.com";
-  final String _mobile = "0569896990";
-  final String _birthDay = '15/09/2003';
-  final String _gender = 'Male';
-  final String _address = 'palestine-Gaza';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColors,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios),
-        ),
-        title: const Text('Profile'),
-        centerTitle: true,
-        actions: [
-          const Padding(padding: EdgeInsetsDirectional.only(end: 15),
-              child: Icon(Icons.edit))
-        ],
-      ),
       body: Column(
         children: [
           Container(
@@ -50,68 +28,129 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     margin: const EdgeInsetsDirectional.only(top: 50),
                     padding: const EdgeInsetsDirectional.all(20),
                     decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadiusDirectional.only(topStart:  Radius.circular(20),topEnd: Radius.circular(20))
+                      color: Colors.white,
+                      borderRadius: BorderRadiusDirectional.only(
+                        topStart: Radius.circular(20),
+                        topEnd: Radius.circular(20),
+                      ),
                     ),
                     width: double.infinity,
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: ListView(
+                      physics: const BouncingScrollPhysics(),
                       children: [
-                        SizedBox(height: 50,),
-                        Align(alignment: Alignment.center,child: Text('Anas Asharaf Alsafadi',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),)),
-                        SizedBox(height: 40,),
-                        ListTile(
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Anas Ashraf Alsafadi',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: primaryColors,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        const ListTile(
                           contentPadding: EdgeInsetsDirectional.zero,
-                          title:Column(
+                          title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Email address',style: TextStyle(fontSize: 18,color: Colors.grey),),
-                              SizedBox(height: 10,),
+                              Text(
+                                'Email address',
+                                style: TextStyle(fontSize: 18, color: Colors.grey),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
                             ],
                           ),
-                          subtitle:Text('Anas12Alsafadi@gmail.com',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          subtitle: Text(
+                            'Anas12Alsafadi@gmail.com',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
                           trailing: Icon(Icons.email),
                         ),
-                        SizedBox(height: 20,),
-                        ListTile(
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const ListTile(
                           contentPadding: EdgeInsetsDirectional.zero,
-                          title:Column(
+                          title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Gender',style: TextStyle(fontSize: 18,color: Colors.grey),),
-                              SizedBox(height: 10,),
+                              Text(
+                                'Gender',
+                                style: TextStyle(fontSize: 18, color: Colors.grey),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
                             ],
                           ),
-                          subtitle:Text('male',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          subtitle: Text(
+                            'male',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
                           trailing: Icon(Icons.male),
                         ),
-                        SizedBox(height: 20,),
-                        ListTile(
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const ListTile(
                           contentPadding: EdgeInsetsDirectional.zero,
-                          title:Column(
+                          title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Phone Number',style: TextStyle(fontSize: 18,color: Colors.grey),),
-                              SizedBox(height: 10,),
+                              Text(
+                                'Phone Number',
+                                style: TextStyle(fontSize: 18, color: Colors.grey),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
                             ],
                           ),
-                          subtitle:Text('+972 592204656',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          subtitle: Text(
+                            '+972 592204656',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
                           trailing: Icon(Icons.phone),
                         ),
-                        SizedBox(height: 20,),
-                        ListTile(
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const ListTile(
                           contentPadding: EdgeInsetsDirectional.zero,
-                          title:Column(
+                          title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Birth data',style: TextStyle(fontSize: 18,color: Colors.grey),),
-                              SizedBox(height: 10,),
+                              Text(
+                                'Birth data',
+                                style: TextStyle(fontSize: 18, color: Colors.grey),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
                             ],
                           ),
-                          subtitle:Text('June 24 1989',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          subtitle: Text(
+                            'June 24 1989',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
                           trailing: Icon(Icons.date_range),
                         ),
-                        SizedBox(height: 20,),
+                        const SizedBox(
+                          height: 20,
+                        ),
                       ],
                     ),
                   ),
@@ -135,7 +174,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     child: ClipOval(
                       child: Image.asset(
-                        'images/gazageeks1.jpg',
+                        'images/photo.png',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -146,13 +185,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
-
-  // void _getData(){
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => EditProfileScreen(fullName: _fullName,address: _address,birthDay: _birthDay,gender: _gender,mobile: _mobile,),)
-  //   );
-  // }
-
 }

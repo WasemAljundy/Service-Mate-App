@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
+import 'package:gp_106_flutter_project/get/attachment_get_controller.dart';
+import 'package:gp_106_flutter_project/model/attachment.dart';
+import 'package:gp_106_flutter_project/model/attachment_type.dart';
 
 class AttachmentDetailsScreen extends StatelessWidget {
-  const AttachmentDetailsScreen({Key? key}) : super(key: key);
+
+
+  Attachment attachment;
+
+  AttachmentDetailsScreen(this.attachment);
 
   @override
   Widget build(BuildContext context) {
@@ -13,61 +20,71 @@ class AttachmentDetailsScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body:SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                Container(
-                  child:Stack(
-                    alignment: AlignmentDirectional.topEnd,
-                    children: [
-                      Image.asset('images/test.jpg',width: double.infinity,height: 250,fit: BoxFit.cover,),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 45,
-                          width: 45,
-                          decoration: BoxDecoration(
-                            color:primaryColors,
-                            borderRadius: BorderRadius.circular(50)
-                          ),
-                          child:IconButton(onPressed: (){}, icon: Icon(Icons.delete_forever_rounded,size: 30,color: Colors.white,))
-                          ,),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 10,),
-                      Row(
+          child: FutureBuilder<AttachmentType>(
+            future:AttachmentGetXController.to.getAttachmentType(id: attachment.attachmentTypeId) ,
+            builder: (context, snapshot) {
+              if(snapshot.connectionState == ConnectionState.waiting){
+                return Center(child: CircularProgressIndicator(),);
+              }else if(snapshot.hasData && snapshot.data != null){
+               return  Column(
+                  children: [
+                    Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: [
+                        Image(
+                          width: double.infinity,height: 250,fit: BoxFit.cover,
+                          image: NetworkImage(attachment.url),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 45,
+                            width: 45,
+                            decoration: BoxDecoration(
+                                color:primaryColors,
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            child:IconButton(onPressed: (){}, icon: const Icon(Icons.delete_forever_rounded,size: 30,color: Colors.white,))
+                            ,),
+                        )
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Rapid blood test',style: TextStyle(color: Colors.black87,fontSize: 22,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis),maxLines: 1,),
-                          Spacer(),
-                          Text('20 july -05 july',style: TextStyle(fontSize: 12,color: Colors.grey),),
+                          const SizedBox(height: 10,),
+                          Row(
+                            children: [
+                              Text(attachment.name,style: const TextStyle(color: Colors.black87,fontSize: 22,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis),maxLines: 1,),
+                              const Spacer(),
+                              Text(attachment.date,style: const TextStyle(fontSize: 12,color: Colors.grey),),
+                            ],
+                          ),
+                          Row(children: [
+                            const Text('Type: ',style: TextStyle(color: Colors.black45,fontSize: 16)),
+                            Text(snapshot.data!.name,style: const TextStyle(color: Colors.black54,fontSize: 18)),
+                            const Spacer(),
+                            Text(attachment.status,style: TextStyle(fontSize: 14,color:primaryColors),),
+                          ],),
+                          const SizedBox(height: 20,),
+                          const Text('Info',style: TextStyle(color: Colors.black54,fontSize: 18)),
+                          const SizedBox(height: 5,),
+                          Text(attachment.info,style: const TextStyle(color: Colors.grey,fontSize: 16)),
+
                         ],
                       ),
-                      Row(children: [
-                        Text('Type: ',style: TextStyle(color: Colors.black45,fontSize: 16)),
-                        Text('blood category',style: TextStyle(color: Colors.black54,fontSize: 18)),
-                        Spacer(),
-                        Text('(Pending...)',style: TextStyle(fontSize: 14,color:primaryColors),),
-                      ],),
-                      SizedBox(height: 20,),
-                      Text('Info',style: TextStyle(color: Colors.black54,fontSize: 18)),
-                      SizedBox(height: 5,),
-                      Text('Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text, this is text copy that serves to fill a space without saying anything meaningful. Its essentially nonsense text that still gives an idea of what real words will look like in the final product.of what real words will look like in the final product',style: TextStyle(color: Colors.grey,fontSize: 16)),
-                      Text('Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text, this is text copy that serves to fill a space without saying anything meaningful. Its essentially nonsense text that still gives an idea of what real words will look like in the final product.of what real words will look like in the final product',style: TextStyle(color: Colors.grey,fontSize: 16)),
+                    )
 
-                    ],
-                  ),
-                )
-
-              ],
-            ),
-          ),
+                  ],
+                );
+              }else{
+                print(snapshot.error);
+                return Center(child: Text('ERROR'),);
+              }
+            },
+          )
         )
     );
   }
