@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
+import 'package:gp_106_flutter_project/getx/profile_getx_controller.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/favorite_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/home_screen.dart';
@@ -30,6 +32,12 @@ class _MainScreenState extends State<MainScreen> {
     'Profile',
   ];
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    Get.put(ProfileGetxController());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

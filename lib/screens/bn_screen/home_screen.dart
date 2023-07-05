@@ -14,6 +14,37 @@ import 'package:shimmer_animation/shimmer_animation.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
+  List<Category> lists = [
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ListView(
