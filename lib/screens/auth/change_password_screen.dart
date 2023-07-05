@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
+import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
       appBar: AppBar(
         title: const Text('Change Password'),
         centerTitle: true,
-        backgroundColor: HexColor('#4B989C'),
+        backgroundColor: primaryColors,
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -96,7 +96,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
             onPressed: () async => await performChangePassword(),
             style: ElevatedButton.styleFrom(
               minimumSize: const Size(0, 50),
-              backgroundColor: HexColor('#4B989C'),
+              backgroundColor: primaryColors,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -149,11 +149,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
   }
 
   Future<void> changePassword() async {
-    // bool status = await AuthApiController().changePassword(
-    //   context,
-    //   currentPassword: _currentPasswordTextController.text,
-    //   newPassword: _newPasswordTextController.text,
-    // );
-    // if (status && context.mounted) Navigator.pop(context);
+    bool status = await AuthApiController().changePassword(
+      context,
+      currentPassword: _currentPasswordTextController.text,
+      newPassword: _newPasswordTextController.text,
+    );
+    if (status && context.mounted) Navigator.pop(context);
   }
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
+import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/favorite_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/home_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/order_screen.dart';
 import 'package:gp_106_flutter_project/screens/bn_screen/profile_screen.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class MainScreen extends StatefulWidget {
@@ -16,9 +19,9 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Widget> bottomScreens = [
     HomeScreen(),
-    OrderScreen(),
-    FavoriteScreen(),
-    ProfileScreen(),
+    const OrderScreen(),
+    const FavoriteScreen(),
+    const ProfileScreen(),
   ];
   List<String> titleLists = [
     'Home',
@@ -27,17 +30,18 @@ class _MainScreenState extends State<MainScreen> {
     'Profile',
   ];
   int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: HexColor('#4B989C'),
+        backgroundColor: primaryColors,
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.notification_important),
+            icon: const Icon(Icons.logout),
             color: Colors.white,
-            onPressed: () {},
+            onPressed: () => logout(context),
           ),
         ],
         title: Text(titleLists[_currentIndex]),
@@ -45,14 +49,14 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: bottomScreens[_currentIndex],
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.10),
               spreadRadius: 3,
               blurRadius: 150,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -116,18 +120,22 @@ class _MainScreenState extends State<MainScreen> {
           borderRadius: BorderRadius.circular(15),
         ),
         child: ListView(
+          padding: EdgeInsets.zero,
           children: [
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.only(
+                  left: 15, top: 50, right: 15, bottom: 20),
               height: 170,
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [
+                gradient: LinearGradient(
+                  colors: [
                     HexColor('#4B95A2'),
                     HexColor('#50A58E'),
                   ],
-                      begin: AlignmentDirectional.topStart,
-                      end: AlignmentDirectional.bottomEnd)),
+                  begin: AlignmentDirectional.topStart,
+                  end: AlignmentDirectional.bottomEnd,
+                ),
+              ),
               width: double.infinity,
               child: Row(
                 children: [
@@ -136,15 +144,17 @@ class _MainScreenState extends State<MainScreen> {
                     clipBehavior: Clip.antiAlias,
                     height: 80,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(70),
-                        border: Border.all(color: Colors.white, width: 3)),
+                      borderRadius: BorderRadius.circular(70),
+                      border: Border.all(color: Colors.white, width: 3),
+                    ),
                     child: ClipOval(
-                        child: Image.asset(
-                      'images/test.jpg',
-                      fit: BoxFit.cover,
-                    )),
+                      child: Image.asset(
+                        'images/test.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
@@ -153,77 +163,97 @@ class _MainScreenState extends State<MainScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          'Anas Alsafadi',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              overflow: TextOverflow.ellipsis),
+                          SharedPrefController().fullName,
                           maxLines: 1,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                         Text(
-                          'anasA2@gmail.com',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              overflow: TextOverflow.ellipsis),
+                          SharedPrefController().email,
                           maxLines: 1,
-                        )
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, ''),
+              onTap: () =>
+                  Navigator.popAndPushNamed(context, ScreenKeys.serviceScreen),
               title: const Text('Services'),
               subtitle: const Text('the details about services'),
-              leading: const Icon(Icons.query_builder),
+              leading: const Icon(
+                Icons.query_builder_sharp,
+                size: 30,
+              ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
                 size: 18,
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, '/profile_screen'),
-              title: const Text('Profile'),
-              subtitle: const Text('the details about profile'),
-              leading: const Icon(Icons.person_pin),
+              onTap: () =>
+                  Navigator.popAndPushNamed(context, ScreenKeys.updateProfileScreen),
+              title: const Text('Update Profile'),
+              subtitle: const Text('change your profile details'),
+              leading: const Icon(
+                Icons.person_pin_sharp,
+                size: 30,
+              ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
                 size: 18,
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, '/faqs_screen'),
+              onTap: () => Navigator.popAndPushNamed(context, ScreenKeys.faqScreen),
               title: const Text('FAQs'),
               subtitle: const Text('the details about FAQs'),
-              leading: const Icon(Icons.question_answer),
+              leading: const Icon(
+                Icons.question_answer,
+                size: 30,
+              ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
                 size: 18,
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, '/articles_screen'),
+              onTap: () =>
+                  Navigator.popAndPushNamed(context, ScreenKeys.articlesScreen),
               title: const Text('Articles'),
               subtitle: const Text('the details about Articles'),
-              leading: const Icon(Icons.article),
+              leading: const Icon(
+                Icons.article,
+                size: 30,
+              ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
                 size: 18,
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, '/'),
+              onTap: () => Navigator.popAndPushNamed(context, ScreenKeys.orderScreen),
               title: const Text('My Order'),
               subtitle: const Text('the details about my order'),
-              leading: const Icon(Icons.shopping_cart_outlined),
+              leading: const Icon(
+                Icons.shopping_cart_outlined,
+                size: 30,
+              ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
                 size: 18,
@@ -237,26 +267,27 @@ class _MainScreenState extends State<MainScreen> {
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/', (route) => false);
+                Navigator.pushNamed(context, ScreenKeys.contactUsScreen);
               },
               title: const Text('Contact Us'),
               subtitle: const Text('Get Support and Inquiries'),
-              leading: const Icon(Icons.contact_support),
+              leading: const Icon(
+                Icons.contact_support,
+                size: 30,
+              ),
             ),
-            ListTile(
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/login_screen', (route) => false);
-              },
-              title: const Text('Logout'),
-              subtitle: const Text('Waiting your return'),
-              leading: const Icon(Icons.logout),
-            )
           ],
         ),
       ),
     );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    bool loggedOut = await AuthApiController().logout(context);
+    if (loggedOut && context.mounted) {
+      Navigator.pop(context);
+      Navigator.pushNamedAndRemoveUntil(
+          context, ScreenKeys.loginScreen, (route) => false);
+    }
   }
 }

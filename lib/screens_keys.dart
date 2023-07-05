@@ -2,19 +2,21 @@
 
 class ScreenKeys{
 
-  static const String changePasswordScreen = '/ChangePasswordScreen';
-  static const String loginScreen = '/LoginScreen';
   static const String registerScreen = '/RegisterScreen';
+  static const String loginScreen = '/LoginScreen';
+  static const String forgotPasswordScreen = '/ForgotPasswordScreen';
+  static const String resetPasswordScreen = '/ResetPasswordScreen';
+  static const String changePasswordScreen = '/ChangePasswordScreen';
   static const String addAddressScreen = '/AddAddressScreen';
   static const String addDataScreen = '/AddDataScreen';
   static const String addRateQuestionsScreen = '/AddRateQuestionsScreen';
   static const String dataKeysScreen = '/DataKeysScreen';
-  static const String editProfileScreen = '/EditProfileScreen';
   static const String favoriteScreen = '/FavoriteScreen';
   static const String homeScreen = '/HomeScreen';
   static const String orderScreen = '/OrderScreen';
   static const String profileScreen = '/ProfileScreen';
   static const String updateAddressScreen = '/UpdateAddressScreen';
+  static const String updateProfileScreen = '/UpdateProfileScreen';
   static const String updateDataKeysScreen = '/UpdateDataKeysScreen';
   static const String updateDataScreen = '/UpdateDataScreen';
   static const String addExperiencesScreen = '/AddExperiencesScreen';
