@@ -1,56 +1,72 @@
 
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
+import 'package:gp_106_flutter_project/get/attachment_get_controller.dart';
+import 'package:gp_106_flutter_project/model/attachment.dart';
+import 'package:gp_106_flutter_project/screens/attachment_details_screen.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
+import 'package:gp_106_flutter_project/widgets/attachment_item.dart';
+import 'package:get/get.dart';
 
 class AttachmentsScreen extends StatelessWidget {
-  const AttachmentsScreen({Key? key}) : super(key: key);
+   AttachmentsScreen({Key? key}) : super(key: key);
+
+ final  AttachmentGetXController _attachmentGetXController = Get.put<AttachmentGetXController>(AttachmentGetXController());
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: primaryColors,
-          title: Text('Attachments'),
-          centerTitle: true,
-        ),
-        body: ListView.builder(
-            padding: EdgeInsets.all(10),
-            itemCount: 10,
-            physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (context,index) =>GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, '/attachment_details_screen');
-                },
-                child: Card(
-                  elevation: 1,
-                  margin: EdgeInsetsDirectional.only(bottom: 15),
-                  clipBehavior: Clip.antiAlias,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Rapid blood test',style: TextStyle(fontSize: 20,overflow: TextOverflow.ellipsis,color: Colors.black45),maxLines: 1,),
-                        Text('Pending...',style: TextStyle(color: Colors.black54,fontSize: 16),),
-                        Text('20 july -05 july',style: TextStyle(fontSize: 12,color: Colors.grey),),
-                      ],
+      appBar: AppBar(
+        backgroundColor: primaryColors,
+        title: const Text('Attachments'),
+        centerTitle: true,
+      ),
+      body: GetBuilder<AttachmentGetXController>(
+        builder: (controller) {
+          if(controller.load){
+            return const  Center(child: CircularProgressIndicator(),);
+          }else if(controller.attachments.isNotEmpty){
+           return  ListView.builder(
+                padding: const EdgeInsets.all(10),
+                itemCount: controller.attachments.length,
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) =>
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AttachmentDetailsScreen(controller.attachments[index]),));
+                        },
+          child: AttachmentItem(controller.attachments[index])),
+
+          );
+          }else{
+            return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.warning,
+                      color: Colors.grey.shade300,
+                      size: 80,
                     ),
-                  ),
-                )
-            )
-        ),
+                    Text('NO DATA',
+                        style:
+                        TextStyle(color: Colors.grey.shade300, fontSize: 34)),
+                  ],
+                ));
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Navigator.pushNamed(context, '/add_attachment_screen');
+        onPressed: () {
+          Navigator.pushNamed(context, ScreenKeys.addAttachmentScreen);
         },
         backgroundColor: primaryColors,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
-}
+  }
+

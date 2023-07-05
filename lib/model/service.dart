@@ -5,8 +5,7 @@ class Service {
   late String longDescription;
   late String image;
   late int categoryId;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   Service();
@@ -18,20 +17,18 @@ class Service {
     longDescription = json['long_description'];
     image = json['image'];
     categoryId = json['category_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['short_description'] = this.shortDescription;
-    data['long_description'] = this.longDescription;
-    data['image'] = this.image;
-    data['category_id'] = this.categoryId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['name'] = name;
+    data['short_description'] = shortDescription;
+    data['long_description'] = longDescription;
+    data['image'] = image;
+    data['category_id'] = categoryId;
+
     return data;
   }
 }

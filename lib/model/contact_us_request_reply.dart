@@ -5,8 +5,7 @@ class ContactUsRequestReply {
   late String reply;
   late String objectType;
   late String replyedType;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   ContactUsRequestReply();
@@ -18,20 +17,18 @@ class ContactUsRequestReply {
     objectId = json['object_id'];
     replyedType = json['replyed_type'];
     contactUsRequestId = json['contact_us_request_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['reply'] = this.reply;
-    data['object_type'] = this.objectType;
-    data['object_id'] = this.objectId;
-    data['replyed_type'] = this.replyedType;
-    data['contact_us_request_id'] = this.contactUsRequestId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    data['id'] = id;
+    data['reply'] = reply;
+    data['object_type'] = objectType;
+    data['object_id'] = objectId;
+    data['replyed_type'] = replyedType;
+    data['contact_us_request_id'] = contactUsRequestId;
+
     return data;
   }
 }

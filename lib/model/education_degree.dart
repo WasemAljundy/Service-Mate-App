@@ -7,8 +7,7 @@ class EducationDegree {
   late String degreeDate;
   late String image;
   late String universityName;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   EducationDegree();
@@ -22,22 +21,19 @@ class EducationDegree {
     image = json['image'];
     universityName = json['university_name'];
     specialistId = json['specialist_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['degree'] = this.degree;
-    data['degree_name'] = this.degreeName;
-    data['degree_date'] = this.degreeDate;
-    data['image'] = this.image;
-    data['university_name'] = this.universityName;
-    data['specialist_id'] = this.specialistId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['title'] = title;
+    data['degree'] = degree;
+    data['degree_name'] = degreeName;
+    data['degree_date'] = degreeDate;
+    data['image'] = image;
+    data['university_name'] = universityName;
+    data['specialist_id'] = specialistId;
+
     return data;
   }
 }

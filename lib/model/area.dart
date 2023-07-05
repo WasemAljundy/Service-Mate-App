@@ -3,8 +3,7 @@ class Area {
   late int cityId;
   late String name;
   late String icon;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   Area();
@@ -14,18 +13,16 @@ class Area {
     name = json['name'];
     cityId = json['city_id'];
     icon = json['icon'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+ 
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['city_id'] = this.cityId;
-    data['icon'] = this.icon;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    data['id'] = id;
+    data['name'] = name;
+    data['city_id'] = cityId;
+    data['icon'] = icon;
+
     return data;
   }
 }

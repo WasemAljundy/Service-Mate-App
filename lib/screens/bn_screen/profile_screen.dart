@@ -16,6 +16,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
   late Future<Client> _client;
 
   @override
@@ -251,4 +252,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-

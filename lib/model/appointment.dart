@@ -8,8 +8,7 @@ class Appointment {
   late String status;
   late String report;
   late String duration;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   Appointment();
@@ -24,23 +23,21 @@ class Appointment {
     report = json['report'];
     duration = json['duration'];
     reservationId = json['reservation_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['date'] = this.date;
-    data['startTime'] = this.startTime;
-    data['endTime'] = this.endTime;
-    data['type'] = this.type;
-    data['status'] = this.status;
-    data['report'] = this.report;
-    data['duration'] = this.duration;
-    data['reservation_id'] = this.reservationId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    data['id'] = id;
+    data['date'] = date;
+    data['startTime'] = startTime;
+    data['endTime'] = endTime;
+    data['type'] = type;
+    data['status'] = status;
+    data['report'] = report;
+    data['duration'] = duration;
+    data['reservation_id'] = reservationId;
+
     return data;
   }
 }

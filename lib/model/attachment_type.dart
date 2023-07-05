@@ -5,8 +5,6 @@ class AttachmentType {
   late String iconImage;
   late String date;
   late String status;
-  late String createdAt;
-  late String updatedAt;
   late String visablity;
 
 
@@ -19,22 +17,22 @@ class AttachmentType {
     iconImage = json['icon_image'];
     date = json['date'];
     status = json['status'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
     visablity = json['visablity'];
   }
 
+
+
+
+
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['active'] = this.active;
-    data['icon_image'] = this.iconImage;
-    data['date'] = this.date;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['visablity'] = this.visablity;
+    final Map<String, dynamic> data ={};
+    data['id'] = id;
+    data['name'] = name;
+    data['active'] = active;
+    data['icon_image'] = iconImage;
+    data['date'] = date;
+    data['status'] = status;
+    data['visablity'] = visablity;
     return data;
   }
 }

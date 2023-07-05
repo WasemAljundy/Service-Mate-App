@@ -5,8 +5,7 @@ class Data {
   late String objectType;
   late String value;
   late String dataType;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   Data();
@@ -18,20 +17,18 @@ class Data {
     value = json['value'];
     dataType = json['data_type'];
     dataKeyId = json['data_key_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['object_type'] = this.objectType;
-    data['object_id'] = this.objectId;
-    data['value'] = this.value;
-    data['data_type'] = this.dataType;
-    data['data_key_id'] = this.dataKeyId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    data['id'] = id;
+    data['object_type'] = objectType;
+    data['object_id'] = objectId;
+    data['value'] = value;
+    data['data_type'] = dataType;
+    data['data_key_id'] = dataKeyId;
+
     return data;
   }
 }
