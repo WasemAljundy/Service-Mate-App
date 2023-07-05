@@ -10,32 +10,31 @@ class HomeScreen extends StatelessWidget {
   List<Category> lists = [
     Category.a(
         name: 'It Manger',
-        description: 'descriptoin 1',
-        image: 'assets/images/test.jpg'
-        ),
-    Category.a(
-        name: 'It Manger',
-        description: 'descriptoin 1',
+        description: 'description 1',
         image: 'images/test.jpg'),
     Category.a(
         name: 'It Manger',
-        description: 'descriptoin 1',
+        description: 'description 1',
         image: 'images/test.jpg'),
     Category.a(
         name: 'It Manger',
-        description: 'descriptoin 1',
+        description: 'description 1',
         image: 'images/test.jpg'),
     Category.a(
         name: 'It Manger',
-        description: 'descriptoin 1',
+        description: 'description 1',
         image: 'images/test.jpg'),
     Category.a(
         name: 'It Manger',
-        description: 'descriptoin 1',
+        description: 'description 1',
         image: 'images/test.jpg'),
     Category.a(
         name: 'It Manger',
-        description: 'descriptoin 1',
+        description: 'description 1',
+        image: 'images/test.jpg'),
+    Category.a(
+        name: 'It Manger',
+        description: 'description 1',
         image: 'images/test.jpg'),
   ];
 
@@ -48,20 +47,20 @@ class HomeScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: HexColor('#4B989C'),
             borderRadius: const BorderRadiusDirectional.only(
-                bottomEnd: Radius.elliptical(200, 40),
-                bottomStart: Radius.elliptical(200, 40)),
+              bottomEnd: Radius.elliptical(200, 40),
+              bottomStart: Radius.elliptical(200, 40),
+            ),
           ),
           child: Column(
             children: [
               Expanded(
-                  child: Image.asset(
-                'images/logo.png',
-                fit: BoxFit.cover,
-                width: 250,
-                height: 250,
-              )),
-              // Text('BEST ONLINE',style: TextStyle(fontSize: 35,color: Colors.white,fontWeight: FontWeight.bold),),
-              // Text('RESERVATIONS',style: TextStyle(fontSize: 35,color: Colors.yellow,fontWeight: FontWeight.bold),),
+                child: Image.asset(
+                  'images/grey_logo.png',
+                  fit: BoxFit.cover,
+                  width: 250,
+                  height: 250,
+                ),
+              ),
             ],
           ),
         ),

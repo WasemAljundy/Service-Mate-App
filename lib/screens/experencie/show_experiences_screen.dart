@@ -1,11 +1,7 @@
- import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/api/api_controller/api_controller.dart';
-import 'package:gp_106_flutter_project/api/api_controller/get.dart';
 import 'package:gp_106_flutter_project/model/experience.dart';
 import 'package:gp_106_flutter_project/widgets/experiences_card.dart';
-
-import '../../constent.dart';
+import 'package:gp_106_flutter_project/constent.dart';
 
 class ShowExperiencesScreen extends StatelessWidget {
      const ShowExperiencesScreen({super.key});
@@ -19,7 +15,7 @@ class ShowExperiencesScreen extends StatelessWidget {
            centerTitle: true,
          ),
          body: FutureBuilder<List<Experience>>(
-           future: ApiController.get.getExperience(),
+           // future: ApiController.get.getExperience(),
            builder: (context, snapshot) {
              if (snapshot.connectionState == ConnectionState.waiting) {
                return const Center(child: CircularProgressIndicator());

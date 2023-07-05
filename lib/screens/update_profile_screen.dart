@@ -1,15 +1,18 @@
 import 'dart:io';
 
+import 'package:datetime_picker_formfield_new/datetime_picker_formfield.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/api/controllers/profile_api_controller.dart';
-import 'package:gp_106_flutter_project/model/client.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-
-import '../constent.dart';
-import '../helpers/helpers.dart';
-import '../widgets/text_field_refactor.dart';
+import 'package:gp_106_flutter_project/constent.dart';
+import 'package:gp_106_flutter_project/helpers/helpers.dart';
+import 'package:gp_106_flutter_project/widgets/text_field_refactor.dart';
+import 'package:material_dialogs/dialogs.dart';
+import 'package:material_dialogs/widgets/buttons/icon_button.dart';
+import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({super.key});
@@ -20,10 +23,12 @@ class UpdateProfileScreen extends StatefulWidget {
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen>
     with Helpers {
-  late TextEditingController _nameController;
+  late TextEditingController _fullNameController;
   late TextEditingController _phoneController;
   late TextEditingController _birthDateController;
   String _gender = 'male';
+  late DateTime _selectedDate;
+  final format = DateFormat("yyyy-MM-dd");
 
   XFile? _pickedFile;
   final ImagePicker _imagePicker = ImagePicker();
@@ -31,14 +36,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController();
+    _fullNameController = TextEditingController();
     _phoneController = TextEditingController();
     _birthDateController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _fullNameController.dispose();
     _phoneController.dispose();
     _birthDateController.dispose();
     super.dispose();
@@ -96,7 +101,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
                           height: 10,
                         ),
                         TextFieldRefactor(
-                          controller: _nameController,
+                          controller: _fullNameController,
                           prefixIcon: Icons.person,
                           hint: 'Enter new Fullname',
                         ),
@@ -122,7 +127,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
                           height: 20,
                         ),
                         const Text(
-                          'birth date',
+                          'BirthDate',
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 16,
@@ -131,35 +136,34 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
                         const SizedBox(
                           height: 10,
                         ),
-                        TextField(
-                          enabled: true,
+                        DateTimeField(
                           controller: _birthDateController,
-                          keyboardType: TextInputType.datetime,
                           decoration: InputDecoration(
-                            hintText: 'Select new Birth Date',
+                            hintText: 'Enter new BirthDate',
                             hintStyle: const TextStyle(color: Colors.grey),
-                            suffixIcon: IconButton(
-                              onPressed: () => _selectDate(context),
-                              icon: const Icon(
-                                Icons.date_range,
-                              ),
-                            ),
-                            labelStyle: TextStyle(
+                            prefixIcon: Icon(
+                              Icons.date_range,
                               color: primaryColors,
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: Colors.grey.shade400,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Colors.green,
-                              ),
                             ),
                           ),
+                          format: format,
+                          onShowPicker: (context, currentValue) {
+                            return showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2100),
+                            ).then((value) {
+                              setState(() {
+                                _selectedDate = value!;
+                                _birthDateController.text = value.toString().replaceAll('00:00:00.000', '');
+                              });
+                              return null;
+                            });
+                          },
                         ),
                         const SizedBox(
                           height: 30,
@@ -232,8 +236,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
                   alignment: AlignmentDirectional.bottomEnd,
                   children: [
                     Container(
-                      height: 100,
-                      width: 100,
+                      height: 115,
+                      width: 115,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
@@ -269,7 +273,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: InkWell(
-                        onTap: () => _pickImage(),
+                        onTap: () => selectPicture(),
                         child: Icon(
                           Icons.camera_alt,
                           color: primaryColors,
@@ -287,43 +291,37 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
     );
   }
 
-  // late DateTime _selectedDate;
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
+  void selectPicture() {
+    Dialogs.materialDialog(
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
+      title: 'Choose Picture',
+      msg: 'Select where you prefer to get the picture',
+      titleStyle: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+      actions: [
+        IconsOutlineButton(
+          onPressed: () async => await _pickImageCamera(),
+          text: 'Camera',
+          iconData: CupertinoIcons.camera_fill,
+          textStyle: const TextStyle(color: Colors.white),
+          color: primaryColors,
+          iconColor: Colors.white,
+        ),
+        IconsButton(
+          onPressed: () async => await _pickImageGallery(),
+          text: 'Gallery',
+          iconData: CupertinoIcons.photo_on_rectangle,
+          color: primaryColors,
+          textStyle: const TextStyle(color: Colors.white),
+          iconColor: Colors.white,
+        ),
+      ],
     );
-
-    if (picked != null) {
-      final DateTime today = DateTime.now();
-      if (picked.isAfter(today) && context.mounted) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text('Invalid Date'),
-              content: const Text('Please select a valid birth date.'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      } else {
-        setState(() {
-          String formattedDate = DateFormat.yMMMMEEEEd().format(picked);
-          _birthDateController.text = formattedDate;
-        });
-      }
-    }
   }
 
-  Future<void> _pickImage() async {
+  Future<void> _pickImageGallery() async {
     XFile? imageFile = await _imagePicker.pickImage(
       source: ImageSource.gallery,
       imageQuality: 50,
@@ -331,43 +329,48 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
     if (imageFile != null) {
       setState(() {
         _pickedFile = imageFile;
+        Navigator.pop(context);
+      });
+    }
+  }
+
+  Future<void> _pickImageCamera() async {
+    XFile? imageFile = await _imagePicker.pickImage(
+      source: ImageSource.camera,
+      imageQuality: 50,
+    );
+    if (imageFile != null) {
+      setState(() {
+        _pickedFile = imageFile;
+        Navigator.pop(context);
       });
     }
   }
 
   bool checkData() {
-    if (_nameController.text.isNotEmpty &&
+    if (_fullNameController.text.isNotEmpty &&
         _phoneController.text.isNotEmpty &&
-        _birthDateController.text.isNotEmpty &&
         _pickedFile != null &&
         _gender.isNotEmpty) {
       return true;
     } else {
       showSnackBar(
-          context: context, message: 'Enter required data!', error: true);
+        context: context,
+        message: 'Enter required data!',
+        error: true,
+      );
       return false;
     }
   }
-
-  // Client get client {
-  //   Client client = Client();
-  //   client.fullName = _nameController.text;
-  //   client.mobile = _phoneController.text;
-  //   client.image = _pickedFile!.path;
-  //   client.birthDate = _birthDateController.text;
-  //   client.gender = _gender;
-  //   return client;
-  // }
 
   Future<void> update() async {
     ProfileApiController().updateClient(
       id: SharedPrefController().clientID.toString(),
       context,
-      // client: client,
-      fullName: _nameController.text,
+      fullName: _fullNameController.text,
       gender: _gender,
       mobile: _phoneController.text,
-      birthDate: _birthDateController.text,
+      birthDate: _selectedDate.toString(),
       path: _pickedFile!.path,
     );
   }

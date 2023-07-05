@@ -32,10 +32,11 @@ class ProfileApiController with Helpers {
       required String birthDate,
       required String path}) async {
     var url = Uri.parse(ApiSettings.clients.replaceFirst('{id}', id));
-    var request = http.MultipartRequest('PUT', url);
+    var request = http.MultipartRequest('POST', url);
 
     http.MultipartFile imageFile =
         await http.MultipartFile.fromPath('image', path);
+    request.fields['_method'] = 'PUT';
     request.fields['fullName'] = fullName;
     request.fields['gender'] = gender;
     request.fields['mobile'] = mobile;

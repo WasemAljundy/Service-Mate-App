@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
@@ -8,6 +9,9 @@ import 'package:gp_106_flutter_project/helpers/helpers.dart';
 import 'package:gp_106_flutter_project/model/client.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:material_dialogs/dialogs.dart';
+import 'package:material_dialogs/widgets/buttons/icon_button.dart';
+import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -77,13 +81,34 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
             child: Stack(
               alignment: AlignmentDirectional.bottomEnd,
               children: [
-                SizedBox(
-                  width: 120,
+                Container(
                   height: 120,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 4,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
                   child: ClipOval(
                     child: _pickedFile != null
-                        ? Image.file(File(_pickedFile!.path))
-                        : Image.asset('images/photo.png'),
+                        ? Image.file(
+                            File(_pickedFile!.path),
+                            fit: BoxFit.fill,
+                          )
+                        : Image.asset(
+                            'images/photo.png',
+                            fit: BoxFit.fill,
+                          ),
                   ),
                 ),
                 SizedBox(
@@ -92,7 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
                   child: CircleAvatar(
                     backgroundColor: Colors.black,
                     child: IconButton(
-                      onPressed: () async => await _pickImage(),
+                      onPressed: () => selectPicture(),
                       icon: const Icon(
                         Icons.camera_alt,
                         color: Colors.white,
@@ -263,7 +288,7 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
     ).then((value) {
       setState(() {
         _birthday = value!;
-        _birthDayEditingController.text = value.toString();
+        _birthDayEditingController.text = value.toString().replaceAll('00:00:00.000', '');
       });
     });
   }
@@ -285,11 +310,42 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
         _gender != null) {
       return true;
     }
-    showSnackBar(context: context, message: 'Please Enter Required Data !', error: true);
+    showSnackBar(
+        context: context, message: 'Please Enter Required Data !', error: true);
     return false;
   }
 
-  Future<void> _pickImage() async {
+  void selectPicture() {
+    Dialogs.materialDialog(
+      context: context,
+      title: 'Choose Picture',
+      msg: 'Select where you prefer to get the picture',
+      titleStyle: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+      actions: [
+        IconsOutlineButton(
+          onPressed: () async => await _pickImageCamera(),
+          text: 'Camera',
+          iconData: CupertinoIcons.camera_fill,
+          textStyle: const TextStyle(color: Colors.white),
+          color: primaryColors,
+          iconColor: Colors.white,
+        ),
+        IconsButton(
+          onPressed: () async => await _pickImageGallery(),
+          text: 'Gallery',
+          iconData: CupertinoIcons.photo_on_rectangle,
+          color: primaryColors,
+          textStyle: const TextStyle(color: Colors.white),
+          iconColor: Colors.white,
+        ),
+      ],
+    );
+  }
+
+  Future<void> _pickImageGallery() async {
     XFile? imageFile = await _imagePicker.pickImage(
       source: ImageSource.gallery,
       imageQuality: 50,
@@ -297,6 +353,20 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
     if (imageFile != null) {
       setState(() {
         _pickedFile = imageFile;
+        Navigator.pop(context);
+      });
+    }
+  }
+
+  Future<void> _pickImageCamera() async {
+    XFile? imageFile = await _imagePicker.pickImage(
+      source: ImageSource.camera,
+      imageQuality: 50,
+    );
+    if (imageFile != null) {
+      setState(() {
+        _pickedFile = imageFile;
+        Navigator.pop(context);
       });
     }
   }
@@ -320,5 +390,4 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
     client.gender = _gender!;
     return client;
   }
-
 }
