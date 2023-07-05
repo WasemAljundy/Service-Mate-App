@@ -7,8 +7,7 @@ class Reservation {
   late int serviceRuleId;
   late int serviceRulePriceId;
   late String details;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   Reservation();
@@ -22,22 +21,20 @@ class Reservation {
     specialistId = json['specialist_id'];
     serviceRuleId = json['service_rule_id'];
     serviceRulePriceId = json['service_rule_price_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+ 
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['price'] = this.price;
-    data['details'] = this.details;
-    data['client_id'] = this.clientId;
-    data['service_id'] = this.serviceId;
-    data['specialist_id'] = this.specialistId;
-    data['service_rule_id'] = this.serviceRuleId;
-    data['service_rule_price_id'] = this.serviceRulePriceId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data ={};
+    data['id'] = id;
+    data['price'] = price;
+    data['details'] = details;
+    data['client_id'] = clientId;
+    data['service_id'] = serviceId;
+    data['specialist_id'] = specialistId;
+    data['service_rule_id'] = serviceRuleId;
+    data['service_rule_price_id'] = serviceRulePriceId;
+  
     return data;
   }
 }

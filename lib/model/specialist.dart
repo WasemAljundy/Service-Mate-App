@@ -32,20 +32,20 @@ class Specialist {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['fullName'] = this.fullName;
-    data['gender'] = this.gender;
-    data['birthdate'] = this.birthdate;
-    data['image'] = this.image;
-    data['email'] = this.email;
-    data['verification_code'] = this.verificationCode;
-    data['mobile'] = this.mobile;
-    data['jobTitle'] = this.jobTitle;
-    data['bio'] = this.bio;
-    data['zipCode'] = this.zipCode;
-    data['active'] = this.active;
-    data['visablity'] = this.visablity;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['fullName'] = fullName;
+    data['gender'] = gender;
+    data['birthdate'] = birthdate;
+    data['image'] = image;
+    data['email'] = email;
+    data['verification_code'] = verificationCode;
+    data['mobile'] = mobile;
+    data['jobTitle'] = jobTitle;
+    data['bio'] = bio;
+    data['zipCode'] = zipCode;
+    data['active'] = active;
+    data['visablity'] = visablity;
     return data;
   }
 }

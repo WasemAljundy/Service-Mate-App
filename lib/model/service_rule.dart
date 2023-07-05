@@ -9,8 +9,7 @@ class ServiceRule {
   late String paymentRule;
   late String performType;
   late String location;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   ServiceRule();
@@ -26,24 +25,22 @@ class ServiceRule {
     lat = json['lat'];
     long = json['long'];
     serviceId = json['service_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['image'] = this.image;
-    data['cost'] = this.cost;
-    data['payment_rule'] = this.paymentRule;
-    data['perform_type'] = this.performType;
-    data['active'] = this.active;
-    data['location'] = this.location;
-    data['lat'] = this.lat;
-    data['long'] = this.long;
-    data['service_id'] = this.serviceId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data ={};
+    data['id'] = id;
+    data['image'] = image;
+    data['cost'] = cost;
+    data['payment_rule'] = paymentRule;
+    data['perform_type'] = performType;
+    data['active'] = active;
+    data['location'] = location;
+    data['lat'] = lat;
+    data['long'] = long;
+    data['service_id'] = serviceId;
+
     return data;
   }
 }

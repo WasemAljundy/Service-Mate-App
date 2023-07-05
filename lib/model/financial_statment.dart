@@ -7,23 +7,21 @@ class FinancialStatement {
   late String details;
   late String billNumber;
   late String paymentDate;
-  late String createdAt;
-  late String updatedAt;
+
 
   FinancialStatement();
 
 
   FinancialStatement.a({
-    required this.details,
-    required this.paymentDate,
-    required this.paidAmount,
-    required this.remains,
-    this.id= 1,
-    this.billId= 1,
-    this.billNumber= "0",
-    this.createdAt= "0",
-    this.updatedAt = "0",
-    this.paymentMethodId = 0,
+    required details,
+    required paymentDate,
+    required paidAmount,
+    required remains,
+    id= 1,
+    billId= 1,
+    billNumber= "0",
+
+    paymentMethodId = 0,
   });
 
   FinancialStatement.fromJson(Map<String, dynamic> json) {
@@ -35,22 +33,20 @@ class FinancialStatement {
     remains = json['remains'];
     billId = json['bill_id'];
     paymentMethodId = json['payment_method_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['details'] = this.details;
-    data['bill_number'] = this.billNumber;
-    data['payment_date'] = this.paymentDate;
-    data['paid_amount'] = this.paidAmount;
-    data['remains'] = this.remains;
-    data['bill_id'] = this.billId;
-    data['payment_method_id'] = this.paymentMethodId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data ={};
+    data['id'] = id;
+    data['details'] = details;
+    data['bill_number'] = billNumber;
+    data['payment_date'] = paymentDate;
+    data['paid_amount'] = paidAmount;
+    data['remains'] = remains;
+    data['bill_id'] = billId;
+    data['payment_method_id'] = paymentMethodId;
+
     return data;
   }
 }

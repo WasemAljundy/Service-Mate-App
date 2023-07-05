@@ -7,10 +7,7 @@ class Attachment {
   late String info;
   late String date;
   late String status;
-  late String createdAt;
-  late String updatedAt;
-
-
+  
   Attachment();
 
   Attachment.fromJson(Map<String, dynamic> json) {
@@ -22,22 +19,19 @@ class Attachment {
     status = json['status'];
     reservationId = json['reservation_id'];
     attachmentTypeId = json['attachment_type_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['url'] = this.url;
-    data['info'] = this.info;
-    data['date'] = this.date;
-    data['status'] = this.status;
-    data['reservation_id'] = this.reservationId;
-    data['attachment_type_id'] = this.attachmentTypeId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['name'] = name;
+    data['url'] = url;
+    data['info'] = info;
+    data['date'] = date;
+    data['status'] = status;
+    data['reservation_id'] = reservationId;
+    data['attachment_type_id'] = attachmentTypeId;
+
     return data;
   }
 }

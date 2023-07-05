@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 
+import '../model/article.dart';
+
 class ArticleItem extends StatelessWidget {
-  const ArticleItem({
-    super.key,
-  });
+
+  Article article;
+
+  ArticleItem(this.article);
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +20,29 @@ class ArticleItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(flex:2,child: Image.asset('images/test.jpg',fit:BoxFit.cover,height: 135,)),
-          SizedBox(width:10,),
+          Expanded(flex:2,child: Image(
+            height: 130,
+            fit: BoxFit.cover,
+            image:NetworkImage(article.image,),
+          )),
+           const SizedBox(width:10,),
           Expanded(flex:3,child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Anas Alsafadi ',style: TextStyle(fontSize: 20,overflow: TextOverflow.ellipsis,color: Colors.black),maxLines: 1,),
-              Text('health',style: TextStyle(color: Colors.black54,fontSize: 16),),
-              Text('20 july -05 july',style: TextStyle(fontSize: 12,color: Colors.grey),),
+              Text(article.title,style: TextStyle(fontSize: 20,overflow: TextOverflow.ellipsis,color: Colors.black),maxLines: 1,),
+              Text(article.briefContent,style: TextStyle(color: Colors.black54,fontSize: 16,overflow: TextOverflow.ellipsis),maxLines: 1,),
+              Text(article.dateTime,style: TextStyle(fontSize: 12,color: Colors.grey,overflow: TextOverflow.ellipsis),maxLines: 1,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text('7',style: TextStyle(color: primaryColors),),
+                    Text('${article.shareCount}',style: TextStyle(color: primaryColors),),
                     const  SizedBox(width: 2,),
                     Icon(Icons.send,color: primaryColors,size: 18,),
                     const   Spacer(),
                     Icon(Icons.favorite_border_outlined,color: primaryColors,size: 18,),
                     const  SizedBox(width: 2,),
-                    Text('5',style: TextStyle(color: primaryColors),)
+                    Text('${article.likeCount}',style: TextStyle(color: primaryColors),)
                   ],
                 ),
               ),

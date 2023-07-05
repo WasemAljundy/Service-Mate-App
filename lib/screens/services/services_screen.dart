@@ -1,40 +1,60 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/api/controller/service_api_controller.dart';
+import 'package:gp_106_flutter_project/model/service.dart';
 
 import '../../constent.dart';
 import '../../widgets/service_card.dart';
 
 class ServiceScreen extends StatelessWidget {
   const ServiceScreen({Key? key}) : super(key: key);
-   final String ServicImg = 'https://www.shutterstock.com/image-illustration/our-services-writing-3d-render-260nw-1877372119.jpg';
-   final String short = 'The generated Lorem Ipsum is therefore always free ';
-   final String long = 'The generated Lorem Ipsum is therefore always free The generated Lorem Ipsum is therefore always free';
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("ServiceScreen"),
+        title: const Text("ServiceScreen"),
         backgroundColor: UsedColor.PRIMARY_COLOR,
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, index) {
-          return ServiceCard(img: ServicImg,
-            name: "Servic name",
-            shortDescription: short,
-            longDescription: long,);
+      body: FutureBuilder<List<Service>>(
+        future: ServiceApiController().getServices(),
+        builder: (context, snapshot) {
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return const  Center(child: CircularProgressIndicator(),);
+          }else if(snapshot.hasData && snapshot.data !=null){
+            return ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+              scrollDirection: Axis.vertical,
+              itemBuilder: (context, index) {
+                return ServiceCard(service: snapshot.data![index],id:snapshot.data![index].id ,);
+              },
+              separatorBuilder: (context, index) {
+                return const Divider(
+                  thickness: 1,
+                  indent: 20,
+                  endIndent: 20,
+                );
+              }, itemCount: 5,
+            );
+          }else{
+            return  Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.warning,
+                      color: Colors.grey.shade300,
+                      size: 80,
+                    ),
+                    Text('NO DATA',
+                        style:
+                        TextStyle(color: Colors.grey.shade300, fontSize: 34)),
+                  ],
+                ));
+          }
         },
-        separatorBuilder: (context, index) {
-          return const Divider(
-            thickness: 1,
-            indent: 20,
-            endIndent: 20,
-          );
-        }, itemCount: 5,
-      ),
+      )
     );
   }
 }

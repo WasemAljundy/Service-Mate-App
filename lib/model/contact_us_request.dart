@@ -8,8 +8,7 @@ class ContactUsRequest {
   late String subject;
   late String message;
   late String summary;
-  late String createdAt;
-  late String updatedAt;
+
 
 
   ContactUsRequest();
@@ -24,23 +23,21 @@ class ContactUsRequest {
     message = json['message'];
     summary = json['summary'];
     clientId = json['client_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['status'] = this.status;
-    data['email'] = this.email;
-    data['mobile'] = this.mobile;
-    data['subject'] = this.subject;
-    data['message'] = this.message;
-    data['summary'] = this.summary;
-    data['client_id'] = this.clientId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data ={};
+    data['id'] = id;
+    data['name'] = name;
+    data['status'] = status;
+    data['email'] = email;
+    data['mobile'] = mobile;
+    data['subject'] = subject;
+    data['message'] = message;
+    data['summary'] = summary;
+    data['client_id'] = clientId;
+
     return data;
   }
 }

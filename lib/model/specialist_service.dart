@@ -14,18 +14,16 @@ class SpecialistService {
     startWorkingDate = json['start_working_date'];
     specialistId = json['specialist_id'];
     serviceId = json['service_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['start_working_date'] = this.startWorkingDate;
-    data['specialist_id'] = this.specialistId;
-    data['service_id'] = this.serviceId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['start_working_date'] = startWorkingDate;
+    data['specialist_id'] = specialistId;
+    data['service_id'] = serviceId;
+
     return data;
   }
 }
