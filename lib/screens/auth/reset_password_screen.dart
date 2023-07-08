@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
 import 'package:gp_106_flutter_project/helpers/helpers.dart';
 import 'package:gp_106_flutter_project/widgets/app_text_filed.dart';
 import 'package:gp_106_flutter_project/widgets/code_text_field.dart';
@@ -193,7 +193,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
     }
   }
 
-//
   bool checkData() {
     if (checkCode() && checkPassword()) {
       return true;
@@ -247,13 +246,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
   }
 
   Future<void> resetPassword() async {
-    // bool status = await AuthApiController().resetPassword(
-    //   context,
-    //   email: widget.email,
-    //   code: _code!,
-    //   password: _newPasswordTextController.text,
-    //
-    // );
-    // if (status && context.mounted) Navigator.pop(context);
+    bool status = await AuthApiController().resetPassword(
+      context,
+      email: widget.email,
+      code: _code!,
+      password: _newPasswordTextController.text,
+
+    );
+    if (status && context.mounted) Navigator.pop(context);
   }
 }

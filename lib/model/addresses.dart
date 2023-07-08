@@ -6,8 +6,7 @@ class Address {
   late String building;
   late String primary;
   late String street;
-  late String createdAt;
-  late String updatedAt;
+
 
   Address();
 
@@ -19,21 +18,21 @@ class Address {
     primary = json['primary'];
     street = json['street'];
     clientId = json['client_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+ 
   }
 
+
+
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['building'] = this.building;
-    data['flat_id'] = this.flatId;
-    data['primary'] = this.primary;
-    data['street'] = this.street;
-    data['client_id'] = this.clientId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data ={};
+    data['id'] = id;
+    data['name'] = name;
+    data['building'] = building;
+    data['flat_id'] = flatId;
+    data['primary'] = primary;
+    data['street'] = street;
+    data['client_id'] = clientId;
+   
     return data;
   }
 }

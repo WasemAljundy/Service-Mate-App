@@ -1,3 +1,5 @@
+import 'package:gp_106_flutter_project/model/work_time.dart';
+
 class Service {
   late int id;
   late String name;
@@ -5,8 +7,7 @@ class Service {
   late String longDescription;
   late String image;
   late int categoryId;
-
-
+  late List<WorkTime> workTimes;
 
   Service();
 
@@ -15,20 +16,13 @@ class Service {
     name = json['name'];
     shortDescription = json['short_description'];
     longDescription = json['long_description'];
-    image = json['image'];
+    image = json['image_url'];
     categoryId = json['category_id'];
-
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['id'] = id;
-    data['name'] = name;
-    data['short_description'] = shortDescription;
-    data['long_description'] = longDescription;
-    data['image'] = image;
-    data['category_id'] = categoryId;
-
-    return data;
+    if (json['work_times'] != null) {
+      workTimes = [];
+      json['work_times'].forEach((v) {
+        workTimes.add(WorkTime.fromJson(v));
+      });
+    }
   }
 }

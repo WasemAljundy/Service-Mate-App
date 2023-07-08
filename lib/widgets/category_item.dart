@@ -17,7 +17,7 @@ class CategoryItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child:Image(image: NetworkImage(category.image),)),
+            Expanded(child:Image(image: NetworkImage(category.image),fit: BoxFit.fill,width: double.infinity,)),
             const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10,),

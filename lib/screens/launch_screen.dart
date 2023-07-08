@@ -14,7 +14,16 @@ class _LaunchScreenState extends State<LaunchScreen> {
   @override
   void initState() {
     super.initState();
-    String route = SharedPrefController().onBoarding? ScreenKeys.loginScreen : ScreenKeys.onBoardingScreen;
+    String route = '';
+    if(SharedPrefController().onBoarding && SharedPrefController().loggedIn){
+      route = ScreenKeys.mainScreen;
+    }else if(SharedPrefController().onBoarding && SharedPrefController().loggedIn ==false){
+      route = ScreenKeys.loginScreen;
+    }else if(SharedPrefController().onBoarding  == false){
+      route = ScreenKeys.onBoardingScreen;
+    }
+
+    print('SharedPrefController().onBoarding is : ${SharedPrefController().onBoarding}');
     Future.delayed(
       const  Duration(seconds: 3),
       () {

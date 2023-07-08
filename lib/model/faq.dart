@@ -1,6 +1,6 @@
 class Faq {
   late int id;
-  late bool active;
+  late int active;
   late int serviceId;
   late String question;
   late String answer;

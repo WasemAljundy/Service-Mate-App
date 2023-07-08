@@ -43,9 +43,6 @@ class textScreen extends StatelessWidget {
                 TextButton(child: Text("ChangePasswordScreen"),
                     onPressed: (){Navigator.pushNamed(context, ScreenKeys.changePasswordScreen);
                     }),
-                TextButton(child: Text("EditProfileScreen"),
-                    onPressed: (){Navigator.pushNamed(context, ScreenKeys.editProfileScreen);
-                    }),
                 TextButton(child: Text("FavoriteScreen"),
                     onPressed: (){Navigator.pushNamed(context, ScreenKeys.favoriteScreen);
                     }),
