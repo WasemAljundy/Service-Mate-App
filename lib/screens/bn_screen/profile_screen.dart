@@ -31,9 +31,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: GetBuilder<ProfileGetxController>(
         init: ProfileGetxController(),
         builder: (controller) {
-          if(controller.load){
-            return const Center(child: CircularProgressIndicator(),);
-          }else{
+          if (controller.load) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
             return Column(
               children: [
                 Container(
@@ -78,8 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
                               title: const Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Email address',
@@ -106,8 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
                               title: const Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Gender',
@@ -136,8 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
                               title: const Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Phone Number',
@@ -166,8 +165,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
                               title: const Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Birthdate',
@@ -194,14 +192,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               contentPadding: EdgeInsetsDirectional.zero,
                               title: const Text(
                                 'more address',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.grey
-                                ),
-
+                                style:
+                                    TextStyle(fontSize: 18, color: Colors.grey),
                               ),
                               trailing: const Icon(Icons.arrow_forward_ios),
-                              onTap: () => Navigator.pushNamed(context, ScreenKeys.addressesScreen),
+                              onTap: () => Navigator.pushNamed(
+                                  context, ScreenKeys.addressesScreen),
                             ),
                             const SizedBox(
                               height: 20,

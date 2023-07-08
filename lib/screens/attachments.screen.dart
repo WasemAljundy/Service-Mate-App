@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/get/attachment_get_controller.dart';
@@ -12,8 +11,8 @@ import 'package:gp_106_flutter_project/widgets/card_error.dart';
 class AttachmentsScreen extends StatelessWidget {
   AttachmentsScreen({Key? key}) : super(key: key);
 
-  final  AttachmentGetXController _attachmentGetXController = Get.put<AttachmentGetXController>(AttachmentGetXController());
-
+  final AttachmentGetXController _attachmentGetXController =
+      Get.put<AttachmentGetXController>(AttachmentGetXController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,24 +24,29 @@ class AttachmentsScreen extends StatelessWidget {
       ),
       body: GetBuilder<AttachmentGetXController>(
         builder: (controller) {
-          if(controller.load){
-            return const  Center(child: CircularProgressIndicator(),);
-          }else if(controller.attachments.isNotEmpty){
-            return  ListView.builder(
+          if (controller.load) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (controller.attachments.isNotEmpty) {
+            return ListView.builder(
               padding: const EdgeInsets.all(10),
               itemCount: controller.attachments.length,
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) =>
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => AttachmentDetailsScreen(controller.attachments[index]),));
-                      },
-                      child: AttachmentItem(controller.attachments[index])),
-
+              itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AttachmentDetailsScreen(
+                              controller.attachments[index]),
+                        ));
+                  },
+                  child: AttachmentItem(controller.attachments[index])),
             );
-          }else{
+          } else {
             return const CardError();
           }
         },
@@ -57,4 +61,3 @@ class AttachmentsScreen extends StatelessWidget {
     );
   }
 }
-

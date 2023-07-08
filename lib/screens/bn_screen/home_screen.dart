@@ -14,37 +14,6 @@ import 'package:shimmer_animation/shimmer_animation.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  List<Category> lists = [
-    Category.a(
-        name: 'It Manger',
-        description: 'description 1',
-        image: 'images/test.jpg'),
-    Category.a(
-        name: 'It Manger',
-        description: 'description 1',
-        image: 'images/test.jpg'),
-    Category.a(
-        name: 'It Manger',
-        description: 'description 1',
-        image: 'images/test.jpg'),
-    Category.a(
-        name: 'It Manger',
-        description: 'description 1',
-        image: 'images/test.jpg'),
-    Category.a(
-        name: 'It Manger',
-        description: 'description 1',
-        image: 'images/test.jpg'),
-    Category.a(
-        name: 'It Manger',
-        description: 'description 1',
-        image: 'images/test.jpg'),
-    Category.a(
-        name: 'It Manger',
-        description: 'description 1',
-        image: 'images/test.jpg'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -103,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: snapshot.data!.length,
                       gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
                         mainAxisSpacing: 10,
                       ),
@@ -111,7 +80,12 @@ class HomeScreen extends StatelessWidget {
                         return GestureDetector(
                           child: CategoryItem(snapshot.data![index]),
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder:(context) => CategoryDetailsScreen(snapshot.data![index]),));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CategoryDetailsScreen(
+                                      snapshot.data![index]),
+                                ));
                           },
                         );
                       });
@@ -159,7 +133,8 @@ class HomeScreen extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) =>
                                 ArticlesDetailsScreen(article),
-                          ),);
+                          ),
+                        );
                       },
                       child: ArticleItem(snapshot.data![index])));
             } else {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/screens/adresses/add_address_screen.dart';
 import 'package:gp_106_flutter_project/screens/add_data_screen.dart';
 import 'package:gp_106_flutter_project/screens/add_rate_questions_screen.dart';
+import 'package:gp_106_flutter_project/screens/adresses/addresses_screen.dart';
 import 'package:gp_106_flutter_project/screens/auth/change_password_screen.dart';
 import 'package:gp_106_flutter_project/screens/auth/forgot_password_screen.dart';
 import 'package:gp_106_flutter_project/screens/auth/register_screen.dart';
