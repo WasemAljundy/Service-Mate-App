@@ -26,7 +26,7 @@ class TextFieldRefactor extends StatelessWidget {
         labelText: label,
         hintText: hint,
         hintStyle: const TextStyle(
-          color: Colors.grey
+            color: Colors.grey
         ),
         prefixIcon: Icon(
           prefixIcon,

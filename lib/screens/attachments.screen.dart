@@ -7,11 +7,12 @@ import 'package:gp_106_flutter_project/screens/attachment_details_screen.dart';
 import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:gp_106_flutter_project/widgets/attachment_item.dart';
 import 'package:get/get.dart';
+import 'package:gp_106_flutter_project/widgets/card_error.dart';
 
 class AttachmentsScreen extends StatelessWidget {
-   AttachmentsScreen({Key? key}) : super(key: key);
+  AttachmentsScreen({Key? key}) : super(key: key);
 
- final  AttachmentGetXController _attachmentGetXController = Get.put<AttachmentGetXController>(AttachmentGetXController());
+  final  AttachmentGetXController _attachmentGetXController = Get.put<AttachmentGetXController>(AttachmentGetXController());
 
 
   @override
@@ -27,35 +28,22 @@ class AttachmentsScreen extends StatelessWidget {
           if(controller.load){
             return const  Center(child: CircularProgressIndicator(),);
           }else if(controller.attachments.isNotEmpty){
-           return  ListView.builder(
-                padding: const EdgeInsets.all(10),
-                itemCount: controller.attachments.length,
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) =>
-                    GestureDetector(
+            return  ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: controller.attachments.length,
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (context, index) =>
+                  GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => AttachmentDetailsScreen(controller.attachments[index]),));
-                        },
-          child: AttachmentItem(controller.attachments[index])),
+                      },
+                      child: AttachmentItem(controller.attachments[index])),
 
-          );
+            );
           }else{
-            return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.warning,
-                      color: Colors.grey.shade300,
-                      size: 80,
-                    ),
-                    Text('NO DATA',
-                        style:
-                        TextStyle(color: Colors.grey.shade300, fontSize: 34)),
-                  ],
-                ));
+            return const CardError();
           }
         },
       ),
@@ -68,5 +56,5 @@ class AttachmentsScreen extends StatelessWidget {
       ),
     );
   }
-  }
+}
 

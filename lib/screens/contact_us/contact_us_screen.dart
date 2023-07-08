@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/api/controller/contact_us_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
+import 'package:gp_106_flutter_project/helpers/helpers.dart';
+import 'package:gp_106_flutter_project/model/contact_us_request.dart';
+import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:gp_106_flutter_project/widgets/text_field_refactor.dart';
 
 class ContactUsScreen extends StatefulWidget {
@@ -9,12 +13,13 @@ class ContactUsScreen extends StatefulWidget {
   State<ContactUsScreen> createState() => _ContactUsScreenState();
 }
 
-class _ContactUsScreenState extends State<ContactUsScreen> {
+class _ContactUsScreenState extends State<ContactUsScreen> with Helpers{
 
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController subjectController;
   late TextEditingController messageController;
+  late TextEditingController mobileController;
 
   @override
   void initState() {
@@ -23,6 +28,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
     emailController = TextEditingController();
     subjectController = TextEditingController();
     messageController = TextEditingController();
+    mobileController = TextEditingController();
   }
 
   @override
@@ -31,6 +37,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
     emailController.dispose();
     messageController.dispose();
     subjectController.dispose();
+    mobileController.dispose();
     super.dispose();
   }
 
@@ -55,13 +62,13 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               SizedBox(height: 30,),
               TextFieldRefactor(controller: nameController,prefixIcon: Icons.person,label: 'Name'),
               SizedBox(height: 20,),
-              TextFieldRefactor(controller: emailController,prefixIcon: Icons.email,label: 'Email',type: TextInputType.emailAddress),
-              SizedBox(height: 20,),
               TextFieldRefactor(controller: subjectController,prefixIcon: Icons.subject,label: 'Subject'),
               SizedBox(height: 20,),
+              TextFieldRefactor(controller: mobileController,prefixIcon: Icons.phone,label: 'Mobile',type: TextInputType.number),
+              SizedBox(height: 20,),
               TextField(
-                controller: emailController,
-                maxLines: 6,
+                controller: messageController,
+                maxLines: 4,
                 decoration: InputDecoration(
                   alignLabelWithHint: true,
                     labelText: 'Message',
@@ -75,12 +82,53 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 ),
               ),
               SizedBox(height: 40,),
-              ElevatedButton(onPressed: (){}, child: Text('Send Now',style: TextStyle(fontSize: 22),))
+              ElevatedButton(onPressed: ()async{
+               await  perFormCreate();
+              }, child: Text('Send Now',style: TextStyle(fontSize: 22),))
             ],
           ),
         ),
       ),
     );
   }
+
+  bool checkData() {
+    if (
+        nameController.text.isNotEmpty &&
+            mobileController.text.isNotEmpty &&
+            subjectController.text.isNotEmpty &&
+            messageController.text.isNotEmpty
+
+                  ) {
+      return true;
+    }
+    showSnackBar(
+        context: context, message: 'Please Enter Required Data !', error: true);
+    return false;
+  }
+
+  Future<void> perFormCreate()async{
+    if(checkData()){
+      create();
+    }
+  }
+
+  Future<void> create()async{
+    bool status = await ContactUsApiController().createContactUs(context: context, contactUsRequest: contactUs);
+    if(status){
+      Navigator.pushReplacementNamed(context,ScreenKeys.doneContactScreen);
+    }
+  }
+
+ContactUsRequest get contactUs{
+  ContactUsRequest c = ContactUsRequest();
+  c.name = nameController.text;
+  c.status = 'pending';
+  c.mobile = mobileController.text;
+  c.subject = subjectController.text;
+  c.message = messageController.text;
+  c.summary = 'Done';
+  return c;
+}
 }
 

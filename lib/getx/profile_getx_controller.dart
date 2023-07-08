@@ -5,9 +5,10 @@ import 'package:gp_106_flutter_project/model/client.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 
 class ProfileGetxController extends GetxController {
-
-  Client client = Client();
+  late Client client;
   final ProfileApiController _profileApiController = ProfileApiController();
+
+  bool load = false;
   static ProfileGetxController get to => Get.find();
 
   @override
@@ -16,24 +17,33 @@ class ProfileGetxController extends GetxController {
     super.onInit();
   }
 
-  Future<void> readProfile() async {
+  void readProfile() async {
+    load = true;
+    update();
     client = await _profileApiController.getClient(
         id: SharedPrefController().clientID.toString());
+    load  = false;
     update();
   }
 
-  Future<void> updateClientGetx(BuildContext context, String id,
-      String fullName, String gender, String mobile, String birthDate,
-      String path) async {
-    await _profileApiController.updateClient(
-        context, id: id,
+  Future<void> updateClient({
+    required String id,
+    required String fullName,
+    required String gender,
+    required String mobile,
+    required String birthDate,
+    required String path,
+  }) async {
+    Client? client = await _profileApiController.updateClient(
+        id: id,
         fullName: fullName,
         gender: gender,
         mobile: mobile,
         birthDate: birthDate,
-        path: path
-    );
+        path: path);
+    if (client != null){
+      this.client = client;
+      update();
+    }
   }
-
-
 }

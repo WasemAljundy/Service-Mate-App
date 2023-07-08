@@ -7,9 +7,17 @@ import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
+typedef CreateCallBack = void Function(
+    {required String message,
+    required bool status,
+   });
+
 class AuthApiController with Helpers {
+
+
   Future<void> register(BuildContext context,
       {required Client client,
+        required CreateCallBack callBack,
         required String path}) async {
     var url = Uri.parse(ApiSettings.register);
     var request = http.MultipartRequest('POST', url);
@@ -28,16 +36,16 @@ class AuthApiController with Helpers {
     response.stream.transform(utf8.decoder).listen((event) {
       if (response.statusCode == 201) {
         var jsonResponse = jsonDecode(event);
-        showSnackBar(context: context, message: jsonResponse['message']);
+        callBack(message:jsonResponse['message'],status: true,);
       } else if (response.statusCode == 301) {
         var jsonResponse = jsonDecode(event);
-        showSnackBar(context: context, message: jsonResponse['message'], error: true);
+        callBack(message:jsonResponse['message'],status: false,);
       } else if (response.statusCode == 400) {
         var jsonResponse = jsonDecode(event);
-        showSnackBar(context: context, message: jsonResponse['message'], error: true);
+        callBack(message:jsonResponse['message'],status: false,);
       } else if (response.statusCode == 500) {
         var jsonResponse = jsonDecode(event);
-        showSnackBar(context: context, message: jsonResponse['message'], error: true);
+        callBack(message:jsonResponse['message'],status: false,);
       }
     });
   }

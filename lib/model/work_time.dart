@@ -1,3 +1,5 @@
+import 'package:gp_106_flutter_project/model/specialist.dart';
+
 class WorkTime {
   late int id;
   late int specialistId;
@@ -6,7 +8,8 @@ class WorkTime {
   late String fromTime;
   late String toTime;
   late String type;
- 
+  late Specialist specialist;
+
 
 
   WorkTime();
@@ -19,19 +22,8 @@ class WorkTime {
     type = json['type'];
     specialistId = json['specialist_id'];
     serviceId = json['service_id'];
+    specialist = Specialist.fromJson(json['specialist']);
 
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['id'] = id;
-    data['day'] = day;
-    data['from_time'] = fromTime;
-    data['to_time'] = toTime;
-    data['type'] = type;
-    data['specialist_id'] = specialistId;
-    data['service_id'] = serviceId;
-
-    return data;
-  }
 }

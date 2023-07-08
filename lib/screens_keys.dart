@@ -41,4 +41,6 @@ class ScreenKeys{
   static const String onBoardingScreen = '/OnBoardingScreen';
   static const String paymentMethodScreen = '/PaymentMethodScreen';
   static const String tapBarArticlesScreen = '/TapBarArticlesScreen';
+  static const String addressesScreen = '/address_screen';
+  static const String doneContactScreen = '/done_contact_us_screen';
 }

@@ -10,12 +10,11 @@ import 'package:http/http.dart' as http;
 class ProfileApiController with Helpers {
   Future<Client> getClient({required String id}) async {
     var url = Uri.parse(ApiSettings.clients.replaceFirst('{id}', id));
+    print(url);
     var response = await http.get(url, headers: {
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.authorizationHeader: SharedPrefController().token,
     });
-
-    print(response.statusCode);
 
     if (response.statusCode == 200) {
       var decodedResponse = json.decode(response.body)['client'];
@@ -24,7 +23,7 @@ class ProfileApiController with Helpers {
     return Client();
   }
 
-  Future<void> updateClient(BuildContext context,
+  Future<Client?> updateClient(
       {required String id,
       required String fullName,
       required String gender,
@@ -45,28 +44,13 @@ class ProfileApiController with Helpers {
     request.headers[HttpHeaders.acceptHeader] = 'application/json';
     request.headers[HttpHeaders.authorizationHeader] =
         SharedPrefController().token;
-
     var response = await request.send();
-
     print(response.statusCode);
-
-    response.stream.transform(utf8.decoder).listen((event) {
-      if (response.statusCode == 200) {
-        var jsonResponse = jsonDecode(event);
-        showSnackBar(context: context, message: jsonResponse['message']);
-      } else if (response.statusCode == 301) {
-        var jsonResponse = jsonDecode(event);
-        showSnackBar(
-            context: context, message: jsonResponse['message'], error: true);
-      } else if (response.statusCode == 400 || response.statusCode == 422) {
-        var jsonResponse = jsonDecode(event);
-        showSnackBar(
-            context: context, message: jsonResponse['message'], error: true);
-      } else if (response.statusCode == 500) {
-        var jsonResponse = jsonDecode(event);
-        showSnackBar(
-            context: context, message: jsonResponse['message'], error: true);
-      }
-    });
+    if (response.statusCode == 200) {
+      String body = await response.stream.transform(utf8.decoder).first;
+      var jsonResponse = jsonDecode(body);
+      return Client.fromJson(jsonResponse['client']);
+    }
+    return null;
   }
 }

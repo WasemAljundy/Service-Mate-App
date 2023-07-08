@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/get/address_get_controller.dart';
+import 'package:gp_106_flutter_project/model/addresses.dart';
 import 'package:gp_106_flutter_project/widgets/text_field_refactor.dart';
 
-import '../constent.dart';
-import '../helpers/helpers.dart';
+import '../../constent.dart';
+import '../../helpers/helpers.dart';
 
-class AddAddressScreen extends StatefulWidget {
-  const AddAddressScreen({super.key});
+class UpdateAddressScreen extends StatefulWidget {
+
+  Address address;
+  UpdateAddressScreen(this.address, {super.key});
 
   @override
-  State<AddAddressScreen> createState() => _AddAddressScreenState();
+  State<UpdateAddressScreen> createState() => _UpdateAddressScreenState();
 }
 
 
 
-class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
+class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
 
   late TextEditingController _addressNameEditingController;
   late TextEditingController _buildingEditingController;
@@ -25,10 +29,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
   void initState() {
     // TODO: implement initState
     super.initState();
-    _addressNameEditingController = TextEditingController();
-    _buildingEditingController = TextEditingController();
-    _flatNumberEditingController = TextEditingController();
-    _streetEditingController = TextEditingController();
+    _addressNameEditingController = TextEditingController(text:widget.address.name);
+    _buildingEditingController = TextEditingController(text:widget.address.building);
+    _flatNumberEditingController = TextEditingController(text:widget.address.flatId.toString());
+    _streetEditingController = TextEditingController(text:widget.address.street);
   }
 
   @override
@@ -45,9 +49,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Address'),
+        title: const Text('update Address'),
         centerTitle: true,
-        leading: Icon(Icons.arrow_back_ios_new),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back_ios_new)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -96,7 +102,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
                   style: TextStyle(fontSize: 18),
                 ),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                value: _isPrimary,
+                value:_isPrimary,
                 onChanged: (bool value) {
                   setState(() {
                     _isPrimary = value;
@@ -104,9 +110,9 @@ class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
                 }),
             const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () =>performCreateAddress(),
+              onPressed: ()async  => await performUpdateAddress(),
               child: const Text(
-                'Create Address',
+                'Update Address',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -131,14 +137,34 @@ class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
     }
   }
 
-  void createAddress(){
 
+  Future<void> updateAddress()async{
+    AddressGetXController.to.updateAddress(id: widget.address.id,addressModel: addressModel, context: context, callBack: ({Address? address, required String message,required bool status}) {
+      if(status){
+        showSnackBar(context: context, message: message);
+        Navigator.pop(context);
+      }else{
+        print(message);
+        showSnackBar(context: context, message: message,error: true);
+      }
+    },);
   }
 
-  void performCreateAddress(){
-    if(_checkData()){
-      createAddress();
+  Future<void> performUpdateAddress()async{
+    if (_checkData()) {
+      await  updateAddress();
     }
+  }
+
+
+  Address get addressModel {
+    Address a = Address();
+    a.building = _buildingEditingController.text;
+    a.flatId = int.parse(_flatNumberEditingController.text,radix: 16);
+    a.street = _streetEditingController.text;
+    a.name = _addressNameEditingController.text;
+    a.primary = _isPrimary?'1':'0';
+    return a;
   }
 
 }

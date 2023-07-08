@@ -17,7 +17,6 @@ class SharedPrefController{
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  bool get onBoarding => _sharedPreferences.getBool(PrefKeys.onBoarding.toString()) ?? false;
 
 
 
@@ -42,12 +41,16 @@ class SharedPrefController{
 
   String get fullName => _sharedPreferences.getString(PrefKeys.fullName.toString()) ?? 'No Name Found';
 
+  bool get onBoarding => _sharedPreferences.getBool(PrefKeys.onBoarding.toString()) ?? false;
+
+
   Future<bool> clear() async {
     return await _sharedPreferences.clear();
   }
 
   Future<void> saveBoarding() async{
-    await _sharedPreferences.setBool(PrefKeys.onBoarding.name, true);
+    await _sharedPreferences.setBool(PrefKeys.onBoarding.toString(), true);
   }
+
 }
 

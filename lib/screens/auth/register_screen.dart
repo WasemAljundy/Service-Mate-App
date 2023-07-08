@@ -102,13 +102,13 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
                   child: ClipOval(
                     child: _pickedFile != null
                         ? Image.file(
-                            File(_pickedFile!.path),
-                            fit: BoxFit.fill,
-                          )
+                      File(_pickedFile!.path),
+                      fit: BoxFit.fill,
+                    )
                         : Image.asset(
-                            'images/photo.png',
-                            fit: BoxFit.fill,
-                          ),
+                      'images/photo.png',
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -376,6 +376,16 @@ class _RegisterScreenState extends State<RegisterScreen> with Helpers {
       context,
       client: client,
       path: _pickedFile!.path,
+      callBack: ({required String message,required bool  status}) {
+        if(status){
+          Navigator.pop(context);
+          showSnackBar(
+              context: context, message:message,);
+        }else {
+          showSnackBar(
+              context: context, message: message, error: true);
+        }
+      },
     );
   }
 

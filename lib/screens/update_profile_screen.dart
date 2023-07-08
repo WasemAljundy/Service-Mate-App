@@ -4,6 +4,7 @@ import 'package:datetime_picker_formfield_new/datetime_picker_formfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/api/controllers/profile_api_controller.dart';
+import 'package:gp_106_flutter_project/getx/profile_getx_controller.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -256,13 +257,13 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
                       child: ClipOval(
                         child: _pickedFile != null
                             ? Image.file(
-                                File(_pickedFile!.path),
-                                fit: BoxFit.cover,
-                              )
+                          File(_pickedFile!.path),
+                          fit: BoxFit.cover,
+                        )
                             : Image.asset(
-                                'images/photo.png',
-                                fit: BoxFit.cover,
-                              ),
+                          'images/photo.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Container(
@@ -364,9 +365,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen>
   }
 
   Future<void> update() async {
-    ProfileApiController().updateClient(
+    ProfileGetxController.to.updateClient(
       id: SharedPrefController().clientID.toString(),
-      context,
       fullName: _fullNameController.text,
       gender: _gender,
       mobile: _phoneController.text,
