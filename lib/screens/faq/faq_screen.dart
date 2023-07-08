@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gp_106_flutter_project/api/controller/faq_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/faq.dart';
+import 'package:gp_106_flutter_project/screens/faq/faq_details_screen.dart';
+import 'package:gp_106_flutter_project/widgets/card_error.dart';
 import 'package:gp_106_flutter_project/widgets/faq_container.dart';
 
 
@@ -34,7 +36,11 @@ class FaqScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
-                return Container(height: 50,width: 50,);
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => FaqDetailsScreen(snapshot.data![index]),));
+                  },
+                    child: FaqContainer(snapshot.data![index]));
               },
               separatorBuilder: (context, index) {
                 return const Divider(
@@ -46,20 +52,7 @@ class FaqScreen extends StatelessWidget {
               itemCount: snapshot.data!.length,
             );
           }else{
-            return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.warning,
-                      color: Colors.grey.shade300,
-                      size: 80,
-                    ),
-                    Text('NO DATA',
-                        style:
-                        TextStyle(color: Colors.grey.shade300, fontSize: 34)),
-                  ],
-                ));
+            return CardError();
           }
         },
       )

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/get/address_get_controller.dart';
+import 'package:gp_106_flutter_project/model/addresses.dart';
+import 'package:gp_106_flutter_project/widgets/text_field_refactor.dart';
 
-import '../constent.dart';
-import '../helpers/helpers.dart';
-import '../widgets/text_field_refactor.dart';
+import '../../constent.dart';
+import '../../helpers/helpers.dart';
 
-class UpdateAddressScreen extends StatefulWidget {
-  const UpdateAddressScreen({super.key});
+class AddAddressScreen extends StatefulWidget {
+  const AddAddressScreen({super.key});
 
   @override
-  State<UpdateAddressScreen> createState() => _UpdateAddressScreenState();
+  State<AddAddressScreen> createState() => _AddAddressScreenState();
 }
 
 
 
-class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
+class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
 
   late TextEditingController _addressNameEditingController;
   late TextEditingController _buildingEditingController;
@@ -23,6 +25,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
   bool _isPrimary = false;
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     _addressNameEditingController = TextEditingController();
     _buildingEditingController = TextEditingController();
@@ -32,6 +35,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
 
   @override
   void dispose() {
+    // TODO: implement dispose
     _addressNameEditingController.dispose();
     _buildingEditingController.dispose();
     _flatNumberEditingController.dispose();
@@ -43,8 +47,9 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Address'),
+        title: const Text('Add Address'),
         centerTitle: true,
+        leading: Icon(Icons.arrow_back_ios_new),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -52,7 +57,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
           children: [
             const SizedBox(height: 20),
             const Text(
-              'Update Address',
+              'Create Address',
               style: TextStyle(
                 color: Color(0Xff4B989C),
                 fontSize: 22,
@@ -101,9 +106,9 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
                 }),
             const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () =>performUpdate(),
+              onPressed: ()async  => await performCreateAddress(),
               child: const Text(
-                'Update',
+                'Create Address',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -128,14 +133,33 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> with Helpers{
     }
   }
 
-  void update(){
-    Navigator.pushNamed(context, '/profile_screen');
+   Future<void> createAddress()async{
+    AddressGetXController.to.createAddress(addressModel: addressModel, context: context, callBack: ({Address? address, required String message,required bool status}) {
+      if(status){
+        showSnackBar(context: context, message: message);
+        print('message is : $message');
+        Navigator.pop(context);
+      }else{
+        showSnackBar(context: context, message: message,error: true);
+      }
+    },);
   }
 
-  void performUpdate(){
-    if(_checkData()){
-      update();
+  Future<void> performCreateAddress()async{
+    if (_checkData()) {
+    await  createAddress();
     }
+  }
+
+
+  Address get addressModel {
+    Address a = Address();
+    a.building = _buildingEditingController.text;
+    a.flatId = int.parse(_flatNumberEditingController.text,radix: 16);
+    a.street = _streetEditingController.text;
+    a.name = _addressNameEditingController.text;
+    a.primary = _isPrimary?'true':'false';
+    return a;
   }
 
 }

@@ -1,12 +1,12 @@
 class Attachment {
-  late int id;
-  late int reservationId;
-  late int attachmentTypeId;
-  late String name;
-  late String url;
-  late String info;
-  late String date;
-  late String status;
+   late int id;
+   int? reservationId;
+   int? attachmentTypeId;
+   String? name;
+   String? url;
+   String? info;
+   String? date;
+   String? status;
   
   Attachment();
 

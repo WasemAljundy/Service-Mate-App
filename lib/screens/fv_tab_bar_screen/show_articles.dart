@@ -3,6 +3,7 @@ import 'package:gp_106_flutter_project/api/controller/article_api_controller.dar
 import 'package:gp_106_flutter_project/model/article.dart';
 import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:gp_106_flutter_project/widgets/article_item.dart';
+import 'package:gp_106_flutter_project/widgets/card_error.dart';
 
 class TapBarArticlesScreen extends StatelessWidget {
   const TapBarArticlesScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class TapBarArticlesScreen extends StatelessWidget {
           return const Center(child: CircularProgressIndicator(),);
         }else if(snapshot.hasData && snapshot.data!.isNotEmpty){
           return  ListView.builder(
-              padding: EdgeInsets.all(10),
+              padding:const  EdgeInsets.all(10),
               itemCount: snapshot.data!.length,
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
@@ -28,13 +29,7 @@ class TapBarArticlesScreen extends StatelessWidget {
                   child: ArticleItem(snapshot.data![index]))
           );
         }else{
-          return  const Center(child: Column(
-            children: [
-              Icon(Icons.warning,color: Colors.grey,size: 70,),
-              Text('NO DATA',style: TextStyle(color: Colors.grey,fontSize: 24),)
-
-            ],
-          ),);
+          return  const CardError();
         }
       },
     );

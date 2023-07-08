@@ -101,9 +101,9 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: 5,
+                      itemCount: snapshot.data!.length,
                       gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
                         mainAxisSpacing: 10,
                       ),
@@ -155,23 +155,15 @@ class HomeScreen extends StatelessWidget {
                         Article article = await ArticleApiController()
                             .showArticles(id: snapshot.data![index].id);
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ArticlesDetailsScreen(article),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ArticlesDetailsScreen(article),
+                          ),);
                       },
                       child: ArticleItem(snapshot.data![index])));
             } else {
-              return ListView.builder(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  itemCount: 5,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) => const CardError());
+              return const CardError();
             }
           },
         )
@@ -179,4 +171,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

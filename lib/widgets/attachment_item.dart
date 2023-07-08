@@ -24,13 +24,13 @@ class AttachmentItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(attachment.name, style: const TextStyle(
+            Text(attachment.name??'', style: const TextStyle(
                 fontSize: 20,
                 overflow: TextOverflow.ellipsis,
                 color: Colors.black45), maxLines: 1,),
-            Text(attachment.status, style: const TextStyle(
+            Text(attachment.status??"", style: const TextStyle(
                 color: Colors.black54, fontSize: 16),),
-            Text(attachment.date, style: const TextStyle(
+            Text(attachment.date??'', style: const TextStyle(
                 fontSize: 12, color: Colors.grey),),
           ],
         ),

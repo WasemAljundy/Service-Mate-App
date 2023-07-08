@@ -1,7 +1,10 @@
+ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gp_106_flutter_project/model/experience.dart';
 import 'package:gp_106_flutter_project/widgets/experiences_card.dart';
-import 'package:gp_106_flutter_project/constent.dart';
+
+import '../../constent.dart';
 
 class ShowExperiencesScreen extends StatelessWidget {
      const ShowExperiencesScreen({super.key});

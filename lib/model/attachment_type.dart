@@ -35,4 +35,5 @@ class AttachmentType {
     data['visablity'] = visablity;
     return data;
   }
+
 }

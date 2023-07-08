@@ -10,18 +10,18 @@ class ServiceCard extends StatelessWidget {   @override
 
 
 Service service;
-  int id;
+int id;
 
 
 ServiceCard({required this.service, required this.id});
 
 
-  @override
+@override
 Widget build(BuildContext context) {
   return Card(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15),
-    ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
       clipBehavior: Clip.antiAlias,
       elevation: 4.0,
       child: Column(
@@ -64,7 +64,6 @@ Widget build(BuildContext context) {
                 TextButton(
                   child: const Text('LEARN MORE'),
                   onPressed: ()async {
-                    Service service = await ServiceApiController().showService(id:id);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceDetailsScreen(service),));
                   },
                 )

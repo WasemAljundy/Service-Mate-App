@@ -23,7 +23,7 @@ class ArticleItem extends StatelessWidget {
           Expanded(flex:2,child: Image(
             height: 130,
             fit: BoxFit.cover,
-            image:NetworkImage(article.image,),
+            image:NetworkImage(article.imageUrl,),
           )),
            const SizedBox(width:10,),
           Expanded(flex:3,child: Column(

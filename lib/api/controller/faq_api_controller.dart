@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:gp_106_flutter_project/api/api_settings.dart';
 import 'package:gp_106_flutter_project/model/faq.dart';
+import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:http/http.dart' as http;
 
 class FaqApiController {
@@ -10,7 +11,8 @@ class FaqApiController {
   Future<List<Faq>> getFaqs() async {
     var url  = Uri.parse(ApiSettings.faqs.replaceFirst('/{id}', ''));
     var response = await http.get(url,headers: {
-      HttpHeaders.acceptHeader:'application/json'
+      HttpHeaders.acceptHeader:'application/json',
+      HttpHeaders.authorizationHeader: SharedPrefController().token,
     });
     var responseJson = jsonDecode(response.body);
     if(response.statusCode == 200){
@@ -23,7 +25,8 @@ class FaqApiController {
   Future<Faq> showFaq({required int id}) async {
     var url  = Uri.parse(ApiSettings.faqs.replaceFirst('/{id}', id.toString()));
     var response = await http.get(url,headers: {
-      HttpHeaders.acceptHeader:'application/json'
+      HttpHeaders.acceptHeader:'application/json',
+      HttpHeaders.authorizationHeader: SharedPrefController().token,
     });
     var responseJson = jsonDecode(response.body);
     if(response.statusCode == 200){

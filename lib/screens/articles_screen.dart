@@ -46,18 +46,18 @@ class ArticlesScreen extends StatelessWidget {
             } else {
               return Center(
                   child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.warning,
-                    color: Colors.grey.shade300,
-                    size: 80,
-                  ),
-                  Text('NO DATA',
-                      style:
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.warning,
+                        color: Colors.grey.shade300,
+                        size: 80,
+                      ),
+                      Text('NO DATA',
+                          style:
                           TextStyle(color: Colors.grey.shade300, fontSize: 34)),
-                ],
-              ));
+                    ],
+                  ));
             }
           },
         ));

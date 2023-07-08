@@ -19,48 +19,21 @@ class ServiceDetailsScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body:SingleChildScrollView(
-          child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Container(
-                    child:Stack(
-                      alignment: AlignmentDirectional.topEnd,
-                      children: [
-                        Image.network(service.image,
-                          width: double.infinity,height: 250,fit: BoxFit.cover,),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: 45,
-                            width: 45,
-                            ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 10,),
-                      Text('Short Description: ',style: TextStyle(color: Colors.black45,fontSize: 18, fontWeight: FontWeight.bold)),
-                      Container(child:
-                      Text(service.shortDescription
-                          ,style: TextStyle(color: Colors.black54,fontSize: 14))),
-                      SizedBox(height: 20,),
-                      Text('Long Description',style: TextStyle(color: Colors.black54,fontSize: 18, fontWeight: FontWeight.bold)),
-                      SizedBox(height: 5,),
-                      Text(service.longDescription,
-                          style: TextStyle(color: Colors.grey,fontSize: 14)),
-
-                    ],
-                  ),
-                )
-
+                Image.network(service.image,
+                  width: double.infinity,height: 250,fit: BoxFit.fill,),
+                const SizedBox(height: 10,),
+                const Text('Short Description: ',style: TextStyle(color: Colors.black45,fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(service.shortDescription,style: const TextStyle(color: Colors.black54,fontSize: 14)),
+                const SizedBox(height: 20,),
+                const Text('Long Description',style: TextStyle(color: Colors.black54,fontSize: 18, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5,),
+                Text(service.longDescription,
+                    style: const TextStyle(color: Colors.grey,fontSize: 14)),
               ],
             ),
           ),

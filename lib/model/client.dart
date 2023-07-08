@@ -7,7 +7,6 @@ class Client {
   String? image;
   String? birthDate;
   String? token;
-
   String? password;
 
   Client();
@@ -18,10 +17,8 @@ class Client {
     gender = json['gender'];
     email = json['email'];
     mobile = json['mobile'];
-    image = json['image'];
+    image = json['image_url'];
     birthDate = json['birthDate'];
     token = json['token'];
-    password = json['password'];
   }
-
 }
