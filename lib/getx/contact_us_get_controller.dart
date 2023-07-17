@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:gp_106_flutter_project/api/controller/address_api_controller.dart';
-import 'package:gp_106_flutter_project/api/controller/attacment_api_controller.dart';
-import 'package:gp_106_flutter_project/api/controller/contact_us_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/address_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/attacment_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/contact_us_api_controller.dart';
 import 'package:gp_106_flutter_project/api/controllers/auth_api_controller.dart';
 import 'package:gp_106_flutter_project/model/addresses.dart';
 import 'package:gp_106_flutter_project/model/attachment.dart';

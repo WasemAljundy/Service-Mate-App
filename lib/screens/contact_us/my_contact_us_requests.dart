@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gp_106_flutter_project/constent.dart';
-import 'package:gp_106_flutter_project/get/contact_us_get_controller.dart';
+import 'package:gp_106_flutter_project/getx/contact_us_get_controller.dart';
 import 'package:gp_106_flutter_project/screens/contact_us/contact_us_details.dart';
 import 'package:gp_106_flutter_project/screens_keys.dart';
 import 'package:gp_106_flutter_project/widgets/card_contact_us.dart';

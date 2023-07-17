@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/api/controller/faq_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/faq_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/faq.dart';
 import 'package:gp_106_flutter_project/screens/faq/faq_details_screen.dart';

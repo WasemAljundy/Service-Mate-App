@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/api/controller/reservation_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/reservation_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/reservation.dart';
 import 'package:gp_106_flutter_project/screens/reservations/reservation_details_screen.dart';

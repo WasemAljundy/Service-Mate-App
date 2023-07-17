@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/get/address_get_controller.dart';
+import 'package:gp_106_flutter_project/getx/address_get_controller.dart';
 import 'package:gp_106_flutter_project/model/addresses.dart';
 import 'package:gp_106_flutter_project/screens/adresses/update_address_screen.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/api/controller/service_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/service_api_controller.dart';
 import 'package:gp_106_flutter_project/model/service_rule_price.dart';
 import 'package:gp_106_flutter_project/screens/services/service_work_time_screen.dart';
 import 'package:gp_106_flutter_project/widgets/card_error.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/api/controller/article_api_controller.dart';
-import 'package:gp_106_flutter_project/api/controller/category_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/article_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/category_api_controller.dart';
 import 'package:gp_106_flutter_project/model/article.dart';
 import 'package:gp_106_flutter_project/model/category.dart';
 import 'package:gp_106_flutter_project/screens/articles_details_screen.dart';

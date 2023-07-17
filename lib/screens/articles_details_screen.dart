@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/api/controller/favorite_api_controller.dart';
+import 'package:gp_106_flutter_project/api/controllers/favorite_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/article.dart';
 
