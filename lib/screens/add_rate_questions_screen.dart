@@ -9,13 +9,11 @@ class AddRateQuestionsScreen extends StatefulWidget {
 
   @override
   State<AddRateQuestionsScreen> createState() => _AddRateQuestionsScreenState();
-
 }
 
 late TextEditingController _questionEditingController;
 late TextEditingController _respondedEditingController;
 late TextEditingController _answerEditingController;
-
 
 class _AddRateQuestionsScreenState extends State<AddRateQuestionsScreen> {
 

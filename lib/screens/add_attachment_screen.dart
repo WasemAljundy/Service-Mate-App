@@ -17,13 +17,17 @@ import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 
 class AddAttachmentScreen extends StatefulWidget {
-  const AddAttachmentScreen({Key? key}) : super(key: key);
+  AddAttachmentScreen({Key? key, required this.reservationId})
+      : super(key: key);
+
+  int reservationId;
 
   @override
   State<AddAttachmentScreen> createState() => _AddAttachmentScreenState();
 }
 
-class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers {
+class _AddAttachmentScreenState extends State<AddAttachmentScreen>
+    with Helpers {
   XFile? _pickedFile;
   final ImagePicker _imagePicker = ImagePicker();
   double? _progressValue = 0;
@@ -31,7 +35,7 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
   late TextEditingController infoController;
   late TextEditingController _dateController;
 
-  late DateTime _birthday;
+  late DateTime _dateTime;
   List<int> listReservation = [1, 2, 3, 4, 5, 6];
 
   int? _selectedReservation;
@@ -64,10 +68,12 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
         body: FutureBuilder<List<AttachmentType>>(
           future: AttachmentApiController().getAttachmentTypes(),
           builder: (context, snapshot) {
-            if(snapshot.connectionState == ConnectionState.waiting){
-              return const Center(child: CircularProgressIndicator(),);
-            }else if(snapshot.hasData  && snapshot.data != null){
-              return  ListView(
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasData && snapshot.data != null) {
+              return ListView(
                 padding: const EdgeInsetsDirectional.all(10),
                 children: [
                   Container(
@@ -75,7 +81,6 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                     height: 200,
                     child: DottedBorder(
                         color: primaryColors,
-                        // strokeWidth: 1.0,
                         dashPattern: [5, 8],
                         borderType: BorderType.RRect,
                         radius: const Radius.circular(8.0),
@@ -83,18 +88,18 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                           child: _pickedFile != null
                               ? Image.file(File(_pickedFile!.path))
                               : TextButton.icon(
-                            onPressed: () => selectPicture(),
-                            icon: Icon(
-                              Icons.upload_file_outlined,
-                              color: primaryColors,
-                              size: 60,
-                            ),
-                            label: Text(
-                              'Pick File',
-                              style: TextStyle(
-                                  color: primaryColors, fontSize: 30),
-                            ),
-                          ),
+                                  onPressed: () => selectPicture(),
+                                  icon: Icon(
+                                    Icons.upload_file_outlined,
+                                    color: primaryColors,
+                                    size: 60,
+                                  ),
+                                  label: Text(
+                                    'Pick File',
+                                    style: TextStyle(
+                                        color: primaryColors, fontSize: 30),
+                                  ),
+                                ),
                         )),
                   ),
                   const SizedBox(
@@ -112,7 +117,7 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide:
-                            BorderSide(color: Colors.grey.shade400)),
+                                BorderSide(color: Colors.grey.shade400)),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: const BorderSide(color: Colors.green))),
@@ -130,7 +135,7 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide:
-                            BorderSide(color: Colors.grey.shade400)),
+                                BorderSide(color: Colors.grey.shade400)),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: const BorderSide(color: Colors.green))),
@@ -160,7 +165,7 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                     child: DropdownButton<int>(
                       hint: Text('Attachment type',
                           style: TextStyle(color: primaryColors)),
-                      onTap: (){},
+                      onTap: () {},
                       items: snapshot.data!.map((e) {
                         return DropdownMenuItem(
                           value: e.id,
@@ -187,42 +192,6 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    height: 60,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade400),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsetsDirectional.only(
-                        top: 10, start: 15, end: 15),
-                    child: DropdownButton<int>(
-                      hint: Text('Select Reservation',
-                          style: TextStyle(color: primaryColors)),
-                      items: listReservation.map((e) {
-                        return DropdownMenuItem(
-                          value: e
-                          ,
-                          child: Text('$e'),
-                        );
-                      }).toList(),
-                      onChanged: (int? value) {
-                        if (value != null) {
-                          setState(() {
-                            _selectedReservation = value;
-                          });
-                        }
-                      },
-                      onTap: () {},
-                      value: _selectedReservation,
-                      isExpanded: true,
-                      underline: const SizedBox(),
-                      iconEnabledColor: primaryColors,
-                      iconSize: 30,
-                      elevation: 5,
-                      dropdownColor: Colors
-                          .white,
-                    ),
-                  ),
                   const SizedBox(
                     height: 40,
                   ),
@@ -234,7 +203,7 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                           backgroundColor: primaryColors,
                           textStyle: const TextStyle(
                               color: Colors.white, fontSize: 24)),
-                      onPressed: ()async {
+                      onPressed: () async {
                         await performCreateAttachment();
                       },
                       child: const Text('Add')),
@@ -243,7 +212,7 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
                   ),
                 ],
               );
-            }else{
+            } else {
               print(snapshot.error);
               return const CardError();
             }
@@ -315,7 +284,7 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
       lastDate: DateTime(2100),
     ).then((value) {
       setState(() {
-        _birthday = value!;
+        _dateTime = value!;
         _dateController.text = value.toString().replaceAll('00:00:00.000', '');
       });
     });
@@ -329,35 +298,32 @@ class _AddAttachmentScreenState extends State<AddAttachmentScreen> with Helpers 
     attachment.url = _pickedFile!.path;
     attachment.status = 'Pending';
     attachment.reservationId = _selectedReservation!;
-    attachment.reservationId = _selectedAttachmentType!;
+    attachment.reservationId = widget.reservationId;
     return attachment;
   }
 
   Future<void> performCreateAttachment() async {
     if (checkData()) {
-       create();
+      await create();
     }
   }
 
-  Future<void> create()async{
-   await  AttachmentGetXController.to.createAttachment(attachment: attachment, context: context, path: _pickedFile!.path, callBack: ({required String message,required bool status}) {
-     if(status){
-       showSnackBar(context: context, message: message);
-       Navigator.pop(context);
-     }else{
-       showSnackBar(context: context, message: message,error:true);
-     }
-    },);
+  Future<void> create() async {
+    await AttachmentApiController().createAttachment(
+      attachment: attachment,
+      context: context,
+      path: _pickedFile!.path,
+    );
+
+    print('ddd');
   }
 
   bool checkData() {
-    if (_pickedFile != null&&
+    if (_pickedFile != null &&
         nameController.text.isNotEmpty &&
         infoController.text.isNotEmpty &&
         _dateController.text.isNotEmpty &&
-        _selectedAttachmentType != null&&
-        _selectedReservation != null
-                    ) {
+        _selectedAttachmentType != null) {
       return true;
     }
     showSnackBar(

@@ -10,15 +10,14 @@ import 'package:http/http.dart' as http;
 class ProfileApiController with Helpers {
   Future<Client> getClient({required String id}) async {
     var url = Uri.parse(ApiSettings.clients.replaceFirst('{id}', id));
-    print(url);
     var response = await http.get(url, headers: {
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.authorizationHeader: SharedPrefController().token,
     });
 
     if (response.statusCode == 200) {
-      var decodedResponse = json.decode(response.body)['client'];
-      return Client.fromJson(decodedResponse);
+      var responsejson = jsonDecode(response.body);
+      return Client.fromJson(responsejson['client']);
     }
     return Client();
   }
@@ -45,7 +44,7 @@ class ProfileApiController with Helpers {
     request.headers[HttpHeaders.authorizationHeader] =
         SharedPrefController().token;
     var response = await request.send();
-    print(response.statusCode);
+    print('response.statusCode is : ${response.statusCode}');
     if (response.statusCode == 200) {
       String body = await response.stream.transform(utf8.decoder).first;
       var jsonResponse = jsonDecode(body);

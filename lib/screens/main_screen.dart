@@ -49,7 +49,9 @@ class _MainScreenState extends State<MainScreen> {
           IconButton(
             icon: const Icon(Icons.logout),
             color: Colors.white,
-            onPressed: () => logout(context),
+            onPressed: () async {
+              await logout();
+            },
           ),
         ],
         title: Text(titleLists[_currentIndex]),
@@ -123,177 +125,181 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-      drawer: Drawer(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(
-                  left: 15, top: 50, right: 15, bottom: 20),
-              height: 170,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    HexColor('#4B95A2'),
-                    HexColor('#50A58E'),
-                  ],
-                  begin: AlignmentDirectional.topStart,
-                  end: AlignmentDirectional.bottomEnd,
+      drawer: SafeArea(
+        child: Drawer(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(
+                    left: 15, top: 30, right: 15, bottom: 20),
+                height: 170,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      HexColor('#4B95A2'),
+                      HexColor('#50A58E'),
+                    ],
+                    begin: AlignmentDirectional.topStart,
+                    end: AlignmentDirectional.bottomEnd,
+                  ),
                 ),
-              ),
-              width: double.infinity,
-              child: Row(
-                children: [
-                  Container(
-                    width: 80,
-                    clipBehavior: Clip.antiAlias,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(70),
-                      border: Border.all(color: Colors.white, width: 3),
-                    ),
-                    child: ClipOval(
-                      child: Image.asset(
-                        'images/test.jpg',
-                        fit: BoxFit.cover,
+                width: double.infinity,
+                child: Row(
+                  children: [
+                    Container(
+                      width: 80,
+                      clipBehavior: Clip.antiAlias,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(70),
+                        border: Border.all(color: Colors.white, width: 3),
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'images/test.jpg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          SharedPrefController().fullName,
-                          maxLines: 1,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        Text(
-                          SharedPrefController().email,
-                          maxLines: 1,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
+                    const SizedBox(
+                      width: 10,
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            SharedPrefController().fullName,
+                            maxLines: 1,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Text(
+                            SharedPrefController().email,
+                            maxLines: 1,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            ListTile(
-              onTap: () =>
-                  Navigator.popAndPushNamed(context, ScreenKeys.serviceScreen),
-              title: const Text('Services'),
-              subtitle: const Text('the details about services'),
-              leading: const Icon(
-                Icons.query_builder_sharp,
-                size: 30,
+              ListTile(
+                onTap: () => Navigator.popAndPushNamed(
+                    context, ScreenKeys.serviceScreen),
+                title: const Text('Services'),
+                subtitle: const Text('the details about services'),
+                leading: const Icon(
+                  Icons.query_builder_sharp,
+                  size: 30,
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18,
+                ),
               ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                size: 18,
+              ListTile(
+                onTap: () => Navigator.popAndPushNamed(
+                    context, ScreenKeys.updateProfileScreen),
+                title: const Text('Update Profile'),
+                subtitle: const Text('change your profile details'),
+                leading: const Icon(
+                  Icons.person_pin_sharp,
+                  size: 30,
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18,
+                ),
               ),
-            ),
-            ListTile(
-              onTap: () =>
-                  Navigator.popAndPushNamed(context, ScreenKeys.updateProfileScreen),
-              title: const Text('Update Profile'),
-              subtitle: const Text('change your profile details'),
-              leading: const Icon(
-                Icons.person_pin_sharp,
-                size: 30,
+              ListTile(
+                onTap: () =>
+                    Navigator.popAndPushNamed(context, ScreenKeys.faqScreen),
+                title: const Text('FAQs'),
+                subtitle: const Text('the details about FAQs'),
+                leading: const Icon(
+                  Icons.question_answer,
+                  size: 30,
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18,
+                ),
               ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                size: 18,
+              ListTile(
+                onTap: () => Navigator.popAndPushNamed(
+                    context, ScreenKeys.articlesScreen),
+                title: const Text('Articles'),
+                subtitle: const Text('the details about Articles'),
+                leading: const Icon(
+                  Icons.article,
+                  size: 30,
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18,
+                ),
               ),
-            ),
-            ListTile(
-              onTap: () => Navigator.popAndPushNamed(context, ScreenKeys.faqScreen),
-              title: const Text('FAQs'),
-              subtitle: const Text('the details about FAQs'),
-              leading: const Icon(
-                Icons.question_answer,
-                size: 30,
+              ListTile(
+                onTap: () =>
+                    Navigator.popAndPushNamed(context, ScreenKeys.orderScreen),
+                title: const Text('My Order'),
+                subtitle: const Text('the details about my order'),
+                leading: const Icon(
+                  Icons.shopping_cart_outlined,
+                  size: 30,
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18,
+                ),
               ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                size: 18,
+              const Divider(
+                endIndent: 20,
+                indent: 20,
+                color: Colors.grey,
               ),
-            ),
-            ListTile(
-              onTap: () =>
-                  Navigator.popAndPushNamed(context, ScreenKeys.articlesScreen),
-              title: const Text('Articles'),
-              subtitle: const Text('the details about Articles'),
-              leading: const Icon(
-                Icons.article,
-                size: 30,
+              ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, ScreenKeys.myContactUsRequests);
+                },
+                title: const Text('Contact Us'),
+                subtitle: const Text('Get Support and Inquiries'),
+                leading: const Icon(
+                  Icons.contact_support,
+                  size: 30,
+                ),
               ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                size: 18,
-              ),
-            ),
-            ListTile(
-              onTap: () => Navigator.popAndPushNamed(context, ScreenKeys.orderScreen),
-              title: const Text('My Order'),
-              subtitle: const Text('the details about my order'),
-              leading: const Icon(
-                Icons.shopping_cart_outlined,
-                size: 30,
-              ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                size: 18,
-              ),
-            ),
-            const Divider(
-              endIndent: 20,
-              indent: 20,
-              color: Colors.grey,
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, ScreenKeys.contactUsScreen);
-              },
-              title: const Text('Contact Us'),
-              subtitle: const Text('Get Support and Inquiries'),
-              leading: const Icon(
-                Icons.contact_support,
-                size: 30,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Future<void> logout(BuildContext context) async {
+  Future<void> logout() async {
     bool loggedOut = await AuthApiController().logout(context);
     if (loggedOut && context.mounted) {
-      Navigator.pop(context);
+      Get.delete<ProfileGetxController>();
       Navigator.pushNamedAndRemoveUntil(
           context, ScreenKeys.loginScreen, (route) => false);
     }

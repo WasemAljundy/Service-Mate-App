@@ -1,3 +1,5 @@
+import 'package:gp_106_flutter_project/model/contact_us_request_reply.dart';
+
 class ContactUsRequest {
   late int id;
   late int clientId;
@@ -8,6 +10,9 @@ class ContactUsRequest {
   late String subject;
   late String message;
   late String summary;
+  late String createdAt ;
+  late String updatedAt ;
+  List<ContactUsRequestReply>? contactUsRequestReplies;
 
 
 
@@ -22,22 +27,15 @@ class ContactUsRequest {
     subject = json['subject'];
     message = json['message'];
     summary = json['summary'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
     clientId = json['client_id'];
-
+    if (json['contact_us_request_replies'] != null) {
+      var repliesJson = json['contact_us_request_replies'] as List<dynamic>;
+      contactUsRequestReplies = repliesJson
+          .map((reply) => ContactUsRequestReply.fromJson(reply))
+          .toList();
+    }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data ={};
-    data['id'] = id;
-    data['name'] = name;
-    data['status'] = status;
-    data['email'] = email;
-    data['mobile'] = mobile;
-    data['subject'] = subject;
-    data['message'] = message;
-    data['summary'] = summary;
-    data['client_id'] = clientId;
-
-    return data;
-  }
+  
 }

@@ -13,7 +13,7 @@ class ArticlesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColors,
-        title: Text('Articles'),
+        title: const  Text('Articles'),
         centerTitle: true,
       ),
       body: FutureBuilder<List<Article>>(

@@ -5,10 +5,10 @@ import 'package:gp_106_flutter_project/model/client.dart';
 import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 
 class ProfileGetxController extends GetxController {
-  late Client client;
   final ProfileApiController _profileApiController = ProfileApiController();
 
   bool load = false;
+
   static ProfileGetxController get to => Get.find();
 
   @override
@@ -17,12 +17,14 @@ class ProfileGetxController extends GetxController {
     super.onInit();
   }
 
+  late Client client;
+
   void readProfile() async {
     load = true;
-    update();
+
     client = await _profileApiController.getClient(
         id: SharedPrefController().clientID.toString());
-    load  = false;
+    load = false;
     update();
   }
 
@@ -41,7 +43,7 @@ class ProfileGetxController extends GetxController {
         mobile: mobile,
         birthDate: birthDate,
         path: path);
-    if (client != null){
+    if (client != null) {
       this.client = client;
       update();
     }

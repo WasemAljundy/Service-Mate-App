@@ -112,9 +112,9 @@ class textScreen extends StatelessWidget {
                 TextButton(child: Text("CategoryScreen"),
                     onPressed: (){Navigator.pushNamed(context, ScreenKeys.categoryScreen);
                     }),
-                TextButton(child: Text("ContactUsScreen"),
-                    onPressed: (){Navigator.pushNamed(context, ScreenKeys.contactUsScreen);
-                    }),
+                // TextButton(child: Text("ContactUsScreen"),
+                //     onPressed: (){Navigator.pushNamed(context, ScreenKeys.contactUsScreen);
+                //     }),
                 TextButton(child: Text("AttachmentsScreen"),
                     onPressed: (){Navigator.pushNamed(context, ScreenKeys.attachmentsScreen);
                     }),

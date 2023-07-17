@@ -25,6 +25,9 @@ class TextFieldRefactor extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
+        constraints: BoxConstraints(
+          maxHeight: 55
+        ),
         hintStyle: const TextStyle(
             color: Colors.grey
         ),

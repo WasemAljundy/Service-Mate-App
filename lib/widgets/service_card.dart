@@ -1,19 +1,13 @@
 
 import 'package:flutter/material.dart';
-import 'package:gp_106_flutter_project/api/controller/service_api_controller.dart';
 import 'package:gp_106_flutter_project/model/service.dart';
 import 'package:gp_106_flutter_project/screens/services/service_details_screen.dart';
 import 'package:gp_106_flutter_project/screens/services/service_work_time_screen.dart';
 
-class ServiceCard extends StatelessWidget {   @override
+class ServiceCard extends StatelessWidget {   Service service;
 
 
-
-Service service;
-int id;
-
-
-ServiceCard({required this.service, required this.id});
+ServiceCard({super.key, required this.service});
 
 
 @override
@@ -30,16 +24,14 @@ Widget build(BuildContext context) {
           Row(
             children: [
               Expanded(
-                child: Container(
+                child: SizedBox(
                   height: 100.0,
                   child: Image.network(service.image,fit: BoxFit.cover,),
                 ),
               ),
+              const SizedBox(width: 10,),
               Expanded(
-                child: ListTile(
-                  title: Text(service.name),
-                  trailing: Icon(Icons.favorite_outline),
-                ),
+                child: Text(service.name),
               ),
             ],
           ),
@@ -48,23 +40,21 @@ Widget build(BuildContext context) {
             child: Text(service.shortDescription),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton(
-                  child: const Text('GET APPOINTMENT'),
+                  child: const Text(''),
                   onPressed: () {
-
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceWorkTimeScreen(serviceId: service.id,serviceName: service.name,),));
                   },
                 ),
-                Spacer(),
+                const Spacer(),
                 TextButton(
                   child: const Text('LEARN MORE'),
                   onPressed: ()async {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceDetailsScreen(service),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceDetailsScreen(service.id),),);
                   },
                 )
               ],

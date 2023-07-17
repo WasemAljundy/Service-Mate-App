@@ -8,11 +8,11 @@ class WorkTime {
   late String fromTime;
   late String toTime;
   late String type;
-  late Specialist specialist;
-
-
+   Specialist? specialist;
 
   WorkTime();
+
+
 
   WorkTime.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -22,8 +22,11 @@ class WorkTime {
     type = json['type'];
     specialistId = json['specialist_id'];
     serviceId = json['service_id'];
-    specialist = Specialist.fromJson(json['specialist']);
-
+    if(json['specialist'] != null) {
+      specialist = Specialist.fromJson(json['specialist']);
+    }
   }
+
+
 
 }

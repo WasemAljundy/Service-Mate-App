@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gp_106_flutter_project/api/api_settings.dart';
-import 'package:gp_106_flutter_project/api/controllers/profile_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/getx/profile_getx_controller.dart';
-import 'package:gp_106_flutter_project/model/client.dart';
-import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:gp_106_flutter_project/screens_keys.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -16,20 +12,14 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  ProfileGetxController controller = Get.put(ProfileGetxController());
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColors,
       body: GetBuilder<ProfileGetxController>(
-        init: ProfileGetxController(),
+        id: 'profile',
         builder: (controller) {
           if (controller.load) {
             return const Center(
@@ -79,110 +69,78 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
-                              title: const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
+                              title: Text(
                                     'Email address',
                                     style: TextStyle(
-                                        fontSize: 18, color: Colors.grey),
+                                        fontSize: 16, color: Colors.grey),
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
                               subtitle: Text(
                                 controller.client.email!,
                                 style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               trailing: const Icon(Icons.email),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 5,
                             ),
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
-                              title: const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
+                              title:Text(
                                     'Gender',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: Colors.grey,
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
                               subtitle: Text(
                                 controller.client.gender!,
                                 style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               trailing: const Icon(Icons.male),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 5,
                             ),
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
-                              title: const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
+                              title: Text(
                                     'Phone Number',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: Colors.grey,
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
                               subtitle: Text(
                                 controller.client.mobile!,
                                 style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               trailing: const Icon(Icons.phone),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 5,
                             ),
                             ListTile(
                               contentPadding: EdgeInsetsDirectional.zero,
-                              title: const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
+                              title: Text(
                                     'Birthdate',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: Colors.grey,
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
                               subtitle: Text(
                                 controller.client.birthDate!,
                                 style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

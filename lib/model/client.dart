@@ -19,6 +19,8 @@ class Client {
     mobile = json['mobile'];
     image = json['image_url'];
     birthDate = json['birthDate'];
+    if(json['token'] != null){
     token = json['token'];
+    }
   }
 }

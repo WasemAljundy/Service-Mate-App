@@ -35,12 +35,17 @@ class ScreenKeys{
   static const String attachmentsScreen = '/AttachmentsScreen';
   static const String billScreen = '/BillScreen';
   static const String categoryScreen = '/CategoryScreen';
-  static const String contactUsScreen = '/ContactUsScreen';
+  static const String createContactUs = '/ContactUsScreen';
   static const String launchScreen = '/LaunchScreen';
   static const String mainScreen = '/MainScreen';
   static const String onBoardingScreen = '/OnBoardingScreen';
   static const String paymentMethodScreen = '/PaymentMethodScreen';
   static const String tapBarArticlesScreen = '/TapBarArticlesScreen';
   static const String addressesScreen = '/address_screen';
-  static const String doneContactScreen = '/done_contact_us_screen';
+  static const String contactUsDetails = '/done_contact_us_screen';
+  static const String myContactUsRequests = '/my_contact_us_requests';
+  static const String createReservationScreen = '/create_reservation_screen';
+  static const String createAppointment = '/create_appointment_screen';
+  static const String serviceRulePrice = '/service_rule_price_screen';
+  // static const String create = '/create_reservation_screen';
 }

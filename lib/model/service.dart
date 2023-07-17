@@ -1,3 +1,4 @@
+import 'package:gp_106_flutter_project/model/service_rule.dart';
 import 'package:gp_106_flutter_project/model/work_time.dart';
 
 class Service {
@@ -7,7 +8,8 @@ class Service {
   late String longDescription;
   late String image;
   late int categoryId;
-  late List<WorkTime> workTimes;
+   List<WorkTime>? workTimes;
+   List<ServiceRule>? serviceRules;
 
   Service();
 
@@ -21,8 +23,17 @@ class Service {
     if (json['work_times'] != null) {
       workTimes = [];
       json['work_times'].forEach((v) {
-        workTimes.add(WorkTime.fromJson(v));
+        workTimes!.add(WorkTime.fromJson(v));
       });
     }
+
+    if (json['service_rules'] != null) {
+      serviceRules = [];
+      json['service_rules'].forEach((v) {
+        serviceRules!.add(ServiceRule.fromJson(v));
+      });
+    }
+
+
   }
 }

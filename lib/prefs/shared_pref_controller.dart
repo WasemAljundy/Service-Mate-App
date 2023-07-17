@@ -6,9 +6,13 @@ enum PrefKeys{
 }
 
 class SharedPrefController{
+
   SharedPrefController._internal();
+
   static final SharedPrefController _instance = SharedPrefController._internal();
+  
   late SharedPreferences _sharedPreferences;
+
   factory SharedPrefController(){
     return _instance;
   }
@@ -19,9 +23,7 @@ class SharedPrefController{
 
 
 
-
   Future<void> saveClient({required Client client}) async {
-    await _sharedPreferences.setBool(PrefKeys.loggedIn.toString(), true);
     await _sharedPreferences.setInt(PrefKeys.id.toString(), client.id!);
     await _sharedPreferences.setString(PrefKeys.email.toString(), client.email!);
     await _sharedPreferences.setString(PrefKeys.fullName.toString(), client.fullName!);
@@ -29,6 +31,8 @@ class SharedPrefController{
     await _sharedPreferences.setString(PrefKeys.mobile.toString(), client.mobile!);
     await _sharedPreferences.setString(PrefKeys.birthDate.toString(), client.birthDate!);
     await _sharedPreferences.setString(PrefKeys.token.toString(), "Bearer ${client.token}");
+    await _sharedPreferences.setBool(PrefKeys.loggedIn.toString(), true);
+
   }
 
   bool get loggedIn => _sharedPreferences.getBool(PrefKeys.loggedIn.toString()) ?? false;
@@ -45,7 +49,7 @@ class SharedPrefController{
 
 
   Future<bool> clear() async {
-    return await _sharedPreferences.clear();
+     return await _sharedPreferences.clear();
   }
 
   Future<void> saveBoarding() async{

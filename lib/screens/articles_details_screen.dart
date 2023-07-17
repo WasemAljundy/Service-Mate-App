@@ -1,97 +1,98 @@
 import 'package:flutter/material.dart';
+import 'package:gp_106_flutter_project/api/controller/favorite_api_controller.dart';
 import 'package:gp_106_flutter_project/constent.dart';
 import 'package:gp_106_flutter_project/model/article.dart';
 
-class ArticlesDetailsScreen extends StatelessWidget {
+class ArticlesDetailsScreen extends StatefulWidget {
   Article article;
 
   ArticlesDetailsScreen(this.article);
 
   @override
+  State<ArticlesDetailsScreen> createState() => _ArticlesDetailsScreenState();
+}
+
+class _ArticlesDetailsScreenState extends State<ArticlesDetailsScreen> {
+
+
+  late bool isFavorite;
+  @override
+  void initState() {
+    super.initState();
+    isFavorite = widget.article.favouriteCount==1 ?true:false;
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: primaryColors,
-          title: Text('Articles details '),
+          title: const Text('Articles details '),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                Container(
-                  height: 250,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 250,
+                width: double.infinity,
+                child: Image(
+                  image: NetworkImage(widget.article.imageUrl),
                   width: double.infinity,
-                  child: Image(
-                    image: NetworkImage(article.imageUrl),
-                    width: double.infinity,
-                    height: 250,
-                    fit: BoxFit.cover,
-                  ),
+                  height: 250,
+                  fit: BoxFit.cover,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+             Padding(
+               padding: const EdgeInsets.all(10.0),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                  Row(
                     children: [
-                      SizedBox(
-                        height: 10,
+                      const Expanded(
+                        child:  Text(
+                          'title',
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis),
+                          maxLines: 1,
+                        ),
                       ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            article.title,
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                                overflow: TextOverflow.ellipsis),
-                            maxLines: 1,
-                          ),
-                          Spacer(),
-                          Text(
-                            '${article.likeCount}',
-                            style:
-                            TextStyle(color: primaryColors, fontSize: 22),
-                          ),
-                          Icon(
-                            Icons.favorite_border_outlined,
-                            color: primaryColors,
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            '${article.shareCount}',
-                            style:
-                            TextStyle(color: primaryColors, fontSize: 22),
-                          ),
-                          Icon(
-                            Icons.send,
-                            color: primaryColors,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text('About',
-                          style:
-                          TextStyle(color: Colors.black54, fontSize: 18)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(article.content,
-                          style: TextStyle(color: Colors.grey, fontSize: 16)),
+                      const Spacer(),
+                      IconButton(onPressed: ()async {
+                       await FavoriteApiController().createArticleFavorite(articleId: widget.article.id);
+                       setState(() {
+                         isFavorite = !isFavorite;
+                       });
+                      }, icon: Icon(isFavorite?Icons.favorite:Icons.favorite_border_outlined,color: primaryColors,)),
                     ],
                   ),
-                )
-              ],
-            ),
+                   Text(
+                     widget.article.title,
+                     style: const TextStyle(
+                         color: Colors.black54,
+                         fontSize: 22,
+                         fontWeight: FontWeight.bold,
+                         overflow: TextOverflow.ellipsis),
+                     maxLines: 1,
+                   ),
+                   const SizedBox(
+                     height: 20,
+                   ),
+                   const Text('About',
+                       style:
+                       TextStyle(color: Colors.grey, fontSize: 18)),
+                   Text(widget.article.content,
+                       style: const TextStyle(color: Colors.black54, fontSize: 16)),
+                 ],
+               ),
+             )
+            ],
           ),
-        ));
+        ),
+    );
   }
 }

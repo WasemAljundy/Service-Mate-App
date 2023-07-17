@@ -12,9 +12,14 @@ import '../../widgets/service_work_time_card.dart';
 class ServiceWorkTimeScreen extends StatelessWidget {
 
   final int serviceId;
-  final String serviceName;
+  int serviceRuleId;
+  int serviceRulePriceId;
+  int price;
 
-  ServiceWorkTimeScreen({required this.serviceId, required this.serviceName});
+
+
+  ServiceWorkTimeScreen({ required this.serviceId,required this.serviceRuleId,
+    required this.serviceRulePriceId,required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +28,8 @@ class ServiceWorkTimeScreen extends StatelessWidget {
         title: const Text("Work Times"),
         backgroundColor: UsedColor.PRIMARY_COLOR,
       ),
-      body: FutureBuilder<Service?>(
-        future: ServiceApiController().getServiceDetails(serviceId: serviceId),
+      body: FutureBuilder<List<WorkTime>>(
+        future: ServiceApiController().getServiceWorkTimes(serviceId: serviceId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -37,10 +42,11 @@ class ServiceWorkTimeScreen extends StatelessWidget {
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
                 return ServiceWorkTimeCard(
-                  serviceName: serviceName,
-                  workTime: snapshot.data!.workTimes[index],
-                  specialistName: snapshot.data!.workTimes[index].specialist!.fullName,
-                  load: snapshot.connectionState == ConnectionState.done,
+                  workTime: snapshot.data![index],
+                  serviceId: serviceId,
+                  serviceRuleId: serviceRuleId,
+                  serviceRulePriceId:serviceRulePriceId,
+                  price:price,
                 );
               },
               separatorBuilder: (context, index) {
@@ -50,7 +56,7 @@ class ServiceWorkTimeScreen extends StatelessWidget {
                   endIndent: 20,
                 );
               },
-              itemCount: snapshot.data!.workTimes.length,
+              itemCount: snapshot.data!.length,
             );
           } else {
             return CardError();

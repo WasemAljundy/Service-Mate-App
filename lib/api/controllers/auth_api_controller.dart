@@ -7,22 +7,21 @@ import 'package:gp_106_flutter_project/prefs/shared_pref_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-typedef CreateCallBack = void Function(
-    {required String message,
-    required bool status,
-   });
+typedef CreateCallBack = void Function({
+  required String message,
+  required bool status,
+});
 
 class AuthApiController with Helpers {
-
-
   Future<void> register(BuildContext context,
       {required Client client,
-        required CreateCallBack callBack,
-        required String path}) async {
+      required CreateCallBack callBack,
+      required String path}) async {
     var url = Uri.parse(ApiSettings.register);
     var request = http.MultipartRequest('POST', url);
 
-    http.MultipartFile imageFile = await http.MultipartFile.fromPath('image', path);
+    http.MultipartFile imageFile =
+        await http.MultipartFile.fromPath('image', path);
     request.fields['fullName'] = client.fullName!;
     request.fields['email'] = client.email!;
     request.fields['password'] = client.password!;
@@ -36,16 +35,28 @@ class AuthApiController with Helpers {
     response.stream.transform(utf8.decoder).listen((event) {
       if (response.statusCode == 201) {
         var jsonResponse = jsonDecode(event);
-        callBack(message:jsonResponse['message'],status: true,);
+        callBack(
+          message: jsonResponse['message'],
+          status: true,
+        );
       } else if (response.statusCode == 301) {
         var jsonResponse = jsonDecode(event);
-        callBack(message:jsonResponse['message'],status: false,);
+        callBack(
+          message: jsonResponse['message'],
+          status: false,
+        );
       } else if (response.statusCode == 400) {
         var jsonResponse = jsonDecode(event);
-        callBack(message:jsonResponse['message'],status: false,);
+        callBack(
+          message: jsonResponse['message'],
+          status: false,
+        );
       } else if (response.statusCode == 500) {
         var jsonResponse = jsonDecode(event);
-        callBack(message:jsonResponse['message'],status: false,);
+        callBack(
+          message: jsonResponse['message'],
+          status: false,
+        );
       }
     });
   }
@@ -57,10 +68,12 @@ class AuthApiController with Helpers {
       'email': email,
       'password': password,
     });
-    if (response.statusCode == 200 && context.mounted) {
-      var jsonObject = jsonDecode(response.body)['data'];
-      Client client = Client.fromJson(jsonObject);
-      SharedPrefController().saveClient(client: client);
+    if (response.statusCode == 200) {
+      var jsonObject = jsonDecode(response.body);
+      Client client = Client.fromJson(jsonObject['data']);
+      print('befor save client id is : ${client.id}');
+      await SharedPrefController().saveClient(client: client);
+      print('after save client id is : ${SharedPrefController().clientID}');
       showSnackBar(
         context: context,
         message: jsonDecode(response.body)['message'],
@@ -85,7 +98,9 @@ class AuthApiController with Helpers {
     });
 
     if (response.statusCode == 200 || response.statusCode == 401) {
-      SharedPrefController().clear();
+      await SharedPrefController().clear();
+      print(
+          'SharedPrefController() for fullname is :${SharedPrefController().fullName}');
       if (context.mounted) {
         showSnackBar(
           context: context,
@@ -152,15 +167,13 @@ class AuthApiController with Helpers {
         message: jsonDecode(response.body)['message'],
       );
       return true;
-    }
-    else if (response.statusCode == 400 && context.mounted) {
+    } else if (response.statusCode == 400 && context.mounted) {
       showSnackBar(
         context: context,
         message: jsonDecode(response.body)['message'],
         error: true,
       );
-    }
-    else if (response.statusCode == 500) {
+    } else if (response.statusCode == 500) {
       showSnackBar(
         context: context,
         message: 'Server Error',
@@ -195,15 +208,13 @@ class AuthApiController with Helpers {
         message: jsonDecode(response.body)['message'],
       );
       return true;
-    }
-    else if (response.statusCode == 400 && context.mounted) {
+    } else if (response.statusCode == 400 && context.mounted) {
       showSnackBar(
         context: context,
         message: jsonDecode(response.body)['message'],
         error: true,
       );
-    }
-    else if (response.statusCode == 500) {
+    } else if (response.statusCode == 500) {
       showSnackBar(
         context: context,
         message: 'Server Error',
@@ -212,6 +223,4 @@ class AuthApiController with Helpers {
     }
     return false;
   }
-
-
 }

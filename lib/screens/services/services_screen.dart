@@ -15,7 +15,7 @@ class ServiceScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("ServiceScreen"),
+          title: const Text("Service Screen"),
           backgroundColor: UsedColor.PRIMARY_COLOR,
         ),
         body: FutureBuilder<List<Service>>(
@@ -23,12 +23,14 @@ class ServiceScreen extends StatelessWidget {
           builder: (context, snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting){
               return const  Center(child: CircularProgressIndicator(),);
-            }else if(snapshot.hasData && snapshot.data !=null){
+            }
+            else if(snapshot.hasData && snapshot.data !=null){
+
               return ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
-                  return ServiceCard(service: snapshot.data![index],id:snapshot.data![index].id ,);
+                  return ServiceCard(service: snapshot.data![index]);
                 },
                 separatorBuilder: (context, index) {
                   return const Divider(
@@ -39,7 +41,7 @@ class ServiceScreen extends StatelessWidget {
                 }, itemCount: snapshot.data!.length,
               );
             }else{
-              return CardError();
+              return const CardError();
             }
           },
         )

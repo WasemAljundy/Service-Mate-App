@@ -1,3 +1,5 @@
+import 'package:gp_106_flutter_project/model/service_rule_price.dart';
+
 class ServiceRule {
   late int id;
   late int cost;
@@ -9,6 +11,7 @@ class ServiceRule {
   late String paymentRule;
   late String performType;
   late String location;
+   List<ServiceRulePrice>? serviceRulePrices;
 
 
 
@@ -25,6 +28,13 @@ class ServiceRule {
     lat = json['lat'];
     long = json['long'];
     serviceId = json['service_id'];
+
+    if (json['service_rule_prices'] != null) {
+      serviceRulePrices = [];
+      json['service_rule_prices'].forEach((v) {
+        serviceRulePrices!.add(ServiceRulePrice.fromJson(v));
+      });
+    }
 
   }
 
