@@ -1,4 +1,4 @@
-The service application helps you organize and manage reservations, as it provides ease of reservations.
+Service mate is an app for creating reservations for various sevices, defining and arranging their dates and plcaes of submission according to the user's need.
 
 ![1](https://github.com/WasemAljundy/Service-Mate-App/assets/109550336/0f177c03-1a93-4784-833b-522d5e5d5387)
 ![2](https://github.com/WasemAljundy/Service-Mate-App/assets/109550336/4f0fafa8-f116-4b6c-9f34-a10aed587e6a)
